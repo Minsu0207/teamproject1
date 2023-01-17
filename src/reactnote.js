@@ -90,3 +90,18 @@ let lis = [] ;
   );
 
 }
+
+
+
+//백 프론트연결
+
+백
+
+프론트
+npm install http - proxy - middleware--save
+
+setProxy.js 파일을 생성
+(필요한진 모르겠음)
+
+오브젝트 타입 읽기
+JSON.stringify("파일명")
