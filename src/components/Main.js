@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import Header from "./Header";
-import Nav from "./Nav";
-import "./css/Main.css";
+import Nav from "./Nav1";
+import "./Main.css";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 
@@ -36,9 +36,6 @@ function Main() {
 
   return (
     <>
-      <Header />
-      <Nav />
-
       {data[0]}
       {data[1]}
       {data[2]}

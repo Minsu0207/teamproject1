@@ -4,8 +4,7 @@ function Header() {
   return (
     <>
       <Link to="p1">
-      <img src="img/bus1.jpg" />
-      <h2>components/Header</h2>
+        <h2>components/Header</h2>
       </Link>
     </>
   );

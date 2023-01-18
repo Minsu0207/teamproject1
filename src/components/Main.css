@@ -1,0 +1,14 @@
+.me-main {
+  font-size: 30px;
+}
+
+.me-auto {
+  font-size: 20px;
+}
+
+.main-bg {
+  height: 400px;
+  background-image: url('/public/img/business00.jpg');
+  background-size: cover;
+  background-position: center;
+}

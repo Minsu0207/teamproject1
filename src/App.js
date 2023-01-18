@@ -1,18 +1,22 @@
-import logo from "./logo.svg";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import React, { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
-import Main from "./components/Main";
+import Maincopy from "./components/Maincopy";
 import Page1 from "./components/Page1";
 import Page2 from "./components/Page2";
+import Data from "./components/Data";
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Main />} />
-      <Route path="/p1" element={<Page1 />} />
-      <Route path="/p2" element={<Page2 />} />
-    </Routes>
+    <>
+    <Maincopy />
+    <Data />
+    </>
+    // <Routes>
+    //   <Route path="/" element={<Main />} />
+    //   <Route path="/p1" element={<Page1 />} />
+    //   <Route path="/p2" element={<Page2 />} />
+    // </Routes>
   );
 }
 

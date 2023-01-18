@@ -1,11 +1,11 @@
 import { useState } from "react";
 
-function Nav() {
+function Nav1() {
   let [name, names] = useState(["소주제1", "소주제2", "소주제3"]);
 
   return (
     <>
-      <h2>components/Nav</h2>
+      <h2>components/Nav1</h2>
       <ul>
         <li
           className="li1"
@@ -24,4 +24,4 @@ function Nav() {
   );
 }
 
-export default Nav;
+export default Nav1;
