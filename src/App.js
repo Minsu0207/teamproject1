@@ -6,17 +6,18 @@ import Main from "../src/components/Main";
 import Page1 from "./components/Page1";
 import Page2 from "./components/Page2";
 import Test1 from "./components/Test1";
+import Test2 from "./components/Test2";
 import First from "./components/First";
 
 function App() {
   return (
-    // <First />
-    <Routes>
-      <Route path="/" element={<Main />} />
-      <Route path="/p1" element={<Page1 />} />
-      <Route path="/p2" element={<Page2 />} />
-    </Routes>
-    // <Test1 />
+    // <Routes>
+    //   <Route path="/" element={<Main />} />
+    //   <Route path="/p1" element={<Page1 />} />
+    //   <Route path="/p2" element={<Page2 />} />
+    // </Routes>
+
+    <Main />
   );
 }
 
