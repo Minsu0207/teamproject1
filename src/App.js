@@ -6,7 +6,6 @@ import Main from "../src/components/Main";
 import Page1 from "./components/Page1";
 import Page2 from "./components/Page2";
 import Test1 from "./components/Test1";
-import axios from "axios";
 import First from "./components/First";
 
 function App() {
