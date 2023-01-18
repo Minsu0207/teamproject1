@@ -1,3 +1,16 @@
+@font-face {
+  font-family: "GangwonEdu_OTFBoldA";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+/* @import url("https://fonts.googleapis.com/css2?family=Dongle:wght@300&family=Hi+Melody&family=Nanum+Brush+Script&family=Noto+Serif+KR&family=Single+Day&display=swap"); */
+
+* {
+  font-family: "GangwonEdu_OTFBoldA";
+}
+
 .me-main {
   font-size: 30px;
 }
@@ -8,7 +21,7 @@
 
 .main-bg {
   height: 400px;
-  background-image: url('/public/img/business00.jpg');
+  background-image: url("/public/img/business00.jpg");
   background-size: cover;
   background-position: center;
 }
