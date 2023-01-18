@@ -6,7 +6,6 @@ function Nav() {
   return (
     <>
       <h2>components/Nav</h2>
-      <h3>음</h3>
       <ul>
         <li
           className="li1"
