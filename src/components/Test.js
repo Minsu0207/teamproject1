@@ -19,16 +19,7 @@ function Test() {
     );
   });
 
-  const topRank = mvlist.filter((k) => k.rank <= 5);
-  console.log("mv1=", mvlist1);
-  console.log("tR=", topRank);
-
-  return (
-    <>
-      {mvlist1}
-      {/* {topRank} */}
-    </>
-  );
+  return <>{mvlist1}</>;
 }
 
 export default Test;

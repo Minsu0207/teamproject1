@@ -11,12 +11,12 @@ import First from "./components/First";
 
 function App() {
   return (
-    <First />
-    // <Routes>
-    //   <Route path="/" element={<Main />} />
-    //   <Route path="/p1" element={<Page1 />} />
-    //   <Route path="/p2" element={<Page2 />} />
-    // </Routes>
+    // <First />
+    <Routes>
+      <Route path="/" element={<Main />} />
+      <Route path="/p1" element={<Page1 />} />
+      <Route path="/p2" element={<Page2 />} />
+    </Routes>
     // <Test1 />
   );
 }
