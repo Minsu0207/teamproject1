@@ -17,7 +17,10 @@ useEffect
 useNavigate   
 // 이벤트 발생시(ex 클릭) url을 조작
 Link
+//<Link to="/path"></Link>
 useParams
+//let { id } = useParams();
+//url 파라미터에 입력한값 = id로 출력
 
 // for(let [k,v] of Object.entries(item))
 
@@ -29,12 +32,11 @@ probs
 
   
 //Link
-<Link to="/">
-      <button>홈화면으로</button>
-      </Link>
+
 
         import axios from 'axios'
         import { useState } from 'react'
+import { useParams } from 'react-router-dom'
 
 
 

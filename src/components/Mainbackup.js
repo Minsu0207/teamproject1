@@ -19,6 +19,7 @@ function Main() {
     const url = {
       page1: "/p1",
       page2: "/p2",
+      page2: "/p3",
     };
     navigate(url(k));
   };
