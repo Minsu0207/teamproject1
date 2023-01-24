@@ -11,6 +11,40 @@
   font-family: "GangwonEdu_OTFBoldA";
 }
 
+.tab1 {
+  font-size: x-large;
+  text-align: center;
+}
+
+/* 출력시 애니메이션효과 */
+.start {
+  /* scale: 0.7; */
+  opacity: 0;
+}
+.end {
+  /* scale: 1; */
+  opacity: 1;
+  transition: all 1s;
+}
+.start1 {
+  /* scale: 0.7; */
+  opacity: 0;
+}
+.end1 {
+  /* scale: 1; */
+  opacity: 1;
+  transition: all 1s;
+}
+
+/* 1page 모든DB조회 메뉴바 */
+.nav1 {
+  font-size: x-large;
+}
+
+.page1h1 {
+  background: #edeeff;
+}
+
 .me-main {
   font-size: 30px;
 }

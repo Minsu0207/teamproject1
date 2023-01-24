@@ -3,7 +3,7 @@ import Mynavbar from "../components/Mynavbar";
 import { Spinner } from "react-bootstrap";
 import { useEffect, useState } from "react";
 
-function Page2(props) {
+function Page2() {
   const navigate = useNavigate();
   const handle = (k) => {
     navigate(k);

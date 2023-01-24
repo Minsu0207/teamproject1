@@ -2,7 +2,7 @@ import { Button, Nav, Navbar, Container, Row, Col } from "react-bootstrap";
 
 const Mynavbar = () => {
   return (
-    <Navbar bg="light" variant="light">
+    <Navbar bg="primary" variant="dark">
       <Container>
         <Navbar.Brand href="/" className="me-main">
           Home

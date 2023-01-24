@@ -20,7 +20,7 @@ const Mysection = () => {
                 </Col>
                 <Col>
                     <img src={process.env.PUBLIC_URL + "/img/menu6.jpg"} width="90%" />
-                    <h4>세번째주제 있음하고</h4>
+                    <h4>세번째주제</h4>
                     <Button href="page3" size="lg">이동</Button>
                 </Col>
             </Row>
