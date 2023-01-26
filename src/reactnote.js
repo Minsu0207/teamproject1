@@ -84,6 +84,10 @@ for (let [k, v] of Object.entries(mv)) {
 프론트
 npm install http - proxy - middleware--save
 npm install @reduxjs/toolkit react-redux
+npm install @nivo/core
+npm install @nivo/bar
+npm install @nivo/pie
+
 import axios 
 
 axios

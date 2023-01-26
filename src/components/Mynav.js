@@ -9,11 +9,12 @@ function Mynav() {
 
   let db = useSelector((state) => { return state })
 
-  console.log(db)
+  // console.log(db)
   return (
     <>
       <Nav variant="pills" defaultActiveKey="/link0" className="nav1">
         <Nav.Item>
+
           <Nav.Link onClick={() => { setTab(0) }}
             eventKey="link0">모든 DB 조회</Nav.Link>
         </Nav.Item>

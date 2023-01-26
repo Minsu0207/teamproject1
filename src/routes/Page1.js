@@ -1,9 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import Mynavbar from "../components/Mynavbar";
-import { Button } from "react-bootstrap";
-import Data from "../components/Data";
 import Mynav from "../components/Mynav";
 import { useEffect, useState } from "react";
+
 function Page1() {
   const navigate = useNavigate();
   const handle = (k) => {
