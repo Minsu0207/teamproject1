@@ -31,6 +31,7 @@ function Main() {
         </Carousel.Item>
       </Carousel>
       <MySection />
+      
     </>
   );
 }
