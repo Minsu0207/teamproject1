@@ -16,13 +16,25 @@ function App() {
   let dispatch = useDispatch();
 
   useEffect(() => {
-    axios
-      .get("/data")
-      .then((result) => {
-        dispatch(getDbList(result.data));
-      })
-      .catch(() => console.log("데이터가져오기 실패"));
+    (async () =>
+      await axios
+        .get("/data")
+        .then((result) => {
+          dispatch(getDbList(result.data));
+        })
+        .catch(() => console.log("데이터가져오기 실패")))();
   }, []);
+
+  // useEffect(() => {
+  //   axios
+  //     .get("/data")
+  //     .then((result) => {
+  //       dispatch(getDbList(result.data));
+  //     })
+  //     .catch(() => console.log("데이터가져오기 실패"));
+  // }, []);  
+
+  //리덕트에 담아서  돌아가는코드
 
   // useEffect(() => {
   //   axios
@@ -32,6 +44,7 @@ function App() {
   //     })
   //     .catch(() => console.log("데이터가져오기 실패"));
   // }, []);
+  //리덕트 쓰기전 state에 담은 코드
   return (
     <>
       <Routes>

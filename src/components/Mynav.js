@@ -10,6 +10,8 @@ function Mynav() {
   let db = useSelector((state) => { return state })
 
   // console.log(db)
+  // console.log(typeof (db))
+
   return (
     <>
       <Nav variant="pills" defaultActiveKey="/link0" className="nav1">
@@ -66,7 +68,6 @@ function Mynav() {
                       <td>{a.rpm_av}</td>
                       <td>{a.speed_av}</td>
                       <td>{a.speed_max}</td>
-
                     </tr>
                   )
                 }

@@ -1,17 +1,15 @@
-import React, { useState, useEffect } from 'react';
-
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 const { kakao } = window;
 
 function Mymap() {
-    const [map, setMap] = useState();
-    
     useEffect(() => {
         const mapContainer = document.getElementById('map'),
             // 지도를 표시할 div
             mapOption = {
                 center: new kakao.maps.LatLng(
-                    35.22815298860791, 129.1343258084663),
+                    "35.198742898617816",
+                    "129.12954324249225"),
                 // 지도의 중심좌표
                 level: 7 // 지도의 확대 레벨
             };
@@ -45,42 +43,51 @@ function Mymap() {
         map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
         //지도 확대축소
 
-        // 지도에 선을 표시한다 
+        //gps db가져와서 mpa함수로 맵에 경로 표시
+        const myPath = gps1.gps1.map(function (a, i) {
+            return (new kakao.maps.LatLng(
+                a.GPS_Y, a.GPS_X)
+            );
+        })
+        // console.log("myPath=", path.path[0])
+        // console.log(gps1.gps1[0])
+
+        //경로를 맵함수 활용해서 반복문으로 처리해서 DB데이터 활용
+
+        // 지도에 선을 표시한다
         const polyline = new kakao.maps.Polyline({
             map: map, // 선을 표시할 지도 객체 
-            path: [ // 선을 구성하는 좌표 배열
-                new kakao.maps.LatLng(path.path[0].x, path.path[0].y),
-                new kakao.maps.LatLng(path.path[1].x, path.path[1].y),
-                new kakao.maps.LatLng(path.path[2].x, path.path[2].y),
-                new kakao.maps.LatLng(path.path[3].x, path.path[3].y),
-                new kakao.maps.LatLng(path.path[4].x, path.path[4].y)
-
-            ],
-            strokeWeight: 4, // 선의 두께
+            path: myPath, // 선을 구성하는 좌표 배열
+            strokeWeight: 2, // 선의 두께
             strokeColor: '#FF0000', // 선 색
-            strokeOpacity: 0.9, // 선 투명도
+            strokeOpacity: 1, // 선 투명도
             strokeStyle: 'solid', // 선 스타일
             endArrow: 'True'//화살표
 
         });
-
+        //strokeColor를 변화가능한 state나 props로 주고
+        //{1이면 ? strokeColor:red : null }
         marker.setMap(map); //마커 지도에 출력
         polyline.setMap(map); //폴리라인 지도에 출력
     }, [])
 
     let gps = useSelector((state) => { return state })
+    let gps1 = useSelector((state) => { return state })
     let path = useSelector((state) => { return state })
+
+
 
     return (
         <>
             <div
                 id="map" style={{
-                    width: '100%',
-                    height: '500px'
+                    width: '97%',
+                    height: '800px'
                 }}>
             </div>
+
         </>
-    )
+    );
 }
 
 export default Mymap;

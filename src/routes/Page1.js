@@ -23,8 +23,9 @@ function Page1() {
       <div className={`start ` + fade2}>
         <Mynavbar />
         <div className="page1h1">
-          <h1>운전습관 분석을 통한 안전운전 예측 시스템</h1>
-          <h2>수집한 빅데이터를 바탕으로 어떤 어떤 방식을 통해 분석할 결과 입니다.</h2>
+          <h1>운전 습관 분석을 통한
+            안전 등급 확인</h1>
+          <h2>수집한 데이터를 바탕으로 어떤 어떤 방식(*나중에 바꿈) 을 통해 분석한 결과 입니다.</h2>
           <div className="main-bg"></div>
         </div>
 
