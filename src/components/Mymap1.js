@@ -76,27 +76,28 @@ function Mymap1() {
         //{1이면 ? strokeColor:red : null }
         marker.setMap(map); //마커 지도에 출력
         polyline.setMap(map); //폴리라인 지도에 출력
+        // const goBus = () => {
+        //     for (let i = 0; i < 300; i++) {
+        //         setCnt(cnt + 100);
+        //         console.log(i)
+        //         console.log("cnt", cnt)
+        //     }
+        // }
+
+        const goBus = setInterval(() => {
+            setCnt(cnt + 50);
+
+        }, 1000);
+
+        return () => clearInterval(goBus);
+
+
     }, [cnt])
 
     let gps = useSelector((state) => { return state })
     let gps1 = useSelector((state) => { return state })
     let path = useSelector((state) => { return state })
 
-    const goBus = () => {
-        for (let i = 0; i < 300; i++) {
-            setCnt(cnt + 100);
-            console.log(i)
-            console.log("cnt", cnt)
-        }
-    }
-    // const goBus = setInterval(() => {
-    //     if (cnt <= 9999) {
-    //         setCnt(cnt + 10);
-    //     }
-    //     else {
-    //         clearInterval(goBus);
-    //     }
-    // }, 500);
 
     return (
         <>
