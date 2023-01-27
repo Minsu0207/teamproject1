@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 const { kakao } = window;
 
-
 function Mymap1() {
     const [cnt, setCnt] = useState(0);
 
@@ -20,7 +19,7 @@ function Mymap1() {
         // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
         const map = new kakao.maps.Map(mapContainer, mapOption);
 
-        const myPath = gps1.gps1.map(function (a, i) {
+        const myPath = gps.gps.map(function (a, i) {
             return (new kakao.maps.LatLng(
                 a.GPS_Y, a.GPS_X)
             );
@@ -30,9 +29,9 @@ function Mymap1() {
 
         //마커 좌표
         const Point = new kakao.maps.LatLng(
-            gps1.gps1[cnt].GPS_Y, gps1.gps1[cnt].GPS_X)
+            gps.gps[cnt].GPS_Y, gps.gps[cnt].GPS_X)
 
-        console.log(gps1.gps1[cnt])
+        console.log(gps.gps[cnt])
 
         // 마커 이미지의 주소1
         const markerImageUrl = 'https://img.icons8.com/plasticine/512/bus.png',
@@ -65,8 +64,8 @@ function Mymap1() {
         const polyline = new kakao.maps.Polyline({
             map: map, // 선을 표시할 지도 객체 
             path: myPath, // 선을 구성하는 좌표 배열
-            strokeWeight: 2, // 선의 두께
-            strokeColor: '#FF0000', // 선 색
+            strokeWeight: 3, // 선의 두께
+            strokeColor: '#ff3399', // 선 색
             strokeOpacity: 1, // 선 투명도
             strokeStyle: 'solid', // 선 스타일
             endArrow: 'True'//화살표
@@ -83,25 +82,22 @@ function Mymap1() {
         //         console.log("cnt", cnt)
         //     }
         // }
-
-        const goBus = setInterval(() => {
-            setCnt(cnt + 50);
-
-        }, 1000);
-
-        return () => clearInterval(goBus);
-
+        const goBus = setTimeout(() => {
+            setCnt(cnt + 100);
+            console.log(cnt)
+        }, 2000);
+        return () => clearTimeout(goBus);
 
     }, [cnt])
 
-    let gps = useSelector((state) => { return state })
-    let gps1 = useSelector((state) => { return state })
-    let path = useSelector((state) => { return state })
 
+    let gps = useSelector((state) => { return state })
 
     return (
         <>
-            <button id='cnt_btn' onClick={() => { setCnt(cnt + 100) }}>모의주행{cnt}</button>
+            <button id='btn' type='button' onClick={() => { }}>모의주행{cnt}</button>
+
+            {/* <button id='btn' type='button' onClick={() => { setCnt(cnt + 100) }}>모의주행{cnt}</button> */}
             <div
                 id="map" style={{
                     width: '90%',
