@@ -1,8 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 const { kakao } = window;
 
+
 function Mymap1() {
+    const [cnt, setCnt] = useState(0);
+
     useEffect(() => {
         const mapContainer = document.getElementById('map'),
             // 지도를 표시할 div
@@ -27,9 +30,9 @@ function Mymap1() {
 
         //마커 좌표
         const Point = new kakao.maps.LatLng(
-            gps1.gps1[1000].GPS_Y, gps1.gps1[1000].GPS_X)
+            gps1.gps1[cnt].GPS_Y, gps1.gps1[cnt].GPS_X)
 
-
+        console.log(gps1.gps1[cnt])
 
         // 마커 이미지의 주소1
         const markerImageUrl = 'https://img.icons8.com/plasticine/512/bus.png',
@@ -73,23 +76,37 @@ function Mymap1() {
         //{1이면 ? strokeColor:red : null }
         marker.setMap(map); //마커 지도에 출력
         polyline.setMap(map); //폴리라인 지도에 출력
-    }, [])
+    }, [cnt])
 
     let gps = useSelector((state) => { return state })
     let gps1 = useSelector((state) => { return state })
     let path = useSelector((state) => { return state })
 
-
+    const goBus = () => {
+        for (let i = 0; i < 300; i++) {
+            setCnt(cnt + 100);
+            console.log(i)
+            console.log("cnt", cnt)
+        }
+    }
+    // const goBus = setInterval(() => {
+    //     if (cnt <= 9999) {
+    //         setCnt(cnt + 10);
+    //     }
+    //     else {
+    //         clearInterval(goBus);
+    //     }
+    // }, 500);
 
     return (
         <>
+            <button id='cnt_btn' onClick={() => { setCnt(cnt + 100) }}>모의주행{cnt}</button>
             <div
                 id="map" style={{
                     width: '90%',
                     height: '800px'
                 }}>
             </div>
-
         </>
     );
 }
