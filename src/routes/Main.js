@@ -2,7 +2,9 @@ import "../components/Main.css";
 import Mynavbar from "../components/Mynavbar";
 import MySection from "../components/Mysection";
 import { Carousel } from "react-bootstrap";
+
 function Main() {
+
   return (
     <>
       <Mynavbar />
@@ -31,7 +33,7 @@ function Main() {
         </Carousel.Item>
       </Carousel>
       <MySection />
-      
+
     </>
   );
 }

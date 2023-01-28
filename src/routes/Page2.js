@@ -1,6 +1,5 @@
 import Mynavbar from "../components/Mynavbar";
-import Mymap1 from "../components/Mymap1"
-import Mymap from "../components/KakaoMap"
+import Mynav1 from "../components/Mynav1";
 
 function Page2() {
 
@@ -12,7 +11,7 @@ function Page2() {
         <h1>운행정보 분석을 통한
           운행 주의구간 알림</h1>
       </div>
-      <Mymap />
+      <Mynav1 />
     </>
   );
 }

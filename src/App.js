@@ -21,6 +21,7 @@ function App() {
         .get("/data")
         .then((result) => {
           dispatch(getDbList(result.data));
+
         })
         .catch(() => console.log("데이터가져오기 실패")))();
   }, []);
