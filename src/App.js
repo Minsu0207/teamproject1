@@ -9,11 +9,18 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getDbList } from './store'
+import { useQuery, } from "@tanstack/react-query";
 
 function App() {
-  let [db, setDb] = useState([]);
   let state = useSelector((state) => { return state })
   let dispatch = useDispatch();
+
+  // useQuery('abc', async () => {
+  //   const abc = await axios.get("/data")
+  //     .then((res) => {
+  //       dispatch(getDbList(res.data))
+  //     })
+  // })
 
   useEffect(() => {
     (async () =>
@@ -21,31 +28,11 @@ function App() {
         .get("/data")
         .then((result) => {
           dispatch(getDbList(result.data));
-
         })
         .catch(() => console.log("데이터가져오기 실패")))();
   }, []);
 
-  // useEffect(() => {
-  //   axios
-  //     .get("/data")
-  //     .then((result) => {
-  //       dispatch(getDbList(result.data));
-  //     })
-  //     .catch(() => console.log("데이터가져오기 실패"));
-  // }, []);  
 
-  //리덕트에 담아서  돌아가는코드
-
-  // useEffect(() => {
-  //   axios
-  //     .get("/data")
-  //     .then((result) => {
-  //       setDb(result.data);
-  //     })
-  //     .catch(() => console.log("데이터가져오기 실패"));
-  // }, []);
-  //리덕트 쓰기전 state에 담은 코드
   return (
     <>
       <Routes>

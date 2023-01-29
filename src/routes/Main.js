@@ -2,13 +2,18 @@ import "../components/Main.css";
 import Mynavbar from "../components/Mynavbar";
 import MySection from "../components/Mysection";
 import { Carousel } from "react-bootstrap";
+import { useSelector } from "react-redux";
 
 function Main() {
 
+  let { db } = useSelector((state) => { return state })
   return (
     <>
+
+      {/* <li>{db[0].x_gps}</li> */}
+      {/*   async  await했는데 왜 에러뜨는지 */}
       <Mynavbar />
-      <Carousel>
+      {/* <Carousel>
         <Carousel.Item interval={4000}>
           <img
             className="d-block w-100"
@@ -31,7 +36,7 @@ function Main() {
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
           </Carousel.Caption>
         </Carousel.Item>
-      </Carousel>
+      </Carousel> */}
       <MySection />
 
     </>

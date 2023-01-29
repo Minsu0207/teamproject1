@@ -7,7 +7,7 @@ import "./Main.css";
 function Mynav() {
   let [tab, setTab] = useState(0)
 
-  let db = useSelector((state) => { return state })
+  let { db } = useSelector((state) => { return state })
 
   // console.log(db)
   // console.log(typeof (db))
@@ -51,23 +51,19 @@ function Mynav() {
               <thead>
                 <tr>
                   <th>No</th>
-                  <th>차량번호</th>
-                  <th>총주행거리</th>
-                  <th>평균 rpm</th>
-                  <th>평균 속도</th>
-                  <th>최고 속도</th>
+                  <th>x좌표</th>
+                  <th>y좌표</th>
+                  <th>결과값</th>
                 </tr>
               </thead>
               <tbody>
                 {
-                  db.db.map((a, i) =>
+                  db.map((a, i) =>
                     <tr key={i}>
                       <td>{i}</td>
-                      <td>{a.car_num} 번</td>
-                      <td>{a.distance_cum} km</td>
-                      <td>{a.rpm_av}</td>
-                      <td>{a.speed_av}</td>
-                      <td>{a.speed_max}</td>
+                      <td>{a.y_gps}</td>
+                      <td>{a.x_gps}</td>
+                      <td>{a.result}</td>
                     </tr>
                   )
                 }
