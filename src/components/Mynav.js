@@ -4,12 +4,25 @@ import { useSelector } from "react-redux";
 import Mytable from "./Mytable";
 import Mysearch from "./Mysearch";
 import "./Main.css";
+import axios from "axios";
 
 
 function Mynav(props) {
   let [tab, setTab] = useState(1)
   let [search, setSearch] = useState('')
+  let [ss, setSs] = useState('')
+
   let { db } = useSelector((state) => { return state })
+
+  useEffect(() => {
+    axios.get("/data").then((res) => {
+      setSs(res.data)
+    });
+  }, [])
+
+  const handleUserInput = (ss) => {
+    setSs(ss);
+  }
 
 
   return (
@@ -70,7 +83,6 @@ function Mynav(props) {
                   )
                 }
 
-
               </tbody>
 
             </Table>
@@ -78,7 +90,7 @@ function Mynav(props) {
 
           <div className="tab2">
             <>
-              <Mysearch search={search} />
+              <Mysearch search={search} ss={ss} onUserInput={handleUserInput} />
               <Mytable />
 
             </>
