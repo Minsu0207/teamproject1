@@ -5,15 +5,15 @@ export default function useColumns() {
         () => [
             {
                 Header: "result",
-                accessor: "marca"
+                accessor: "result"
             },
             {
                 Header: "x_gps",
-                accessor: "modelo"
+                accessor: "x_gps"
             },
             {
                 Header: "y_gps",
-                accessor: "segmento"
+                accessor: "y_gps"
             },
 
         ],
