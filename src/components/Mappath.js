@@ -63,6 +63,34 @@ function Mappath() {
             );
         })]
 
+        const linePath1 = [
+            new kakao.maps.LatLng(35.2376, 129.16366),
+            new kakao.maps.LatLng(35.2200, 129.16000)
+        ];
+
+        const linePath2 = [
+            new kakao.maps.LatLng(35.2376, 129.13666),
+            new kakao.maps.LatLng(35.2132, 129.13330)
+        ]
+
+        var polyline1 = new kakao.maps.Polyline({
+            path: linePath1, // 선을 구성하는 좌표배열 입니다
+            strokeWeight: 10, // 선의 두께 입니다
+            strokeColor: 'red', // 선의 색깔입니다
+            strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+            strokeStyle: 'solid' // 선의 스타일입니다
+        });
+
+        var polyline2 = new kakao.maps.Polyline({
+            path: linePath2, // 선을 구성하는 좌표배열 입니다
+            strokeWeight: 10, // 선의 두께 입니다
+            strokeColor: 'blue', // 선의 색깔입니다
+            strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+            strokeStyle: 'solid' // 선의 스타일입니다
+        });
+        console.log(linePath)
+
+
         var polyline = new kakao.maps.Polyline({
             path: linePath, // 선을 구성하는 좌표배열 입니다
             strokeWeight: 5, // 선의 두께 입니다
@@ -72,6 +100,8 @@ function Mappath() {
         });
 
         polyline.setMap(map);
+        polyline1.setMap(map);
+        polyline2.setMap(map);
 
         // 하나의 polyline 객체를 전역 변수로 만들고
         // 1번 보기를 눌렀을 때 1번의 path를 polyline.setPath(path); 를 호출하여 경로를 지정 polyline.setMap(map);으로 지도에 표시해줍니다.
@@ -88,37 +118,38 @@ function Mappath() {
 
 
         var content =
-            // '<button>버스종점!</button>';
-            '<div class="overlaybox">' +
-            '    <div class="boxtitle">버스 운행정보</div>' +
-            '    <div class="first">' +
-            '        <div class="triangle text">1</div>' +
-            '        <div class="movietitle text">115-1번</div>' +
-            '    </div>' +
-            '    <ul>' +
-            '        <li class="up">' +
-            '            <span class="number">2</span>' +
-            '            <span class="title"></span>' +
-            '            <span class="arrow up"></span>' +
-            '            <span class="count">2</span>' +
-            '        </li>' +
-            '        <li>' +
-            '            <span class="number">3</span>' +
-            '            <span class="title"></span>' +
-            '            <span class="arrow up"></span>' +
-            '            <span class="count">6</span>' +
-            '        </li>' +
-            '        <li>' +
-            '            <span class="number">4</span>' +
-            '            <span class="title"></span>' +
-            '            <span class="arrow up"></span>' +
-            '            <span class="count">3</span>' +
-            '        </li>' +
-            '    </ul>' +
-            '</div>';
+            '<button>버스종점!</button>';
+        // '<div class="overlaybox">' +
+        // '    <div class="boxtitle">버스 운행정보</div>' +
+        // '    <div class="first">' +
+        // '        <div class="triangle text">1</div>' +
+        // '        <div class="movietitle text">115-1번</div>' +
+        // '    </div>' +
+        // '    <ul>' +
+        // '        <li class="up">' +
+        // '            <span class="number">2</span>' +
+        // '            <span class="title"></span>' +
+        // '            <span class="arrow up"></span>' +
+        // '            <span class="count">2</span>' +
+        // '        </li>' +
+        // '        <li>' +
+        // '            <span class="number">3</span>' +
+        // '            <span class="title"></span>' +
+        // '            <span class="arrow up"></span>' +
+        // '            <span class="count">6</span>' +
+        // '        </li>' +
+        // '        <li>' +
+        // '            <span class="number">4</span>' +
+        // '            <span class="title"></span>' +
+        // '            <span class="arrow up"></span>' +
+        // '            <span class="count">3</span>' +
+        // '        </li>' +
+        // '    </ul>' +
+        // '</div>';
 
         // 커스텀 오버레이가 표시될 위치입니다 
-        var position = new kakao.maps.LatLng(35.22, 129.199197087737);
+        var position = new kakao.maps.LatLng(35.2325,
+            129.169);
 
         // 커스텀 오버레이를 생성합니다
         var customOverlay = new kakao.maps.CustomOverlay({
@@ -136,8 +167,8 @@ function Mappath() {
         <>
             <div
                 id="map" style={{
-                    width: '90%',
-                    height: '800px'
+                    width: '80%',
+                    height: '630px'
                 }}>
 
             </div>

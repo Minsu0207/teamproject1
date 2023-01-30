@@ -4,15 +4,15 @@ import MySection from "../components/Mysection";
 import { Carousel } from "react-bootstrap";
 import { useSelector } from "react-redux";
 
-function Main() {
-
+function Main(props) {
   let { db } = useSelector((state) => { return state })
   return (
     <>
-
-      {/* <li>{db[0].x_gps}</li> */}
-      {/*   async  await했는데 왜 에러뜨는지 */}
+      {/* <li>{db[0]?.x_gps}</li> */}
+      {/* <li>{db[0] && db[0].x_gps}</li> */}
       <Mynavbar />
+
+
       {/* <Carousel>
         <Carousel.Item interval={4000}>
           <img

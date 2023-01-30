@@ -1,15 +1,15 @@
-@font-face {
+/* @font-face {
   font-family: "GangwonEdu_OTFBoldA";
   src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff")
     format("woff");
   font-weight: normal;
   font-style: normal;
-}
+} */
 /* @import url("https://fonts.googleapis.com/css2?family=Dongle:wght@300&family=Hi+Melody&family=Nanum+Brush+Script&family=Noto+Serif+KR&family=Single+Day&display=swap"); */
 
-* {
+/* * {
   font-family: "GangwonEdu_OTFBoldA";
-}
+} */
 
 .overlaybox {
   position: relative;
@@ -167,3 +167,51 @@ ul {
   background-size: contain;
   background-position: ;
 } */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  font-family: "Calibri";
+  justify-content: center;
+  padding: 2rem 5rem;
+}
+
+table {
+  border-spacing: 0;
+  border: 1px solid #d1cccc;
+}
+
+tr:last-child td {
+  border-bottom: 0;
+}
+
+th,
+td {
+  margin: 0;
+  padding: 0.5rem;
+  border-bottom: 1px solid #d1cccc;
+  border-right: 1px solid #d1cccc;
+}
+
+th:last-child,
+td:last-child {
+  border-right: 0;
+}
+
+tr:nth-child(odd) {
+  background: #f3f3f3;
+  color: #000000;
+}
+
+tr:nth-child(even) {
+  background: #ffffff;
+  color: #000000;
+}
+
+th.desc {
+  border-bottom: 5px solid rgb(136, 136, 255);
+}
+
+th.asc {
+  border-top: 5px solid orange;
+}

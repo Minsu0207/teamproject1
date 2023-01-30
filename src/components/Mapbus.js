@@ -56,7 +56,7 @@ function Mapbus() {
         // map.addOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC);
 
         kakao.maps.event.addListener(marker, 'click', function () {
-            goBus()
+            cnt = 0
         });
 
         // map.addOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC);

@@ -11,11 +11,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { getDbList } from './store'
 import { useQuery, } from "@tanstack/react-query";
 
-function App() {
+function App(props) {
+
   let state = useSelector((state) => { return state })
   let dispatch = useDispatch();
 
-  // useQuery('abc', async () => {
+  // useQuery('[abc]', async () => {
   //   const abc = await axios.get("/data")
   //     .then((res) => {
   //       dispatch(getDbList(res.data))

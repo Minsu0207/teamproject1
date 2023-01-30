@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import { DropdownButton, Nav, Table } from "react-bootstrap";
+import { Form, Nav, Table } from "react-bootstrap";
 import { useSelector } from "react-redux";
+import Mytable from "./Mytable";
 import "./Main.css";
 
 
 function Mynav() {
-  let [tab, setTab] = useState(0)
+  let [tab, setTab] = useState(1)
 
   let { db } = useSelector((state) => { return state })
 
@@ -18,17 +19,17 @@ function Mynav() {
         <Nav.Item>
 
           <Nav.Link onClick={() => { setTab(0) }}
-            eventKey="link0">모든 DB 조회</Nav.Link>
+            eventKey="link0">모든 차량 조회</Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link onClick={() => { setTab(1) }} eventKey="link1">나의 안전등급 확인</Nav.Link>
+          <Nav.Link onClick={() => { setTab(1) }} eventKey="link1">차량별 안전등급 확인</Nav.Link>
         </Nav.Item>
-        <Nav.Item>
+        {/* <Nav.Item>
           <Nav.Link onClick={() => { setTab(2) }}
             eventKey="link2" >
             Disabled
           </Nav.Link>
-        </Nav.Item>
+        </Nav.Item> */}
       </Nav>
       <TabContent tab={tab} />
     </>
@@ -51,6 +52,10 @@ function Mynav() {
               <thead>
                 <tr>
                   <th>No</th>
+                  <th>차량번호</th>
+                  <th>평균속도</th>
+                  <th>급가속횟수</th>
+                  <th>급감속횟수</th>
                   <th>x좌표</th>
                   <th>y좌표</th>
                   <th>결과값</th>
@@ -60,6 +65,10 @@ function Mynav() {
                 {
                   db.map((a, i) =>
                     <tr key={i}>
+                      <td>{i}</td>
+                      <td>{i}</td>
+                      <td>{i}</td>
+                      <td>{i}</td>
                       <td>{i}</td>
                       <td>{a.y_gps}</td>
                       <td>{a.x_gps}</td>
@@ -73,8 +82,19 @@ function Mynav() {
             </Table>
           </div>,
 
-          <div className="tab2">내용1</div>,
-          <div className="tab3">내용2</div>
+          <div className="tab2">
+            <>
+              <Form.Select aria-label="Default select example">
+                <option>차량번호 선택</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </Form.Select>
+              <Mytable />
+
+            </>
+          </div>,
+
 
         ][tab]}
       </div>
