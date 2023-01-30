@@ -1,17 +1,12 @@
 import "../components/Main.css";
 import Mynavbar from "../components/Mynavbar";
-import MySection from "../components/Mysection";
+import Mysection from "../components/Mysection";
 import { Carousel } from "react-bootstrap";
-import { useSelector } from "react-redux";
 
-function Main(props) {
-  let { db } = useSelector((state) => { return state })
+function Main() {
   return (
     <>
-      {/* <li>{db[0]?.x_gps}</li> */}
-      {/* <li>{db[0] && db[0].x_gps}</li> */}
       <Mynavbar />
-
 
       {/* <Carousel>
         <Carousel.Item interval={4000}>
@@ -37,7 +32,7 @@ function Main(props) {
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel> */}
-      <MySection />
+      <Mysection />
 
     </>
   );

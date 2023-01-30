@@ -2,10 +2,7 @@ import { useTable, useSortBy } from "react-table";
 import useRows from "./useRows";
 import useColumns from "./useColumns";
 
-
-export default function Mytable() {
-
-
+function Mytable() {
     const columns = useColumns();
     const data = useRows();
     const table = useTable({ columns, data }, useSortBy);
@@ -76,3 +73,5 @@ export default function Mytable() {
         </div>
     );
 }
+
+export default Mytable;

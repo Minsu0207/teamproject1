@@ -75,7 +75,8 @@ for (let [k, v] of Object.entries(mv)) {
 }
 
 
-
+      <li>{db[0]?.x_gps}</li>
+      <li>{db[0] && db[0].x_gps}</li>
 
 //백 프론트연결
 

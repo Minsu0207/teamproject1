@@ -5,24 +5,19 @@ const Mysection = () => {
         <Container>
             <Row>
                 <Col className="col1">
+                    <Button variant="outline-secondary" href="Page1" size="lg">
                     <img src={process.env.PUBLIC_URL + "/img/menu1.jpg"} width="100%" />
-
-                    <Button href="Page1" size="lg">
                         <h4>운전 습관 분석을 통한
-                            안전 등급 확인
-                        </h4>
-
-                    </Button>
+                            안전 등급 확인</h4></Button>{' '}
                 </Col>
-                <Col>
+                <Col className="col1">
+                    <Button variant="outline-secondary" href="Page2" size="lg">
                     <img src={process.env.PUBLIC_URL + "/img/menu2.jpg"} width="100%" />
-                    <Button href="page2" size="lg" >
                         <h4>운행정보 분석을 통한
                             운행 주의구간 알림
                         </h4>
-                    </Button>
+                    </Button>{' '}
                 </Col>
-
             </Row>
         </Container>
 

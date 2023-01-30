@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 
-export default function useColumns() {
+function useColumns() {
     const columns = useMemo(
         () => [
             {
@@ -22,3 +22,5 @@ export default function useColumns() {
 
     return columns;
 }
+
+export default useColumns;

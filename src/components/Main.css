@@ -1,15 +1,21 @@
-/* @font-face {
-  font-family: "GangwonEdu_OTFBoldA";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff")
+@font-face {
+  font-family: "Pretendard-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "GmarketSansMedium";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff")
     format("woff");
   font-weight: normal;
   font-style: normal;
-} */
-/* @import url("https://fonts.googleapis.com/css2?family=Dongle:wght@300&family=Hi+Melody&family=Nanum+Brush+Script&family=Noto+Serif+KR&family=Single+Day&display=swap"); */
-
-/* * {
-  font-family: "GangwonEdu_OTFBoldA";
-} */
+}
+* {
+  font-family: 
+  /* "Pretendard-Regular", */ "GmarketSansMedium";
+}
 
 .overlaybox {
   position: relative;
@@ -162,18 +168,14 @@ ul {
   font-size: 20px;
 }
 
-/* .col1 {
-  background-image: url("/public/img/menu1.jpg");
-  background-size: contain;
-  background-position: ;
-} */
+.col1 {
+  padding: auto;
+  margin-right: 10%;
+}
 
 .container {
-  display: flex;
   flex-direction: column;
-  font-family: "Calibri";
   justify-content: center;
-  padding: 2rem 5rem;
 }
 
 table {
@@ -214,4 +216,8 @@ th.desc {
 
 th.asc {
   border-top: 5px solid orange;
+}
+
+.Navber {
+  margin-bottom: 15px;
 }
