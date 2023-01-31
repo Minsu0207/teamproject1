@@ -90,7 +90,7 @@ function Mapbus() {
 
         const goBus = setInterval(() => {
             setCnt(cnt + 100);
-        }, 1000);
+        }, 1300);
         return () => clearInterval(goBus);
 
     }, [{ db }])

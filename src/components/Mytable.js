@@ -1,10 +1,23 @@
 import { useTable, useSortBy } from "react-table";
-import useRows from "./useRows";
 import useColumns from "./useColumns";
+import { useMemo } from "react";
 
-function Mytable() {
+function Mytable({ ss, setSs }) {
     const columns = useColumns();
     const data = useRows();
+
+
+    function useRows() {
+        const rows = useMemo(
+            () => ss.map((a, i) =>           // return db[i];
+                a
+            ),
+            []
+        );
+        return rows;
+    }
+
+
     const table = useTable({ columns, data }, useSortBy);
 
     const {
@@ -75,3 +88,4 @@ function Mytable() {
 }
 
 export default Mytable;
+

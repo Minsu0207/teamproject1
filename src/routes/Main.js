@@ -2,8 +2,16 @@ import "../components/Main.css";
 import Mynavbar from "../components/Mynavbar";
 import Mysection from "../components/Mysection";
 import { Carousel } from "react-bootstrap";
+import { useSelector } from "react-redux";
 
 function Main() {
+  let { test } = useSelector((state) => { return state })
+  let { drive } = useSelector((state) => { return state })
+  let { vehicle } = useSelector((state) => { return state })
+
+  console.log('test', test)
+  console.log('drive', drive)
+  console.log('vehicle', vehicle)
   return (
     <>
       <Mynavbar />

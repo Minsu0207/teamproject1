@@ -7,7 +7,9 @@ import Page2 from "./routes/Page2";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getDbList } from './store'
+import { getTestList } from './store'
+import { getDriveList } from './store'
+import { getVehicleList } from './store'
 
 function App() {
 
@@ -17,12 +19,33 @@ function App() {
   useEffect(() => {
     (async () =>
       await axios
-        .get("/data")
+        .get("/test")
         .then((result) => {
-          dispatch(getDbList(result.data));
+          dispatch(getTestList(result.data));
         })
         .catch(() => console.log("데이터가져오기 실패")))();
   }, []);
+
+  useEffect(() => {
+    (async () =>
+      await axios
+        .get("/drive")
+        .then((result) => {
+          dispatch(getDriveList(result.data));
+        })
+        .catch(() => console.log("데이터가져오기 실패")))();
+  }, []);
+
+  useEffect(() => {
+    (async () =>
+      await axios
+        .get("/vehicle")
+        .then((result) => {
+          dispatch(getVehicleList(result.data));
+        })
+        .catch(() => console.log("데이터가져오기 실패")))();
+  }, []);
+
 
 
   return (

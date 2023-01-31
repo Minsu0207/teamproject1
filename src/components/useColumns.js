@@ -4,16 +4,20 @@ function useColumns() {
     const columns = useMemo(
         () => [
             {
-                Header: "result",
-                accessor: "result"
+                Header: "차량번호",
+                accessor: "car_num"
             },
             {
-                Header: "x_gps",
-                accessor: "x_gps"
+                Header: "운행일자",
+                accessor: "date"
             },
             {
-                Header: "y_gps",
-                accessor: "y_gps"
+                Header: "운행당 안전 운전율",
+                accessor: "dsr"
+            },
+            {
+                Header: "운행점수",
+                accessor: "durs"
             },
 
         ],
@@ -24,3 +28,4 @@ function useColumns() {
 }
 
 export default useColumns;
+
