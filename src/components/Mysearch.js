@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import styled from 'styled-components'
 import { useSelector } from "react-redux";
 import Mynav from "./Mynav";
 import {
@@ -13,22 +14,26 @@ import {
 
 
 function Mysearch({ ss, setSs }) {
-    const [search, setSearch] = useState('');
+    const [table, setTable] = useState(true);
+    const [search, setSearch] = useState([]);
+
     //db를 복사해서 동적 setABc state에 담아서,
     //search동작이 일어났을때 그걸 담아서 테이블에 만들때 동적 db state를 줘서
     //검색한 테이블 출력
     //search 를 반복문 돌려줘서테이블 작성
 
-    useEffect(() => {
-        console.log("search", search)
+    // useEffect(() => {
 
+    // },);
+    console.log("search", search)
+    let temp = ss.filter((i) => String(i.car_num).includes(search));
+    console.log(temp)
 
-        // setSs(ss.filter((i) => i.Column1.includes(search)));
-        let temp = ss.filter((i) => String(i.car_num).includes(search));
-        // setSs()
+    let Box = styled.div`
+    padding :20px;
+    `
 
-        console.log(temp)
-    },);
+    console.log(search)
 
     return (
         <>
@@ -39,15 +44,15 @@ function Mysearch({ ss, setSs }) {
                         placeholder={"🔍Search"}
                         onChange={(e) => {
                             setSearch(e.target.value)
-
                         }} />
-                    <ComboboxPopover>
-                        <ComboboxOption value="2612"></ComboboxOption>
-                        <ComboboxOption value="3897"></ComboboxOption>
-                        <ComboboxOption value="2612"></ComboboxOption>
-                        <ComboboxOption value="2612"></ComboboxOption>
+                    <Box></Box>
+                    <ComboboxPopover className="shadow-popup">
+                        <ComboboxList>
+                            <ComboboxOption value="2612"></ComboboxOption>
+                        </ComboboxList>
                     </ComboboxPopover>
                 </Combobox>
+
             </div>
         </>
 
@@ -55,3 +60,6 @@ function Mysearch({ ss, setSs }) {
 }
 
 export default Mysearch;
+
+
+

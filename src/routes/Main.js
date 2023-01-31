@@ -9,9 +9,9 @@ function Main() {
   let { drive } = useSelector((state) => { return state })
   let { vehicle } = useSelector((state) => { return state })
 
-  console.log('test', test)
-  console.log('drive', drive)
-  console.log('vehicle', vehicle)
+  // console.log('test', test)
+  // console.log('drive', drive)
+  // console.log('vehicle', vehicle)
   return (
     <>
       <Mynavbar />
