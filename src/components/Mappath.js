@@ -4,8 +4,17 @@ import "./Main.css";
 
 function Mappath() {
     const { kakao } = window;
-    let { db } = useSelector((state) => { return state })
+    let { test } = useSelector((state) => { return state })
 
+    let db = [];
+
+    let abc = test.map((a, i) => {
+        if (i < 500) {
+            db.push(a);
+        }
+    })
+
+    console.log(db)
 
 
     useEffect(() => {
@@ -34,10 +43,28 @@ function Mappath() {
             resultDiv.innerHTML = message;
         });
 
-        const Point = new kakao.maps.LatLng(
-            db[0]?.y_gps,
-            db[0]?.x_gps,
-        )
+        let busPositions = [];
+
+        // let a = test.map((a) => {
+        //     if (a.status_code != 0) {
+        //         busPositions.push(new kakao.maps.LatLng(
+        //             a.car_location_GPS_Y, a.car_location_GPS_X
+        //         ))
+        //     } else {
+        //     }
+        // })
+        // let aobj = Object.assign({}, busPositions)
+
+        // console.log('busPositions', busPositions)
+        // console.log('ab', aobj)
+
+        const Point =
+            new kakao.maps.LatLng(
+                db[0]?.car_location_GPS_Y,
+                db[0]?.car_location_GPS_X
+
+            )
+        // console.log(Point)
         // 마커 이미지의 주소1
         const markerImageUrl = 'https://img.icons8.com/plasticine/512/bus.png',
             markerImageSize = new kakao.maps.Size(45, 45), // 마커 이미지의 크기
@@ -47,6 +74,14 @@ function Mappath() {
         // 마커 이미지를 생성한다 2
         const markerImage = new kakao.maps.MarkerImage(markerImageUrl, markerImageSize, markerImageOptions);
 
+        let Point1 = [db.map((a) =>
+            new kakao.maps.LatLng(
+                a.car_location_GPS_Y, a.car_location_GPS_X
+            )
+        )]
+
+        console.log(Point1)
+
         const marker = new kakao.maps.Marker({
             position: Point,    // 마커의 좌표
             image: markerImage, // 마커의 이미지
@@ -55,53 +90,35 @@ function Mappath() {
 
 
         // 마커가 지도 위에 표시되도록 설정합니다
-        marker.setMap(map);
 
-        const linePath = [db.map(function (a, i) {
-            return (new kakao.maps.LatLng(
-                a.y_gps, a.x_gps)
-            );
-        })]
 
-        const linePath1 = [
-            new kakao.maps.LatLng(35.2376, 129.16366),
-            new kakao.maps.LatLng(35.2200, 129.16000)
-        ];
+        // console.log(test[0]?.status_code)
 
-        const linePath2 = [
-            new kakao.maps.LatLng(35.2376, 129.13666),
-            new kakao.maps.LatLng(35.2132, 129.13330)
-        ]
 
-        var polyline1 = new kakao.maps.Polyline({
-            path: linePath1, // 선을 구성하는 좌표배열 입니다
-            strokeWeight: 10, // 선의 두께 입니다
-            strokeColor: 'red', // 선의 색깔입니다
-            strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
-            strokeStyle: 'solid' // 선의 스타일입니다
-        });
 
-        var polyline2 = new kakao.maps.Polyline({
-            path: linePath2, // 선을 구성하는 좌표배열 입니다
-            strokeWeight: 10, // 선의 두께 입니다
-            strokeColor: 'blue', // 선의 색깔입니다
-            strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
-            strokeStyle: 'solid' // 선의 스타일입니다
-        });
-        console.log(linePath)
 
+        let busPath = [db.map((a) =>
+            new kakao.maps.LatLng(
+                a.car_location_GPS_Y, a.car_location_GPS_X
+            )
+        )]
 
         var polyline = new kakao.maps.Polyline({
-            path: linePath, // 선을 구성하는 좌표배열 입니다
+            path: busPath,// 선을 구성하는 좌표배열 입니다
+            strokeColor: 'blue',
             strokeWeight: 5, // 선의 두께 입니다
-            strokeColor: 'black', // 선의 색깔입니다
-            strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+            strokeOpacity: 0.8, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
             strokeStyle: 'solid' // 선의 스타일입니다
         });
 
+
+
+
+
+
+
         polyline.setMap(map);
-        polyline1.setMap(map);
-        polyline2.setMap(map);
+        marker.setMap(map);
 
         // 하나의 polyline 객체를 전역 변수로 만들고
         // 1번 보기를 눌렀을 때 1번의 path를 polyline.setPath(path); 를 호출하여 경로를 지정 polyline.setMap(map);으로 지도에 표시해줍니다.
@@ -116,51 +133,7 @@ function Mappath() {
 
 
 
-
-        var content =
-            '<button>버스종점!</button>';
-        // '<div class="overlaybox">' +
-        // '    <div class="boxtitle">버스 운행정보</div>' +
-        // '    <div class="first">' +
-        // '        <div class="triangle text">1</div>' +
-        // '        <div class="movietitle text">115-1번</div>' +
-        // '    </div>' +
-        // '    <ul>' +
-        // '        <li class="up">' +
-        // '            <span class="number">2</span>' +
-        // '            <span class="title"></span>' +
-        // '            <span class="arrow up"></span>' +
-        // '            <span class="count">2</span>' +
-        // '        </li>' +
-        // '        <li>' +
-        // '            <span class="number">3</span>' +
-        // '            <span class="title"></span>' +
-        // '            <span class="arrow up"></span>' +
-        // '            <span class="count">6</span>' +
-        // '        </li>' +
-        // '        <li>' +
-        // '            <span class="number">4</span>' +
-        // '            <span class="title"></span>' +
-        // '            <span class="arrow up"></span>' +
-        // '            <span class="count">3</span>' +
-        // '        </li>' +
-        // '    </ul>' +
-        // '</div>';
-
-        // 커스텀 오버레이가 표시될 위치입니다 
-        var position = new kakao.maps.LatLng(35.2325,
-            129.169);
-
-        // 커스텀 오버레이를 생성합니다
-        var customOverlay = new kakao.maps.CustomOverlay({
-            position: position,
-            content: content
-        });
-
-        // 커스텀 오버레이를 지도에 표시합니다
-        customOverlay.setMap(map);
-
-    }, [])
+    },)
 
 
     return (
@@ -172,15 +145,9 @@ function Mappath() {
                 }}>
 
             </div>
-            <p><em>지도 클릭해서 gps값 확인</em></p>
             <p id='result'></p>
         </>
     );
 }
 
 export default Mappath;
-
-
-
-
-

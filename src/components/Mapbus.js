@@ -1,11 +1,13 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useSelector } from 'react-redux';
+import ProgressBar from 'react-bootstrap/ProgressBar';
 import Mynavbar from './Mynavbar';
 
 function Mapbus() {
     const { kakao } = window;
     let [cnt, setCnt] = useState(600);
     let { db } = useSelector((state) => { return state })
+    let { test } = useSelector((state) => { return state })
 
 
     useEffect(() => {
@@ -100,7 +102,10 @@ function Mapbus() {
 
     return (
         <>
-            <button onClick={() => { }}>모의주행{cnt}</button>
+            <br></br>
+            <ProgressBar variant="success" now={(cnt / 100)} />
+            <br></br>
+            <button onClick={() => { }}>{cnt}</button>
             <div
                 id="map" style={{
                     width: '90%',

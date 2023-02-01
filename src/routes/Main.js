@@ -9,7 +9,18 @@ function Main() {
   let { drive } = useSelector((state) => { return state })
   let { vehicle } = useSelector((state) => { return state })
 
-  // console.log('test', test)
+
+
+
+  // let test = [1, 2, 3, 4]
+  // let test2 = []
+
+  // let abc = test.map((a) => {
+  //   if (a > 2) {
+  //     test2.push(a);
+  //   }
+  // })
+
   // console.log('drive', drive)
   // console.log('vehicle', vehicle)
   return (

@@ -1,11 +1,12 @@
 import { useTable, useSortBy } from "react-table";
 import useColumns from "./useColumns";
 import { useMemo } from "react";
+import { useSelector } from "react-redux";
 
 function Mytable({ ss, setSs }) {
     const columns = useColumns();
     const data = useRows();
-
+    let { test } = useSelector((state) => { return state })
 
     function useRows() {
         const rows = useMemo(

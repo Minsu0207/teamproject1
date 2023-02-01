@@ -12,12 +12,12 @@ function useColumns() {
                 accessor: "date"
             },
             {
-                Header: "운행당 안전 운전율",
-                accessor: "dsr"
+                Header: "sra",
+                accessor: "sra"
             },
             {
-                Header: "운행점수",
-                accessor: "durs"
+                Header: "status_code",
+                accessor: "status_code"
             },
 
         ],
