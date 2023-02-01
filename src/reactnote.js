@@ -108,3 +108,13 @@ JSON.stringify("파일명")
   * 오답 노트
 첫 랜더링시 빈값이면 아예 다 리딩을안해버려서,
   state 변수에 빈[] 배열로 해놓고 해결함.
+
+
+  // let test = [1, 2, 3, 4]
+  // let test2 = []
+
+  // let abc = test.map((a) => {
+  //   if (a > 2) {
+  //     test2.push(a);
+  //   }
+  // })

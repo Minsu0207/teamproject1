@@ -17,6 +17,16 @@
   /* "Pretendard-Regular", */ "GmarketSansMedium";
 }
 
+#wrap {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+section {
+  margin-bottom: 10px;
+}
+
 .overlaybox {
   position: relative;
   width: 360px;

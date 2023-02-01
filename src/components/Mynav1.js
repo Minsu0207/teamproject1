@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import { Nav, Table } from "react-bootstrap";
 import "./Main.css";
-import Mappath from "./Mappath";
-import Mappath1 from "./Mappath1";
 import Mapbus from "./Mapbus";
+import PathMap from "./PathMap";
 
 
 
@@ -44,7 +43,7 @@ function Mynav1() {
     return (
       <div className={`start1 ${fade}`}>
         {[
-          <div className="tab1"><Mappath /></div>,
+          <div className="tab1"><PathMap /></div>,
           <div className="tab2"><Mapbus /></div>,
           <div className="tab3">내용2</div>
 
