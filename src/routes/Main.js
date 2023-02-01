@@ -9,7 +9,7 @@ function Main() {
   let { drive } = useSelector((state) => { return state })
   let { vehicle } = useSelector((state) => { return state })
 
-
+  console.log(test)
 
 
   // let test = [1, 2, 3, 4]

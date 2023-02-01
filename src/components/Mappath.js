@@ -6,16 +6,6 @@ function Mappath() {
     const { kakao } = window;
     let { test } = useSelector((state) => { return state })
 
-    let db = [];
-
-    let abc = test.map((a, i) => {
-        if (i < 500) {
-            db.push(a);
-        }
-    })
-
-    console.log(db)
-
 
     useEffect(() => {
         var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -60,8 +50,8 @@ function Mappath() {
 
         const Point =
             new kakao.maps.LatLng(
-                db[0]?.car_location_GPS_Y,
-                db[0]?.car_location_GPS_X
+                test[0]?.car_location_GPS_Y,
+                test[0]?.car_location_GPS_X
 
             )
         // console.log(Point)
@@ -74,7 +64,7 @@ function Mappath() {
         // 마커 이미지를 생성한다 2
         const markerImage = new kakao.maps.MarkerImage(markerImageUrl, markerImageSize, markerImageOptions);
 
-        let Point1 = [db.map((a) =>
+        let Point1 = [test.map((a) =>
             new kakao.maps.LatLng(
                 a.car_location_GPS_Y, a.car_location_GPS_X
             )
@@ -97,7 +87,7 @@ function Mappath() {
 
 
 
-        let busPath = [db.map((a) =>
+        let busPath = [test.map((a) =>
             new kakao.maps.LatLng(
                 a.car_location_GPS_Y, a.car_location_GPS_X
             )

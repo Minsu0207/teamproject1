@@ -38,9 +38,6 @@ let vehicle = createSlice({
     }
 })
 
-let db = [];
-
-
 
 export default configureStore({
     reducer: {
