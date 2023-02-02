@@ -1,12 +1,11 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, } from 'react';
 import { useSelector } from 'react-redux';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import Mynavbar from './Mynavbar';
 
 function Mapbus() {
     const { kakao } = window;
-    let [cnt, setCnt] = useState(600);
-    let { db } = useSelector((state) => { return state })
+    let [cnt, setCnt] = useState(0);
     let { test } = useSelector((state) => { return state })
 
 
@@ -25,18 +24,17 @@ function Mapbus() {
         const map = new kakao.maps.Map(mapContainer, mapOption);
 
 
-        const myPath = [db.map(function (a, i) {
+        const myPath = [test.map(function (a, i) {
             return (new kakao.maps.LatLng(
-                a.y_gps, a.x_gps)
+                a.car_location_GPS_Y, a.car_location_GPS_X)
             );
         })]
 
 
-
         //마커 좌표
         const Point = new kakao.maps.LatLng(
-            db[cnt]?.y_gps,
-            db[cnt]?.x_gps,
+            test[cnt]?.car_location_GPS_Y,
+            test[cnt]?.car_location_GPS_X
         )
         // 마커 이미지의 주소1
         const markerImageUrl = 'https://img.icons8.com/plasticine/512/bus.png',
@@ -52,16 +50,14 @@ function Mapbus() {
             image: markerImage, // 마커의 이미지
             map: map // 마커를 표시할 지도 객체
 
-
         },);
 
-        // map.addOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC);
 
         kakao.maps.event.addListener(marker, 'click', function () {
             cnt = 0
         });
 
-        // map.addOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC);
+        map.addOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC);
 
         var content =
             '<button>버스종점!</button>';
@@ -81,9 +77,9 @@ function Mapbus() {
         const polyline = new kakao.maps.Polyline({
             map: map, // 선을 표시할 지도 객체 
             path: myPath, // 선을 구성하는 좌표 배열
-            strokeWeight: 2, // 선의 두께
+            strokeWeight: 9, // 선의 두께
             strokeColor: 'darkslategray', // 선 색
-            strokeOpacity: 1, // 선 투명도
+            strokeOpacity: 0.8, // 선 투명도
             strokeStyle: 'solid', // 선 스타일
             endArrow: 'True'//화살표
 
@@ -91,27 +87,34 @@ function Mapbus() {
         marker.setMap(map); //마커 지도에 출력
 
         const goBus = setInterval(() => {
-            setCnt(cnt + 100);
-        }, 1300);
+            setCnt(cnt + 20);
+        }, 1500);
         return () => clearInterval(goBus);
 
-    }, [{ db }])
+    }, [cnt])
 
+    // useEffect(() => {
+    //     const goBus = setInterval(() => {
+    //         setCnt(cnt + 30)
+    //         if (cnt > 1300) {
+    //             clearInterval(goBus)
+    //         }
+    //     }, 2000);
+    // }, [])
 
     console.log(cnt)
 
     return (
         <>
             <br></br>
-            <ProgressBar variant="success" now={(cnt / 100)} />
+            <ProgressBar variant="success" now={(cnt / 15)} />
             <br></br>
-            <button onClick={() => { }}>{cnt}</button>
+            <button onClick={() => { }}>{(cnt / 1500) * 100}</button>
             <div
                 id="map" style={{
                     width: '90%',
                     height: '800px'
                 }}>
-
 
             </div>
         </>

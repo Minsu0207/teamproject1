@@ -6,10 +6,10 @@ const Mynavbar = () => {
       <Navbar bg="dark" variant="dark" className="Navber">
         <Container>
           <Navbar.Brand href="/">
-            <img
+            {/* <img
               alt=""
               src={process.env.PUBLIC_URL + "/img/bus1.png"}
-              width="50" height="50" className="d-inline-block align-text-top" />
+              width="50" height="50" className="d-inline-block align-text-top" /> */}
 
             <h1>사업용 버스 운행 분석 웹서비스</h1>
           </Navbar.Brand>

@@ -2,6 +2,10 @@
 npx create - react - app 프로젝트명    리액트 웹 앱 생성
 npm install react - router - dom    3페이지 구성을 위해 설치
 
+import styled from 'styled-components';
+let Box = styled.div`
+  padding : 20px;
+`;
 
 { 사용 함수 }
 onclick

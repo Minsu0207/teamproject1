@@ -17,6 +17,10 @@
   /* "Pretendard-Regular", */ "GmarketSansMedium";
 }
 
+.col-sm-4 {
+  align-items: baseline;
+}
+
 #wrap {
   display: flex;
   align-items: center;
@@ -136,9 +140,9 @@ ul {
   background-position: 0 -20px;
 }
 
-.tab1 {
+.tab2-1 {
   font-size: x-large;
-  text-align: center;
+  /* text-align: center; */
 }
 
 /* 출력시 애니메이션효과 */
@@ -230,4 +234,8 @@ th.asc {
 
 .Navber {
   margin-bottom: 15px;
+}
+
+.main123 {
+  display: flex;
 }

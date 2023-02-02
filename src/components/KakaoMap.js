@@ -1,10 +1,9 @@
-import { dblClick } from "@testing-library/user-event/dist/click";
 import React, { useEffect, useState, useRef } from "react";
 import { useSelector } from 'react-redux';
 
 export default function KakaoMap(props) {
     const { kakao } = window;
-    const { markerPositions, size, buspaths, path1 } = props;
+    const { markerPositions, size, buspaths, cnt } = props;
     const [kakaoMap, setKakaoMap] = useState(null);
     const [, setMarkers] = useState([]);
     const [, setPolyline] = useState([]);
@@ -25,7 +24,7 @@ export default function KakaoMap(props) {
                 // 지도의 중심좌표
                 const options = {
                     center,
-                    level: 6
+                    level: 7
                     // 지도의 확대 레벨
                 };
 
@@ -68,6 +67,7 @@ export default function KakaoMap(props) {
         const positions = markerPositions.map(pos => new kakao.maps.LatLng(...pos));
         const paths = buspaths.map(pos => new kakao.maps.LatLng(...pos));
 
+
         const path = [test.map((a) =>
             new kakao.maps.LatLng(
                 a.car_location_GPS_Y,
@@ -99,7 +99,6 @@ export default function KakaoMap(props) {
 
             )
         });
-        marker.setMap(kakaoMap);
 
         const markerImageUrl = 'https://cdn2.iconfinder.com/data/icons/alert-message/64/siren-light-exclamation-icon-512.png',
             markerImageSize = new kakao.maps.Size(35, 35), // 마커 이미지의 크기
@@ -120,12 +119,12 @@ export default function KakaoMap(props) {
                     map: kakaoMap,
                     position,
                     image: markerImage,
-                    opacity: 0,
+                    opacity: 1,
                 })
             );
         });
 
-
+        marker.setMap(kakaoMap);
 
         if (paths.length > 0) {
             const bounds = paths.reduce(
@@ -135,15 +134,15 @@ export default function KakaoMap(props) {
             kakaoMap.setBounds(bounds);
         }
 
-        if (positions.length > 0) {
-            const bounds = positions.reduce(
-                (bounds, latlng) => bounds.extend(latlng),
-                new kakao.maps.LatLngBounds()
-            );
+        // if (positions.length > 0) {
+        //     const bounds = positions.reduce(
+        //         (bounds, latlng) => bounds.extend(latlng),
+        //         new kakao.maps.LatLngBounds()
+        //     );
 
-            kakaoMap.setBounds(bounds);
-        }
-    }, [kakaoMap, markerPositions, buspaths]);
+        //     kakaoMap.setBounds(bounds);
+        // }
+    }, [kakaoMap, markerPositions, buspaths, test]);
 
     return <div id="container" ref={container} />;
 }

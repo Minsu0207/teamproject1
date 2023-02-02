@@ -48,7 +48,7 @@ function Mynav(props) {
     }, [tab])
 
     return (
-      <div className={`start1 ${fade}`}>
+      <div className={`start1${fade}`}>
         {[<div className="tab1">
           <>
             <Mysearch ss={ss} setSs={setSs} />
@@ -59,6 +59,7 @@ function Mynav(props) {
 
 
         <div className="tab2">
+
           <Mychart />
         </div>
 

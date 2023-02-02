@@ -5,10 +5,11 @@ import "./Main.css";
 import styled from 'styled-components';
 import ToggleButton from 'react-bootstrap/ToggleButton';
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
-import { Container, Row, Col, ProgressBar } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 
-export default function PathMap() {
+export default function PathBus() {
     const [visible, setVisible] = useState(true);
+
     const [mapSize, setMapSize] = useState([700, 700]);
     const [markerPositions, setMarkerPositions] = useState([]);
     const [buspaths, setBuspaths] = useState([]);
@@ -34,6 +35,12 @@ export default function PathMap() {
     // information_date
 
 
+
+    // console.log(test)
+    // console.log(path1)
+    // console.log(marker1)
+
+
     return (
         <>
             <div id="wrap">
@@ -43,8 +50,7 @@ export default function PathMap() {
                             <>
                                 <Box5 />
                                 <h2>Kakao Map API</h2>
-                                <KakaoMap markerPositions={markerPositions}
-                                    size={mapSize}
+                                <KakaoMap markerPositions={markerPositions} size={mapSize}
                                     buspaths={buspaths}
                                 />
                             </>
@@ -80,15 +86,10 @@ export default function PathMap() {
                                 <ToggleButton onClick={() => setMarkerPositions([])} id="tbg-radio-2" value={2}>
                                     마커 지우기
                                 </ToggleButton>
-                            </ToggleButtonGroup>
-                            <Box5 />
-                        </Col>
+                            </ToggleButtonGroup></Col>
                     </Row>
                 </Container>
             </div>
-
         </>
     );
-
 }
-

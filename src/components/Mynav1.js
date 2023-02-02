@@ -15,17 +15,11 @@ function Mynav1() {
         <Nav.Item>
 
           <Nav.Link onClick={() => { setTab(0) }}
-            eventKey="link0">버스이동경로</Nav.Link>
+            eventKey="link0">운행주의구간확인</Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link onClick={() => { setTab(1) }} eventKey="link1">버스모의주행시작</Nav.Link>
+          <Nav.Link onClick={() => { setTab(1) }} eventKey="link1">버스 모의주행</Nav.Link>
         </Nav.Item>
-        {/* <Nav.Item>
-          <Nav.Link onClick={() => { setTab(2) }}
-            eventKey="link2" >
-            Disabled
-          </Nav.Link>
-        </Nav.Item> */}
       </Nav>
       <TabContent tab={tab} />
     </>
@@ -43,9 +37,8 @@ function Mynav1() {
     return (
       <div className={`start1 ${fade}`}>
         {[
-          <div className="tab1"><PathMap /></div>,
+          <div className="tab2-1"><PathMap /></div>,
           <div className="tab2"><Mapbus /></div>,
-          <div className="tab3">내용2</div>
 
         ][tab]}
       </div>

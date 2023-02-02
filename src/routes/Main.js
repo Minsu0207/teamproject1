@@ -5,9 +5,9 @@ import { Carousel } from "react-bootstrap";
 import { useSelector } from "react-redux";
 
 function Main() {
-  // let { test } = useSelector((state) => { return state })
-  // let { drive } = useSelector((state) => { return state })
-  // let { vehicle } = useSelector((state) => { return state })
+  let { test } = useSelector((state) => { return state })
+
+  console.log(test)
 
   return (
     <>
