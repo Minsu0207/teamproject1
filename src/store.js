@@ -1,17 +1,5 @@
 import { configureStore, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-let test = createSlice({
-    name: 'test',
-    initialState: [],
-    reducers: {
-        getTestList(state, action) {
-            if (state.length == 0) {
-                state = action.payload;
-                return state
-            }
-        }
-    }
-})
 let drive = createSlice({
     name: 'drive',
     initialState: [],
@@ -38,15 +26,28 @@ let vehicle = createSlice({
     }
 })
 
+let gps = createSlice({
+    name: 'gps',
+    initialState: [],
+    reducers: {
+        getGpsList(state, action) {
+            if (state.length == 0) {
+                state = action.payload;
+                return state
+            }
+        }
+    }
+})
+
 
 export default configureStore({
     reducer: {
-        test: test.reducer,
         drive: drive.reducer,
-        vehicle: vehicle.reducer
+        vehicle: vehicle.reducer,
+        gps: gps.reducer
     }
 })
-export let { getTestList } = test.actions
 export let { getDriveList } = drive.actions
 export let { getVehicleList } = vehicle.actions
+export let { getGpsList } = gps.actions
 

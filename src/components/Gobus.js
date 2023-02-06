@@ -1,12 +1,11 @@
 import React, { useEffect, useState, } from 'react';
 import { useSelector } from 'react-redux';
 import ProgressBar from 'react-bootstrap/ProgressBar';
-import Mynavbar from './Mynavbar';
 
-function Mapbus() {
+function Gobus() {
     const { kakao } = window;
     let [cnt, setCnt] = useState(0);
-    let { test } = useSelector((state) => { return state })
+    let { gps } = useSelector((state) => { return state })
 
 
     useEffect(() => {
@@ -24,7 +23,7 @@ function Mapbus() {
         const map = new kakao.maps.Map(mapContainer, mapOption);
 
 
-        const myPath = [test.map(function (a, i) {
+        const myPath = [gps.map(function (a, i) {
             return (new kakao.maps.LatLng(
                 a.car_location_GPS_Y, a.car_location_GPS_X)
             );
@@ -33,8 +32,8 @@ function Mapbus() {
 
         //마커 좌표
         const Point = new kakao.maps.LatLng(
-            test[cnt]?.car_location_GPS_Y,
-            test[cnt]?.car_location_GPS_X
+            gps[cnt]?.car_location_GPS_Y,
+            gps[cnt]?.car_location_GPS_X
         )
         // 마커 이미지의 주소1
         const markerImageUrl = 'https://img.icons8.com/plasticine/512/bus.png',
@@ -86,10 +85,10 @@ function Mapbus() {
         });
         marker.setMap(map); //마커 지도에 출력
 
-        const goBus = setInterval(() => {
-            setCnt(cnt + 20);
-        }, 1500);
-        return () => clearInterval(goBus);
+        // const go = setInterval(() => {
+        //     setCnt(cnt + 3);
+        // }, 1500);
+        // return () => clearInterval(go);
 
     }, [cnt])
 
@@ -101,13 +100,13 @@ function Mapbus() {
     //         }
     //     }, 2000);
     // }, [])
-
     console.log(cnt)
+
 
     return (
         <>
             <br></br>
-            <ProgressBar variant="success" now={(cnt / 15)} />
+            <ProgressBar variant="success" now={(cnt)} />
             <br></br>
             <button onClick={() => { }}>{(cnt / 1500) * 100}</button>
             <div
@@ -121,7 +120,7 @@ function Mapbus() {
     );
 }
 
-export default Mapbus;
+export default Gobus;
 
 
 

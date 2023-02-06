@@ -10,24 +10,25 @@ import { Container, Row, Col } from "react-bootstrap";
 export default function PathBus() {
     const [visible, setVisible] = useState(true);
 
-    const [mapSize, setMapSize] = useState([700, 700]);
+    const [mapSize, setMapSize] = useState([500, 500]);
     const [markerPositions, setMarkerPositions] = useState([]);
     const [buspaths, setBuspaths] = useState([]);
 
-    const { test } = useSelector((state) => { return state })
+    const { gps } = useSelector((state) => { return state })
+
 
     let Box5 = styled.div`padding-bottom:5px;`;
     let Box20 = styled.div`padding : 10px;`;
     let Box30 = styled.div` padding : 30px;`;
 
-    const marker1 = test.filter((a) => a.sra !== 0).map((a) => {
+    const marker1 = gps.filter((a) => a.sra !== 0).map((a) => {
         return [a.car_location_GPS_Y, a.car_location_GPS_X];
     }
     )
     //운행판별 sra값이 0이 아닌 구간에 대해 주의 마커 필터링
     // console.log(marker1)
 
-    const path1 = test.filter((a) => a).map((a) => {
+    const path1 = gps.filter((a) => a).map((a) => {
         return [a.car_location_GPS_Y, a.car_location_GPS_X];
     }
     )
@@ -35,10 +36,6 @@ export default function PathBus() {
     // information_date
 
 
-
-    // console.log(test)
-    // console.log(path1)
-    // console.log(marker1)
 
 
     return (
@@ -86,7 +83,8 @@ export default function PathBus() {
                                 <ToggleButton onClick={() => setMarkerPositions([])} id="tbg-radio-2" value={2}>
                                     마커 지우기
                                 </ToggleButton>
-                            </ToggleButtonGroup></Col>
+                            </ToggleButtonGroup>
+                        </Col>
                     </Row>
                 </Container>
             </div>

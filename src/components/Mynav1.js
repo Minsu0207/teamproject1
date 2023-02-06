@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Nav, Table } from "react-bootstrap";
 import "./Main.css";
-import Mapbus from "./Mapbus";
+import Mapbus from "./Gobus";
 import PathMap from "./PathMap";
 
 

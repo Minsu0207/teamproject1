@@ -3,19 +3,53 @@ import useColumns from "./useColumns";
 import { useMemo } from "react";
 import { useSelector } from "react-redux";
 
-function Mytable({ ss, setSs }) {
+function Mytable() {
+    let { drive } = useSelector((state) => { return state })
     const columns = useColumns();
     const data = useRows();
-    let { test } = useSelector((state) => { return state })
 
     function useRows() {
         const rows = useMemo(
-            () => ss.map((a, i) =>           // return db[i];
+            () => drive.map((a, i) =>           // return db[i];
                 a
             ),
             []
         );
         return rows;
+    }
+
+    console.log(drive)
+
+    function useColumns() {
+        const columns = useMemo(
+            () => [
+                {
+                    Header: "차량번호",
+                    accessor: "car_num"
+                }
+                ,
+                {
+                    Header: "운행당 안전운전율",
+                    accessor: "dsr"
+                },
+                {
+                    Header: "급가속 횟수",
+                    accessor: "rac"
+                },
+                {
+                    Header: "급감속 횟수",
+                    accessor: "sds"
+                },
+                {
+                    Header: " 운행점수",
+                    accessor: "durs"
+                }
+
+            ],
+            []
+        );
+
+        return columns;
     }
 
 

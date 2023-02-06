@@ -21,7 +21,6 @@ function Page1() {
   return (
     <>
       <div className={`start ` + fade2}>
-        <Mynavbar />
         <div className="page1h1">
           <h1>운전 습관 분석을 통한
             안전 등급 확인</h1>

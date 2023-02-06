@@ -7,7 +7,7 @@ export default function KakaoMap(props) {
     const [kakaoMap, setKakaoMap] = useState(null);
     const [, setMarkers] = useState([]);
     const [, setPolyline] = useState([]);
-    let { test } = useSelector((state) => { return state })
+    let { gps } = useSelector((state) => { return state })
 
     const container = useRef();
 
@@ -28,12 +28,12 @@ export default function KakaoMap(props) {
                     // 지도의 확대 레벨
                 };
 
-
                 const map = new kakao.maps.Map(container.current, options);
                 // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
 
                 setKakaoMap(map);
-                map.addOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC);
+                kakaoMap.relayout();
+                // map.addOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC);
                 //교통정보 지도로 출력변경
 
             });
@@ -68,7 +68,7 @@ export default function KakaoMap(props) {
         const paths = buspaths.map(pos => new kakao.maps.LatLng(...pos));
 
 
-        const path = [test.map((a) =>
+        const path = [gps.map((a) =>
             new kakao.maps.LatLng(
                 a.car_location_GPS_Y,
                 a.car_location_GPS_X
@@ -81,9 +81,9 @@ export default function KakaoMap(props) {
                 map: kakaoMap,
                 path: path, //선의 구성하는 좌표 배열 입니다.
                 strokeColor: 'indigo', //선의 색상입니다.
-                strokeWeight: 4, // 선의 두께 입니다
+                strokeWeight: 3, // 선의 두께 입니다
                 strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
-                strokeStyle: 'shortdot', // 선의 스타일입니다
+                strokeStyle: 'line', // 선의 스타일입니다
                 endArrow: true,
             })
 
@@ -91,7 +91,7 @@ export default function KakaoMap(props) {
         });
 
         var marker = new kakao.maps.Marker({
-            position: new kakao.maps.LatLng(test[60]?.car_location_GPS_Y, test[30]?.car_location_GPS_X),
+            position: new kakao.maps.LatLng(gps[60]?.car_location_GPS_Y, gps[30]?.car_location_GPS_X),
             title: '종점',
             image: new kakao.maps.MarkerImage(
                 'https://cdn2.iconfinder.com/data/icons/3d-transport/512/Bus-Blue.png',
@@ -142,7 +142,11 @@ export default function KakaoMap(props) {
 
         //     kakaoMap.setBounds(bounds);
         // }
-    }, [kakaoMap, markerPositions, buspaths, test]);
+        const center = kakaoMap.getCenter();
+        kakaoMap.relayout();
+        kakaoMap.setCenter(center);
+
+    }, [kakaoMap, markerPositions, buspaths, gps]);
 
     return <div id="container" ref={container} />;
 }

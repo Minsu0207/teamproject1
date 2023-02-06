@@ -1,58 +1,166 @@
 import { useState, useEffect } from "react";
 import styled from 'styled-components'
+import { useTable, useSortBy } from "react-table";
 import { useSelector } from "react-redux";
-import Mynav from "./Mynav";
+import { useMemo } from "react";
 import {
     Combobox,
     ComboboxInput,
     ComboboxPopover,
     ComboboxList,
-    ComboboxOption,
-    ComboboxOptionText,
 } from "@reach/combobox";
-// let { db } = useSelector((state) => { return state })
 
 
-function Mysearch({ ss, setSs }) {
-    const [table, setTable] = useState(true);
+function Mysearch() {
     const [search, setSearch] = useState([]);
+    useEffect(() => {
 
-    //db를 복사해서 동적 setABc state에 담아서,
-    //search동작이 일어났을때 그걸 담아서 테이블에 만들때 동적 db state를 줘서
-    //검색한 테이블 출력
-    //search 를 반복문 돌려줘서테이블 작성
+    },)
 
-    // useEffect(() => {
 
-    // },);
-    console.log("search", search)
-    let temp = ss.filter((i) => String(i.car_num).includes(search));
-    console.log(temp)
+    // console.log("search=", search)
+    // let temp = ss.filter((i) => String(i.car_num).includes(search));
 
     let Box = styled.div`
     padding :20px;
     `
 
-    console.log(search)
+    const 차번호 = search
+    let { drive } = useSelector((state) => { return state })
+    const columns = useColumns();
+    const data = useRows();
+
+    console.log('검색창입력값', search)
+
+    function useRows() {
+        const rows = useMemo(
+            () =>
+                drive.filter((a) => a.car_num.includes(search))
+                    .map((a, i) =>           // return db[i];
+                        a
+                    ),
+            []
+        );
+        return rows;
+    }
+
+
+    function useColumns() {
+        const columns = useMemo(
+            () => [
+                {
+                    Header: "차량번호",
+                    accessor: "car_num"
+                }
+                ,
+                {
+                    Header: "운행당 안전운전율",
+                    accessor: "dsr"
+                },
+                {
+                    Header: "급가속 횟수",
+                    accessor: "rac"
+                },
+                {
+                    Header: "급감속 횟수",
+                    accessor: "sds"
+                },
+                {
+                    Header: " 운행점수",
+                    accessor: "durs"
+                }
+
+            ],
+            []
+        );
+
+        return columns;
+    }
+
+
+    const table = useTable({ columns, data }, useSortBy);
+
+    const {
+        getTableProps,
+        getTableBodyProps,
+        headerGroups,
+        rows,
+        prepareRow
+    } = table;
 
     return (
         <>
+            <h4 id="demo">조회할 차량번호입력</h4>
             <div>
-                <h4 id="demo">조회할 차량번호입력</h4>
                 <Combobox aria-labelledby="demo">
                     <ComboboxInput className={"input-sm"} size={"35"}
-                        placeholder={"🔍Search"}
+                        placeholder={"Search"}
                         onChange={(e) => {
                             setSearch(e.target.value)
-                        }} />
-                    <Box></Box>
+                        }} selectOnClick />
                     <ComboboxPopover className="shadow-popup">
                         <ComboboxList>
-                            <ComboboxOption value="2612"></ComboboxOption>
                         </ComboboxList>
                     </ComboboxPopover>
                 </Combobox>
 
+
+
+                <div className="container">
+                    {/* Apply the table props */}
+                    <table {...getTableProps()}>
+                        <thead>
+                            {headerGroups.map((headerGroup) => (
+                                <tr {...headerGroup.getHeaderGroupProps()}>
+                                    {headerGroup.headers.map((column) => (
+                                        // Aplicamos las propiedades de ordenación a cada columna
+                                        <th
+                                            {...column.getHeaderProps(column.getSortByToggleProps())}
+                                            className={
+                                                column.isSorted
+                                                    ? column.isSortedDesc
+                                                        ? "desc"
+                                                        : "asc"
+                                                    : ""
+                                            }
+                                        >
+                                            {column.render("Header")}
+                                        </th>
+                                    ))}
+                                </tr>
+                            ))}
+                        </thead>
+                        {/* Apply the table body props */}
+                        <tbody {...getTableBodyProps()}>
+                            {
+                                // Loop over the table rows
+                                rows.map((row) => {
+                                    // Prepare the row for display
+                                    prepareRow(row);
+                                    return (
+                                        // Apply the row props
+                                        <tr {...row.getRowProps()}>
+                                            {
+                                                // Loop over the rows cells
+                                                row.cells.map((cell) => {
+                                                    // Apply the cell props
+                                                    return (
+                                                        <td {...cell.getCellProps()}>
+                                                            {
+                                                                // Render the cell contents
+                                                                cell.render("Cell")
+                                                            }
+                                                        </td>
+                                                    );
+                                                })
+                                            }
+                                        </tr>
+                                    );
+                                })
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </>
 

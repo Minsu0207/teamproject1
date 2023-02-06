@@ -7,7 +7,7 @@ import Page2 from "./routes/Page2";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getTestList } from './store'
+import { getGpsList } from './store'
 import { getDriveList } from './store'
 import { getVehicleList } from './store'
 
@@ -15,25 +15,16 @@ function App() {
 
   let dispatch = useDispatch();
 
+
   useEffect(() => {
     (async () =>
       await axios
-        .get("/test")
+        .get("/gps")
         .then((result) => {
-          dispatch(getTestList(result.data));
+          dispatch(getGpsList(result.data));
         })
         .catch(() => console.log("데이터가져오기 실패")))();
   }, []);
-
-  // useEffect(() => {
-  //   (async () =>
-  //     await axios
-  //       .get("/drive")
-  //       .then((result) => {
-  //         dispatch(getDriveList(result.data));
-  //       })
-  //       .catch(() => console.log("데이터가져오기 실패")))();
-  // }, []);
 
   // useEffect(() => {
   //   (async () =>
@@ -44,6 +35,16 @@ function App() {
   //       })
   //       .catch(() => console.log("데이터가져오기 실패")))();
   // }, []);
+
+  useEffect(() => {
+    (async () =>
+      await axios
+        .get("/drive")
+        .then((result) => {
+          dispatch(getDriveList(result.data));
+        })
+        .catch(() => console.log("데이터가져오기 실패")))();
+  }, []);
 
 
 
