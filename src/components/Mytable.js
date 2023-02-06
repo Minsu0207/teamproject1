@@ -1,5 +1,4 @@
 import { useTable, useSortBy } from "react-table";
-import useColumns from "./useColumns";
 import { useMemo } from "react";
 import { useSelector } from "react-redux";
 
@@ -18,7 +17,6 @@ function Mytable() {
         return rows;
     }
 
-    console.log(drive)
 
     function useColumns() {
         const columns = useMemo(

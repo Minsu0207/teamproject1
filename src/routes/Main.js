@@ -11,15 +11,13 @@ import Service1 from "./Service1";
 import Service2 from "./Service2";
 
 function Main() {
-  // let { drive } = useSelector((state) => { return state })
-  // console.log(drive)
   return (
     <>
       <Mynavbar />
 
       <Tab.Container id="left-tabs-example" defaultActiveKey="/">
         <Row>
-          <Col sm={2}>
+          <Col sm={1.5}>
             <Nav variant="pills" className="flex-column">
               <Nav.Item>
                 <Nav.Link eventKey="p1">서비스소개</Nav.Link>
@@ -49,12 +47,13 @@ function Main() {
               <Tab.Pane eventKey="p3">
                 <Page1 />
               </Tab.Pane>
-              <Tab.Pane eventKey="p4" className="map">
+
+              {/* <Tab.Pane eventKey="p4" className="map">
                 <PathMap />
               </Tab.Pane>
               <Tab.Pane eventKey="p5" className="map" >
                 <Mapbus />
-              </Tab.Pane>
+              </Tab.Pane> */}
             </Tab.Content>
           </Col>
         </Row>

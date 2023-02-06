@@ -3,13 +3,13 @@ import { useSelector } from 'react-redux';
 
 export default function KakaoMap(props) {
     const { kakao } = window;
+    const container = useRef();
     const { markerPositions, size, buspaths, cnt } = props;
     const [kakaoMap, setKakaoMap] = useState(null);
     const [, setMarkers] = useState([]);
     const [, setPolyline] = useState([]);
     let { gps } = useSelector((state) => { return state })
 
-    const container = useRef();
 
 
     useEffect(() => {
@@ -30,11 +30,10 @@ export default function KakaoMap(props) {
 
                 const map = new kakao.maps.Map(container.current, options);
                 // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
-
+                // setMapCenter(center);
                 setKakaoMap(map);
-                kakaoMap.relayout();
-                // map.addOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC);
-                //교통정보 지도로 출력변경
+                map.addOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC);
+                // 교통정보 지도로 출력변경
 
             });
         };
@@ -91,8 +90,7 @@ export default function KakaoMap(props) {
         });
 
         var marker = new kakao.maps.Marker({
-            position: new kakao.maps.LatLng(gps[60]?.car_location_GPS_Y, gps[30]?.car_location_GPS_X),
-            title: '종점',
+            position: new kakao.maps.LatLng(gps[10]?.car_location_GPS_Y, gps[10]?.car_location_GPS_X),
             image: new kakao.maps.MarkerImage(
                 'https://cdn2.iconfinder.com/data/icons/3d-transport/512/Bus-Blue.png',
                 new kakao.maps.Size(130, 130),
@@ -142,9 +140,6 @@ export default function KakaoMap(props) {
 
         //     kakaoMap.setBounds(bounds);
         // }
-        const center = kakaoMap.getCenter();
-        kakaoMap.relayout();
-        kakaoMap.setCenter(center);
 
     }, [kakaoMap, markerPositions, buspaths, gps]);
 

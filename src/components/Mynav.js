@@ -12,7 +12,7 @@ import PathMap from "./PathMap";
 function Mynav(props) {
   let { drive } = useSelector((state) => { return state })
 
-  let [tab, setTab] = useState(1)
+  let [tab, setTab] = useState(2)
   // let [ss, setSs] = useState('[]')
 
   // ss = [...drive]
