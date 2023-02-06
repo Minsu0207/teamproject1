@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Nav, Table } from "react-bootstrap";
 import "./Main.css";
-import Mapbus from "./Gobus";
+import Gobus from "./Gobus";
 import PathMap from "./PathMap";
 
 
@@ -30,7 +30,7 @@ function Mynav1() {
     let [fade, setFade] = useState('')
 
     useEffect(() => {
-      setTimeout(() => { setFade('end1') }, 100)
+      setTimeout(() => { setFade('end1') }, 1000)
       return () => { setFade('') }
     }, [tab])
 
@@ -38,7 +38,7 @@ function Mynav1() {
       <div className={`start1 ${fade}`}>
         {[
           <div className="tab2-1"><PathMap /></div>,
-          <div className="tab2"><Mapbus /></div>,
+          <div className="tab2"><Gobus /></div>,
 
         ][tab]}
       </div>

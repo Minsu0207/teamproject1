@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 export default function KakaoMap(props) {
     const { kakao } = window;
-d    const container = useRef();
+    const container = useRef();
     const { markerPositions, size, buspaths, cnt } = props;
     const [kakaoMap, setKakaoMap] = useState(null);
     const [, setMarkers] = useState([]);

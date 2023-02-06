@@ -3,15 +3,15 @@ import { Nav, Navbar, Container } from "react-bootstrap";
 const Mynavbar = () => {
   return (
     <>
-      <Navbar bg="dark" variant="dark" className="Navber">
+      <Navbar bg="black" variant="dark" fixed="top" sticky="top">
         <Container>
           <Navbar.Brand href="/">
             <img
               alt=""
               src={process.env.PUBLIC_URL + "/img/logo_black.png"}
               width="80" height="80" className="logo"
-            />
-            <h3>사업용 버스 운행 분석 웹서비스</h3>
+            />{' '}
+            사업용 버스 운행 분석 웹서비스
           </Navbar.Brand>
         </Container>
       </Navbar>
@@ -20,3 +20,5 @@ const Mynavbar = () => {
 };
 
 export default Mynavbar;
+
+

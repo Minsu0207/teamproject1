@@ -7,21 +7,13 @@ import Mysearch from "./Mysearch";
 import Mychart from "./Mychart";
 import "./Main.css";
 import PathMap from "./PathMap";
+import Grade from "./Grade";
 
 
 function Mynav(props) {
   let { drive } = useSelector((state) => { return state })
 
-  let [tab, setTab] = useState(2)
-  // let [ss, setSs] = useState('[]')
-
-  // ss = [...drive]
-
-  // const handleUserInput = (ss) => {
-  //   setSs(ss);
-  // }
-
-
+  let [tab, setTab] = useState(0)
 
   return (
     <>
@@ -31,10 +23,7 @@ function Mynav(props) {
             eventKey="link0">모든 차량 주행기록 조회</Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link onClick={() => { setTab(1) }} eventKey="link1">차량별 안전등급 확인</Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link onClick={() => { setTab(2) }} eventKey="link2">차량별 안전등급 확인</Nav.Link>
+          <Nav.Link onClick={() => { setTab(1) }} eventKey="link2">차량별 안전등급 확인</Nav.Link>
         </Nav.Item>
       </Nav>
       <TabContent tab={tab} />
@@ -58,14 +47,8 @@ function Mynav(props) {
           </>
         </div>,
 
-
         <div className="tab2">
-          <>
-            <Mysearch />
-          </>
-        </div>,
-        <div className="tab3">
-          <PathMap />
+          <Grade />
           {/* <Mychart /> */}
         </div>
 

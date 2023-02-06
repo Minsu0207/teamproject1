@@ -1,12 +1,9 @@
 import React, { useEffect, useState, } from 'react';
 import { useSelector } from 'react-redux';
-import ProgressBar from 'react-bootstrap/ProgressBar';
 
-function Gobus() {
+function Gopath() {
     const { kakao } = window;
-    let [cnt, setCnt] = useState(0);
     let { gps } = useSelector((state) => { return state })
-
 
     useEffect(() => {
         const mapContainer = document.getElementById('map'),
@@ -52,26 +49,9 @@ function Gobus() {
         },);
 
 
-        kakao.maps.event.addListener(marker, 'click', function () {
-            cnt = 0
-        });
 
-        // map.addOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC);
+        map.addOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC);
 
-        var content =
-            '<button>버스종점!</button>';
-
-        // 커스텀 오버레이가 표시될 위치입니다 
-        var position = new kakao.maps.LatLng(35.245, 129.1592197087737);
-
-        // 커스텀 오버레이를 생성합니다
-        var customOverlay = new kakao.maps.CustomOverlay({
-            position: position,
-            content: content
-        });
-
-        // 커스텀 오버레이를 지도에 표시합니다
-        customOverlay.setMap(map);
         // 지도에 선을 표시한다
         const polyline = new kakao.maps.Polyline({
             map: map, // 선을 표시할 지도 객체 
@@ -85,28 +65,12 @@ function Gobus() {
         });
         marker.setMap(map); //마커 지도에 출력
 
-        const go = setInterval(() => {
-            setCnt(cnt + 3);
-        }, 1500);
-        return () => clearInterval(go);
 
-    }, [cnt])
+    }, [])
 
-    // useEffect(() => {
-    //     const goBus = setInterval(() => {
-    //         setCnt(cnt + 30)
-    //         if (cnt > 1300) {
-    //             clearInterval(goBus)
-    //         }
-    //     }, 2000);
-    // }, [])
-    console.log(cnt)
 
     return (
         <>
-            <br></br>
-            <ProgressBar variant="success" now={(cnt)} />
-            <br></br>
             <div
                 id="map" style={{
                     width: '90%',
@@ -117,7 +81,7 @@ function Gobus() {
     );
 }
 
-export default Gobus;
+export default Gopath;
 
 
 
