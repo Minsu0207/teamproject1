@@ -4,26 +4,26 @@ import { useSelector } from "react-redux";
 import Mytable from "./Mytable";
 import Mytable1 from "./Mytable1";
 import Mysearch from "./Mysearch";
-import Mychart from "./Mychart";
+import Mychart from "./Mychart1";
 import "./Main.css";
 import PathMap from "./PathMap";
 import Grade from "./Grade";
 
 
 function Mynav(props) {
-  let { drive } = useSelector((state) => { return state })
 
+  let { drive } = useSelector((state) => { return state })
   let [tab, setTab] = useState(0)
 
   return (
     <>
       <Nav variant="pills" defaultActiveKey="/link0" className="nav1">
         <Nav.Item>
-          <Nav.Link onClick={() => { setTab(0) }}
-            eventKey="link0">모든 차량 주행기록 조회</Nav.Link>
+          <Nav.Link onClick={() => { setTab(0) }} eventKey="link1">차량별 안전등급 확인</Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link onClick={() => { setTab(1) }} eventKey="link2">차량별 안전등급 확인</Nav.Link>
+          <Nav.Link onClick={() => { setTab(1) }}
+            eventKey="link2">모든 차량 주행기록 조회</Nav.Link>
         </Nav.Item>
       </Nav>
       <TabContent tab={tab} />
@@ -42,14 +42,12 @@ function Mynav(props) {
     return (
       <div className={`start1${fade}`}>
         {[<div className="tab1">
-          <>
-            <Mytable />
-          </>
-        </div>,
-
-        <div className="tab2">
           <Grade />
-          {/* <Mychart /> */}
+        </div>,
+        <div className="tab2">
+          <Mytable />
+        </div>,
+        <div className="tab3">
         </div>
 
 

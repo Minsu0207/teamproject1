@@ -10,7 +10,7 @@ import { Container, Row, Col } from "react-bootstrap";
 export default function PathBus() {
     const [visible, setVisible] = useState(true);
 
-    const [mapSize, setMapSize] = useState([500, 500]);
+    const [mapSize, setMapSize] = useState([700, 650]);
     const [markerPositions, setMarkerPositions] = useState([]);
     const [buspaths, setBuspaths] = useState([]);
 
@@ -45,8 +45,7 @@ export default function PathBus() {
                     <Row>
                         <Col sm={8}>    {visible && (
                             <>
-                                <Box5 />
-                                <h2>Kakao Map API</h2>
+                                <Box20 />
                                 <KakaoMap markerPositions={markerPositions} size={mapSize}
                                     buspaths={buspaths}
                                 />

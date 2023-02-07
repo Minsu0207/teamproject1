@@ -7,7 +7,7 @@ import PathMap from "./PathMap";
 
 
 function Mynav1() {
-  let [tab, setTab] = useState(0)
+  let [tab, setTab] = useState(1)
 
   return (
     <>

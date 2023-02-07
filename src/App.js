@@ -10,11 +10,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { getGpsList } from './store'
 import { getDriveList } from './store'
 import { getVehicleList } from './store'
+import Carcondition from "./components/Carcondition ";
 
 function App() {
-
   let dispatch = useDispatch();
-
 
   useEffect(() => {
     (async () =>
@@ -25,6 +24,8 @@ function App() {
         })
         .catch(() => console.log("데이터가져오기 실패")))();
   }, []);
+
+  
 
   useEffect(() => {
     (async () =>
@@ -47,6 +48,7 @@ function App() {
   }, []);
 
 
+  let { vehicle } = useSelector((state) => { return state })
 
   return (
     <>
@@ -54,8 +56,15 @@ function App() {
         <Route path="/" element={<Main />} />
         <Route path="/page1" element={<Page1 />} />
         <Route path="/page2" element={<Page2 />} />
+        {vehicle.map((a, i) => (
+          <Route
+            key={i}
+            path={'/:id'}
+            element={<Carcondition />} />
+        ))}
         <Route path="*" element={<h4>존재하는 않는 페이지 입니다.<br></br>주소를 확인해주세요</h4>} />
       </Routes>
+
     </>
   );
 }

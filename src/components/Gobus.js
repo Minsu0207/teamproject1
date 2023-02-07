@@ -100,7 +100,7 @@ function Gobus() {
     //         }
     //     }, 2000);
     // }, [])
-    console.log(cnt)
+    // console.log(cnt)
 
     return (
         <>

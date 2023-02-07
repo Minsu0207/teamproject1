@@ -17,6 +17,63 @@
   /* "Pretendard-Regular", */ "GmarketSansMedium";
 }
 
+.alert1 {
+  background-image: ;
+  background-size: cover;
+}
+
+/* 경관 */
+.mb-1 {
+  font-size: 30px;
+  text-align: center;
+  font-weight: bold;
+  padding-bottom: 50px;
+}
+
+.lmb-1 {
+  font-weight: bolder;
+  font-size: 20px;
+}
+.container1 {
+  padding-bottom: 17px;
+  padding-top: 17px;
+  padding-left: 17px;
+  padding-right: 17px;
+}
+.nav-item {
+}
+
+.nav-link {
+  padding: 30px;
+  font-size: 19px;
+  text-align: center;
+}
+
+/*찬준*/
+.fade {
+  margin-top: 48px;
+  margin-left: 10px;
+  margin-bottom: 30px;
+}
+/* 로고 벽에붙이기 */
+.logo {
+  position: absolute;
+  left: 0px;
+  top: 50px;
+  transform: translatey(-50%);
+}
+.nav-link {
+  padding: 30px;
+  text-align: center;
+  font-size: 19px;
+}
+
+/* 경관 */
+
+.tablechart {
+  display: flex;
+}
+
 .left-tabs-example {
   background-color: hsl(0, 84%, 51%);
 }

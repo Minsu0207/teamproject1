@@ -12,10 +12,9 @@ function Main() {
   return (
     <>
       <Mynavbar />
-
       <Tab.Container id="left-tabs-example" defaultActiveKey="p1">
         <Row>
-          <Col sm={1}>
+          <Col sm={2}>
             <Nav variant="pills" className="flex-column">
               <Nav.Item>
                 <Nav.Link eventKey="p1">서비스소개</Nav.Link>
