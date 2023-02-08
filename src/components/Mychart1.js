@@ -3,21 +3,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Mychart1({ carlist }) {
 
-    const handle = {
-        barClick: (data: any) => {
-            console.log(data);
-        },
-
-        legendClick: (data: any) => {
-            console.log(data);
-        },
-    };
-
-    console.log(carlist)
-    console.log(carlist[0])
-    // console.log(carlist[0]?.car_num)
-
-
 
     const data = [{
         "id": carlist[0]?.car_num,
@@ -106,7 +91,6 @@ function Mychart1({ carlist }) {
                                     }
                                 }
                             ],
-                            onClick: handle.legendClick,
                         },
                     ]}
                 />

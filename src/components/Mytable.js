@@ -73,8 +73,9 @@ function Mytable() {
     } = table;
 
     return (
-        // <div className={`start1${fade}`}>
         <div className="dbtabel">
+            <h2 style={{ textAlign: 'center' }}>테이블 필드명 클릭시 정렬</h2>
+            <h4 style={{ textAlign: 'end' }}>기간 : 2022년12월01 - 2022년 12월14일</h4>
             {/* Apply the table props */}
             <table className="dbtable1" table {...getTableProps()}>
                 <thead>

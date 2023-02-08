@@ -9,7 +9,7 @@ function Page3() {
 
   return (
     <>
-      <Nav variant="pills" defaultActiveKey="/link0" className="nav3-1">
+      <Nav variant="pills" defaultActiveKey="/link0" className="nav3">
         <Nav.Item>
           <Nav.Link onClick={() => { setTab(0) }}
             eventKey="link0">운행주의구간확인</Nav.Link>

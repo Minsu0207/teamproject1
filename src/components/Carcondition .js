@@ -5,7 +5,6 @@ import Mynavbar from "./Mynavbar";
 import Mychart1 from "./Mychart1";
 
 function Carcondition(props) {
-    let { vehicle } = useSelector((state) => { return state })
     let { drive } = useSelector((state) => { return state })
     let { id } = useParams();
 

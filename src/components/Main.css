@@ -47,7 +47,8 @@
   --bs-nav-link-hover-color: rgb(0, 0, 0);
 }
 
-.nav3-1 {
+.nav2,
+.nav3 {
   --bs-nav-link-color: #000000;
   --bs-nav-link-hover-color: #f7f7f7ca;
 }
@@ -75,6 +76,11 @@
   background: url(/public/img/bg2.jpg);
   background-size: cover;
   color: white;
+}
+
+.alert3 {
+  font-size: x-large;
+  text-align: center;
 }
 
 /* 경관 */
@@ -113,21 +119,19 @@
 
 /*찬준*/
 .fade {
-  margin-top: 48px;
-  margin-left: 10px;
-  margin-bottom: 30px;
+  margin: 10px;
 }
 /* 로고 벽에붙이기 */
 .logo {
   position: absolute;
-  left: 0px;
+  left: 5px;
   top: 50px;
   transform: translatey(-50%);
 }
 .nav-link {
   padding: 30px;
   text-align: center;
-  font-size: 19px;
+  font-size: 22px;
 }
 
 /* 경관 */
@@ -269,8 +273,4 @@ th.desc {
 
 th.asc {
   border-top: 5px solid orange;
-}
-
-.main123 {
-  display: flex;
 }
