@@ -1,8 +1,16 @@
 import { useTable, useSortBy } from "react-table";
 import { useMemo } from "react";
 import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 
 function Mytable() {
+    let [fade, setFade] = useState('')
+
+    useEffect(() => {
+        setTimeout(() => { setFade('end1') }, 100)
+        return () => { setFade('') }
+    }, [])
+
     let { drive } = useSelector((state) => { return state })
     const columns = useColumns();
     const data = useRows();
@@ -24,10 +32,13 @@ function Mytable() {
                 {
                     Header: "차량번호",
                     accessor: "car_num"
-                }
-                ,
+                },
                 {
-                    Header: "운행당 안전운전율",
+                    Header: "운행일자",
+                    accessor: "date"
+                },
+                {
+                    Header: "운행당 안전운전율(%)",
                     accessor: "dsr"
                 },
                 {
@@ -62,9 +73,10 @@ function Mytable() {
     } = table;
 
     return (
-        <div className="container">
+        // <div className={`start1${fade}`}>
+        <div className="dbtabel">
             {/* Apply the table props */}
-            <table {...getTableProps()}>
+            <table className="dbtable1" table {...getTableProps()}>
                 <thead>
                     {headerGroups.map((headerGroup) => (
                         <tr {...headerGroup.getHeaderGroupProps()}>
@@ -115,8 +127,8 @@ function Mytable() {
                         })
                     }
                 </tbody>
-            </table>
-        </div>
+            </table >
+        </div >
     );
 }
 

@@ -25,7 +25,7 @@ function App() {
         .catch(() => console.log("데이터가져오기 실패")))();
   }, []);
 
-  
+
 
   useEffect(() => {
     (async () =>
@@ -62,7 +62,7 @@ function App() {
             path={'/:id'}
             element={<Carcondition />} />
         ))}
-        <Route path="*" element={<h4>존재하는 않는 페이지 입니다.<br></br>주소를 확인해주세요</h4>} />
+        {/* <Route path="*" element={<h4>존재하는 않는 페이지 입니다.<br></br>주소를 확인해주세요</h4>} /> */}
       </Routes>
 
     </>

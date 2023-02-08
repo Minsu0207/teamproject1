@@ -17,29 +17,91 @@
   /* "Pretendard-Regular", */ "GmarketSansMedium";
 }
 
+.start1end1 {
+  text-align: center;
+}
+.col-sm-2 {
+  background-color: black;
+  padding: 0;
+}
+/* 왼쪽 탭전환*/
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  color: white;
+  background-color: #283c8a;
+}
+
+.nav-pills > :hover {
+  color: #000000;
+  background-color: rgb(163, 216, 227);
+}
+
+.nav-item {
+}
+.nav-pills {
+  --bs-nav-pills-border-radius: var(--bs-nav-pills-border-radius);
+}
+
+.nav {
+  --bs-nav-link-color: #f7f7f7ca;
+  --bs-nav-link-hover-color: rgb(0, 0, 0);
+}
+
+.nav3-1 {
+  --bs-nav-link-color: #000000;
+  --bs-nav-link-hover-color: #f7f7f7ca;
+}
+
+/*상단바*/
+.bg-light {
+  background-color: rgba(102, 112, 109, 0.322) !important;
+}
+.body {
+}
+
+/*상단바 글씨*/
+.navbar-brand {
+  color: white;
+  font-size: x-large;
+  /* --bs-navbar-brand-hover-color: rgb(74, 203, 250); */
+}
+
 .alert1 {
-  background-image: ;
+  /* background: url(/public/img/bg2.jpg); */
+  /* background-size: cover; */
+  color: black;
+}
+.alert2 {
+  background: url(/public/img/bg2.jpg);
   background-size: cover;
+  color: white;
 }
 
 /* 경관 */
 .mb-1 {
-  font-size: 30px;
+  font-size: 25px;
   text-align: center;
-  font-weight: bold;
-  padding-bottom: 50px;
+  /* font-weight: bold; */
+  padding-bottom: 15px;
+}
+
+.servicemain1 {
+  text-align: center;
 }
 
 .lmb-1 {
+  text-align: center;
   font-weight: bolder;
-  font-size: 20px;
+  font-size: 25px;
 }
+
 .container1 {
-  padding-bottom: 17px;
-  padding-top: 17px;
-  padding-left: 17px;
-  padding-right: 17px;
+  padding: 17px;
 }
+
+.nav1 {
+}
+
 .nav-item {
 }
 
@@ -164,7 +226,14 @@ section {
 
 table {
   border-spacing: 0;
-  border: 1px solid #d1cccc;
+  border: 2px solid #d1cccc;
+}
+
+/*테이블*/
+.dbtable1 {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 tr:last-child td {

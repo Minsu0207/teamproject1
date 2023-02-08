@@ -1,25 +1,23 @@
 import { Col, Row, Container, Alert } from "react-bootstrap";
 import styled from 'styled-components';
 
-function Service2() {
+function Page5() {
 
     let Box10 = styled.div`padding : 10px;`;
     let Box20 = styled.div`padding : 20px;`;
+    let Box100 = styled.div`padding : 100px;`;
     return (
         <>
-            <Box20 />
-            <Box20 />
+            <Box10 />
             <Container>
                 <Row>
                     <Col>
-                        <Alert variant="secondary" className="alert1">
-                            <Alert.Heading >기대효과<br></br></Alert.Heading>
+                        <Alert variant="light" className="alert2">
                             <div className="mb-1">
-                                업무용 차량의 실시간 운행관제,운행분석 및 차량관리 등을 통합적으로 관리가 가능하며 운영비 절감과 편리한 규제 준수가 가능 합니다.
+                                <Box10 />
+                                업무용 차량의 실시간 운행관제,운행분석 및 차량관리 등을 통합적으로 관리가 가능하며<br></br> 운영비 절감과 편리한 규제 준수가 가능 합니다.
                             </div>
-                            <hr />
-                            <div className="mb-0">
-
+                            <div className="mb-2">
                                 <ul>
                                     <li>통합서비스 제공을 통한 차량관리 편의</li>
                                     <li>온실가스 배출량 규제 등 준수/관리</li>
@@ -79,4 +77,4 @@ function Service2() {
     )
 }
 
-export default Service2;
+export default Page5;

@@ -1,7 +1,9 @@
 import { ResponsiveLine } from '@nivo/line'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useSelector } from 'react-redux';
 
-function Mychart1({ carlist }) {
+function Page5() {
+    let { drive } = useSelector((state) => { return state })
 
     const handle = {
         barClick: (data: any) => {
@@ -13,22 +15,42 @@ function Mychart1({ carlist }) {
         },
     };
 
-    console.log(carlist)
-    console.log(carlist[0])
-    // console.log(carlist[0]?.car_num)
+
+
 
 
 
     const data = [{
-        "id": carlist[0]?.car_num,
-        "data": carlist.map((a, i) => {
+        "id": drive.map((a, i) => { 
+            return {
+                "id":a.car_num
+            }
+        }),
+        "data": drive.map((a, i) => {
             return {
                 "x": a.date,
                 "y": a.dsr
+
             }
         })
     }]
 
+    const data1 = [{
+        
+        "id": drive[0]?.car_num,
+        "data": drive.map((a, i) => {
+            return {
+                "x": a.date,
+                "y": a.dsr
+
+            }
+        })
+    }]
+
+
+
+
+    console.log('data', data)
 
     return (
         <>
@@ -40,12 +62,12 @@ function Mychart1({ carlist }) {
 
 
                 <ResponsiveLine
-                    data={data}
-                    keys={carlist.car_num}
-                    margin={{ top: 10, right: 110, bottom: 50, left: 60 }}
+                    data={data1}
+                    keys={data.car_num}
+                    margin={{ top: 10, right: 550, bottom: 50, left: 60 }}
                     xScale={{ type: 'point' }}
                     colors={["red"]}
-                    colorBy="id"
+                    colorBy="keys"
                     yScale={{
                         type: 'linear',
                         min: 'auto',
@@ -117,4 +139,4 @@ function Mychart1({ carlist }) {
 
 
 
-export default Mychart1;
+export default Page5;
