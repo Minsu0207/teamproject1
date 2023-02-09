@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getGpsList } from './store'
 import { getDriveList } from './store'
 import { getVehicleList } from './store'
+import { getOilList } from './store'
 import Carcondition from "./components/Carcondition ";
 
 function App() {
@@ -43,6 +44,16 @@ function App() {
         .get("/drive")
         .then((result) => {
           dispatch(getDriveList(result.data));
+        })
+        .catch(() => console.log("데이터가져오기 실패")))();
+  }, []);
+
+  useEffect(() => {
+    (async () =>
+      await axios
+        .get("/oil")
+        .then((result) => {
+          dispatch(getOilList(result.data));
         })
         .catch(() => console.log("데이터가져오기 실패")))();
   }, []);

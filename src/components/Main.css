@@ -136,10 +136,6 @@
 
 /* 경관 */
 
-.tablechart {
-  display: flex;
-}
-
 .left-tabs-example {
   background-color: hsl(0, 84%, 51%);
 }
@@ -228,16 +224,22 @@ section {
   justify-content: center;
 }
 
+/*테이블*/
+
 table {
   border-spacing: 0;
-  border: 2px solid #d1cccc;
+  margin-left: auto;
+  text-align: center;
+  margin-right: auto;
+  border: 3px solid black;
 }
 
-/*테이블*/
-.dbtable1 {
+.cartable {
+  border-spacing: 0;
   text-align: center;
   margin-left: auto;
   margin-right: auto;
+  border: 4px solid rgb(123, 121, 121);
 }
 
 tr:last-child td {
@@ -246,10 +248,17 @@ tr:last-child td {
 
 th,
 td {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
   margin: 0;
   padding: 0.5rem;
   border-bottom: 1px solid #d1cccc;
   border-right: 1px solid #d1cccc;
+}
+.th1 {
+  
+  font-size: xx-small;
 }
 
 th:last-child,

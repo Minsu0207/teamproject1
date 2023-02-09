@@ -1,82 +1,104 @@
 import { ResponsiveLine } from '@nivo/line'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function Mychart1({ carlist }) {
+function Mychart1({ listsafety, listoil }) {
 
 
     const data = [{
-        "id": carlist[0]?.car_num,
-        "data": carlist.map((a, i) => {
+        "id": listsafety[0]?.car_num + '안전운행율',
+        "data": listsafety.map((a, i) => {
             return {
                 "x": a.date,
                 "y": a.dsr
             }
         })
-    }]
+    },
+    {
+        "id": listoil[0]?.car_num + '주유비',
+        "data": listoil.map((a, i) => {
+            return {
+                "x": a.date,
+                "y": a.oil_money * a.daily_distance
+            }
+        })
+    }
+
+    ]
 
 
     return (
         <>
             <div style={{
-                width: "2000px",
-                height: "500px",
+                width: "100%",
+                height: "100%",
 
             }}>
 
-
                 <ResponsiveLine
                     data={data}
-                    keys={carlist.car_num}
-                    margin={{ top: 10, right: 110, bottom: 50, left: 60 }}
+                    margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
                     xScale={{ type: 'point' }}
-                    colors={["red"]}
-                    colorBy="id"
-                    yScale={{
+                    y1Scale={{
                         type: 'linear',
                         min: 'auto',
                         max: 'auto',
+                    }}
+                    yScale={{
+                        type: 'linear',
+                        min: '98.2',
+                        max: '100',
                         stacked: true,
                         reverse: false
-                    }}
-                    yFormat=" >-.2f"
+                    }
+
+                    }
+                    yFormat=" >-"
                     axisTop={null}
-                    axisRight={null}
+                    axisRight={{
+                        orient: 'right',
+                        tickSize: 7,
+                        tickPadding: 5,
+                        tickRotation: 0,
+                        legend: '',
+                        legendOffset: 15
+                    }}
                     axisBottom={{
                         orient: 'bottom',
-                        tickSize: 5,  //값 설명하기 위해 튀어나오는 점 크기
-                        tickPadding: 5, // tick padding
-                        tickRotation: 0, // tick 기울기
-                        legend: '날짜별 안전운행율', // 라벨
-                        legendOffset: 36, // 글씨와 chart간 간격
-                        legendPosition: 'middle'  // 글씨 위치
-
+                        tickSize: 10,
+                        tickPadding: 5,
+                        tickRotation: 30,
+                        legend: '날자별 운행일지',
+                        legendOffset: -15,
+                        legendPosition: 'start'
                     }}
                     axisLeft={{
                         orient: 'left',
                         tickSize: 5,
                         tickPadding: 5,
                         tickRotation: 0,
-                        legend: '%',
-                        legendOffset: 0,
-                        legendPosition: 'top'
+                        legend: '안전운전율',
+                        legendOffset: -40,
+                        legendPosition: 'middle'
                     }}
-                    pointSize={10}
-                    pointColor={{ theme: 'background' }}
+                    colors={{ scheme: 'category10' }}
+                    lineWidth={3}
+                    pointSize={7}
+                    pointColor={{ from: 'color', modifiers: [] }}
                     pointBorderWidth={2}
                     pointBorderColor={{ from: 'serieColor' }}
                     pointLabelYOffset={-12}
+                    enableSlices="x"
                     useMesh={true}
                     legends={[
                         {
-                            dataFrom: "keys", // 보일 데이터 형태
-                            anchor: 'bottom-right', // 위치
-                            direction: 'column', // item 그려지는 방향
-                            justify: false, // 글씨, 색상간 간격 justify 적용 여부
-                            translateX: 100, // chart와 X 간격
-                            translateY: 0, // chart와 Y 간격
-                            itemsSpacing: 0,  // item간 간격
-                            itemDirection: 'left-to-right', // item 내부에 그려지는 방향
-                            itemWidth: 80,
+                            anchor: 'top-right',
+                            direction: 'column',
+                            justify: false,
+                            translateX: 118,
+                            translateY: -4,
+                            itemsSpacing: 0,
+                            itemDirection: 'left-to-right',
+                            itemWidth: 75,
                             itemHeight: 20,
                             itemOpacity: 0.75,
                             symbolSize: 12,
@@ -90,8 +112,8 @@ function Mychart1({ carlist }) {
                                         itemOpacity: 1
                                     }
                                 }
-                            ],
-                        },
+                            ]
+                        }
                     ]}
                 />
             </div>

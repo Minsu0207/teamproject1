@@ -118,7 +118,7 @@ function Mychart2() {
                 기간 : 2022년12월01 - 2022년 12월14일
             </h4>
             <div style={{
-                width: "2000px",
+                width: "100%",
                 height: "700px",
 
             }}>
@@ -126,6 +126,7 @@ function Mychart2() {
                     data={data}
                     margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
                     xScale={{ type: 'point' }}
+                    xFormat=" ^-"
                     yScale={{
                         type: 'linear',
                         min: '98.1',
@@ -133,51 +134,48 @@ function Mychart2() {
                         // stacked: true,
                         reverse: false
                     }}
-                    yFormat=" >-.2f"
                     axisTop={null}
-                    axisRight={null}
                     axisBottom={{
                         orient: 'bottom',
                         tickSize: 5,
-                        tickPadding: 5,
+                        tickPadding: 8,
                         tickRotation: 0,
-                        legend: '운행일자',
-                        legendOffset: 40,
+                        legend: '일자별 운행기록',
+                        legendOffset: 35,
                         legendPosition: 'middle'
-
                     }}
                     axisLeft={{
                         orient: 'left',
-                        tickSize: 5,
-                        tickPadding: 5,
+                        tickSize: 6,
+                        tickPadding: 7,
                         tickRotation: 0,
-                        legend: '안전운행율',
-                        legendOffset: -50,
+                        legend: '안전운행율%',
+                        legendOffset: -46,
                         legendPosition: 'middle'
                     }}
                     colors={{ scheme: 'category10' }}
-                    pointSize={5}
-                    pointColor={{ from: 'color', modifiers: [] }}
-                    pointBorderWidth={4}
-                    pointBorderColor={{ from: 'serieColor' }}
-                    pointLabel={function (t) { return t.x + ": " + t.y }}
+                    pointSize={10}
+                    pointColor={{ theme: 'background' }}
+                    pointBorderWidth={2}
+                    pointBorderColor={{ from: 'serieColor', modifiers: [] }}
                     pointLabelYOffset={-12}
+                    areaOpacity={0.25}
+                    enableSlices={false}
                     useMesh={true}
                     legends={[
                         {
                             anchor: 'right',
                             direction: 'column',
                             justify: false,
-                            translateX: 89,
-                            translateY: 20,
-                            itemsSpacing: 0,
-                            itemDirection: 'left-to-right',
-                            itemWidth: 74,
+                            translateX: 155,
+                            translateY: 0,
+                            itemWidth: 100,
                             itemHeight: 20,
-                            itemOpacity: 0.75,
+                            itemsSpacing: 4,
                             symbolSize: 20,
                             symbolShape: 'circle',
-                            symbolBorderColor: 'rgba(0, 0, 0, .5)',
+                            itemDirection: 'left-to-right',
+                            itemTextColor: '#777',
                             effects: [
                                 {
                                     on: 'hover',

@@ -1,14 +1,16 @@
 import { Card, Button, Container, Row, Col } from 'react-bootstrap';
 import CardHeader from 'react-bootstrap/esm/CardHeader';
 import { useSelector } from 'react-redux';
-import Page1 from '../routes/Page1';
+import styled from 'styled-components';
 
 function Grade() {
     let { vehicle } = useSelector((state) => { return state })
+    let Box20 = styled.div`padding : 10px;`;
 
     return (
         <>
             <Container>
+                <Box20 />
                 <Row>
                     {vehicle.map((a, i) => (
                         <Col>

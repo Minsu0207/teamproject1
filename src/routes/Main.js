@@ -6,12 +6,11 @@ import Page1 from "./Page1"
 import Page2 from "./Page2"
 import Page3 from "./Page3"
 import Page4 from "./Page4"
-import Page5 from "../components/Mychart2"
 import styled from 'styled-components';
 import Mytable from "../components/Mytable";
 import { useSelector } from "react-redux";
 function Main() {
-  let Box20 = styled.div`padding : 5  px;`;
+  let Box20 = styled.div`padding : 5px;`;
   const { drive } = useSelector((state) => { return state })
   let [tab, setTab] = useState(1)
   return (
