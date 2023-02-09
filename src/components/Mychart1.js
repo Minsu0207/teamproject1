@@ -18,12 +18,13 @@ function Mychart1({ listsafety, listoil }) {
         "data": listoil.map((a, i) => {
             return {
                 "x": a.date,
-                "y": a.oil_money * a.daily_distance
+                "y": a.oil_Money * a.daily_distance
             }
         })
     }
 
     ]
+
 
 
     return (
@@ -38,11 +39,6 @@ function Mychart1({ listsafety, listoil }) {
                     data={data}
                     margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
                     xScale={{ type: 'point' }}
-                    y1Scale={{
-                        type: 'linear',
-                        min: 'auto',
-                        max: 'auto',
-                    }}
                     yScale={{
                         type: 'linear',
                         min: '98.2',

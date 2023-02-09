@@ -19,7 +19,7 @@ function App() {
   useEffect(() => {
     (async () =>
       await axios
-        .get("/gps")
+        .get("/simul")
         .then((result) => {
           dispatch(getGpsList(result.data));
         })
@@ -47,7 +47,6 @@ function App() {
         })
         .catch(() => console.log("데이터가져오기 실패")))();
   }, []);
-
   useEffect(() => {
     (async () =>
       await axios
@@ -70,7 +69,7 @@ function App() {
         {vehicle.map((a, i) => (
           <Route
             key={i}
-            path={'/:id'}
+            path={'/drive/:id'}
             element={<Carcondition />} />
         ))}
         {/* <Route path="*" element={<h4>존재하는 않는 페이지 입니다.<br></br>주소를 확인해주세요</h4>} /> */}

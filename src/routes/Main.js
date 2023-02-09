@@ -16,7 +16,6 @@ function Main() {
   return (
     <>
       <Mynavbar />
-      <Box20 />
       <Tab.Container id="left-tabs-example" defaultActiveKey="p1">
         <Row>
           <Col sm={2}>

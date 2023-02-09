@@ -223,7 +223,6 @@ section {
   flex-direction: column;
   justify-content: center;
 }
-
 /*테이블*/
 
 table {
@@ -257,7 +256,6 @@ td {
   border-right: 1px solid #d1cccc;
 }
 .th1 {
-  
   font-size: xx-small;
 }
 

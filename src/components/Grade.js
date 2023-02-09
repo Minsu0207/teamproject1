@@ -29,7 +29,7 @@ function Grade() {
                                     <Card.Text>종합점수 {a.ts}</Card.Text>
                                     <Card.Footer>
                                     </Card.Footer>
-                                    <Button href={`${a.car_num}`} variant="outline-light">
+                                    <Button href={`/drive/${a.car_num}`} variant="outline-light">
                                         상세정보
                                     </Button>
                                 </Card.Body>
