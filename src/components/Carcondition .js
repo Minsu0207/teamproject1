@@ -116,7 +116,7 @@ function Carcondition(props) {
                     <Col>
                         <Card
                             key={i}
-                            style={{ width: '10rem' }}
+                            style={{ width: '12rem' }}
                             border={a.judgment >= 2 ? 'danger' : 'success'}
                             className="mb-3"
                             bg={a.judgment >= 2 ? 'danger' : 'success'}

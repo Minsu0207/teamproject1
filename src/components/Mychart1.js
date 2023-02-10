@@ -22,9 +22,7 @@ function Mychart1({ listsafety, listoil }) {
             }
         })
     }
-
     ]
-
 
 
     return (

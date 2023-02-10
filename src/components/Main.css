@@ -17,65 +17,79 @@
   /* "Pretendard-Regular", */ "GmarketSansMedium";
 }
 
-.start1end1 {
-  text-align: center;
+/*
+#dcd7c9 베이지
+#a27b5c  황
+#2c3639  진청*/
+/*상단바*/
+.bg-light {
+  background-color: #3f4e4f !important;
 }
-.col-sm-2 {
-  background-color: black;
-  padding: 0;
+html {
+  width: 100%;
+  height: 100%;
+}
+body {
+  background-color: #dcd7c9;
+  color: #2c3639;
+  width: 100%;
+  height: 100%;
+}
+.navbar {
+  --bs-navbar-brand-hover-color: white;
+}
+/*상단바 글씨*/
+.navbar-brand {
+  font-size: 2rem;
+  color: white;
 }
 /* 왼쪽 탭전환*/
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {
   color: white;
-  background-color: #283c8a;
+  background-color: #a27b5c;
+}
+
+.col-sm-2 {
+  background-color: #2c3639;
+  padding: 0;
+  color: #dcd7c9;
+  /* height: fit-content; */
+  height: 840px;
 }
 
 .nav-pills > :hover {
-  color: #000000;
-  background-color: rgb(163, 216, 227);
+  background-color: #dcd7c9;
+  color: #2c3639;
 }
 
-.nav-item {
-}
 .nav-pills {
   --bs-nav-pills-border-radius: var(--bs-nav-pills-border-radius);
 }
 
 .nav {
-  --bs-nav-link-color: #f7f7f7ca;
-  --bs-nav-link-hover-color: rgb(0, 0, 0);
+  --bs-nav-link-color: #dcd7c9;
+  --bs-nav-link-hover-color: #2c3639;
 }
 
 .nav2,
 .nav3 {
-  --bs-nav-link-color: #000000;
+  --bs-nav-link-color: #2c3639;
   --bs-nav-link-hover-color: #f7f7f7ca;
 }
 
-/*상단바*/
-.bg-light {
-  background-color: rgba(102, 112, 109, 0.322) !important;
-}
-.body {
+.start1end1 {
+  text-align: center;
 }
 
-/*상단바 글씨*/
-.navbar-brand {
-  color: white;
-  font-size: x-large;
-  /* --bs-navbar-brand-hover-color: rgb(74, 203, 250); */
-}
+/*1P*/
 
-.alert1 {
-  /* background: url(/public/img/bg2.jpg); */
-  /* background-size: cover; */
-  color: black;
-}
-.alert2 {
+.alert1-1 {
   background: url(/public/img/bg2.jpg);
   background-size: cover;
   color: white;
+  font-size: x-large;
+  /* margin-bottom: 20; */
 }
 
 .alert3 {
@@ -83,12 +97,83 @@
   text-align: center;
 }
 
-/* 경관 */
-.mb-1 {
-  font-size: 25px;
+/*2P*/
+
+/*3P*/
+
+/*4P*/
+
+.btn-check:checked + .btn,
+.btn.active,
+.btn.show,
+.btn:first-child:active,
+:not(.btn-check) + .btn:active {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: #0d6efd;
+  --bs-btn-border-color: #0d6efd;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #0b5ed7;
+  --bs-btn-hover-border-color: #0a58ca;
+  --bs-btn-focus-shadow-rgb: 49, 132, 253;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #0a58ca;
+  --bs-btn-active-border-color: #0a53be;
+  --bs-btn-active-shadow: inset 0 3px 5pxrgba (0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-disabled-bg: #0d6efd;
+  --bs-btn-disabled-border-color: #0d6efd;
+
+  background-color: #2c3639;
+  border-color: white;
+}
+
+.btn {
+  --bs-btn-padding-x: 0.75rem;
+  --bs-btn-padding-y: 0.375rem;
+  --bs-btn-font-family: ;
+  --bs-btn-font-size: 1rem;
+  --bs-btn-font-weight: 400;
+  --bs-btn-line-height: 1.5;
+  --bs-btn-color: #212529;
+  --bs-btn-bg: transparent;
+  --bs-btn-border-width: 1px;
+  --bs-btn-border-color: transparent;
+  --bs-btn-border-radius: 0.375rem;
+  --bs-btn-hover-border-color: transparent;
+  --bs-btn-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    0 1px 1px rgba(0, 0, 0, 0.075);
+  --bs-btn-disabled-opacity: 0.65;
+  --bs-btn-focus-box-shadow: 0 0 0 0.25rem
+    rgba(var(--bs-btn-focus-shadow-rgb), 0.5);
+  display: inline-block;
+  padding: var(--bs-btn-padding-y) var(--bs-btn-padding-x);
+  font-family: var(--bs-btn-font-family);
+  font-size: var(--bs-btn-font-size);
+  font-weight: var(--bs-btn-font-weight);
+  line-height: var(--bs-btn-line-height);
+  color: var(--bs-btn-color);
   text-align: center;
-  /* font-weight: bold; */
-  padding-bottom: 15px;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+  border: var(--bs-btn-border-width) solid var(--bs-btn-border-color);
+  border-radius: var(--bs-btn-border-radius);
+  background-color: var(--bs-btn-bg);
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+#dcd7c9 베이지 #a27b5c 황 #2c3639 진청 .card {
+  --bs-card-border-width: 4px;
+  --bs-card-border-radius: 0.63rem;
+  /* --bs-card-border-radius-b */
+  font-size: large;
+}
+
+.btn {
+  --bs-btn-border-radius: 0.2rem;
 }
 
 .servicemain1 {
@@ -102,19 +187,7 @@
 }
 
 .container1 {
-  padding: 17px;
-}
-
-.nav1 {
-}
-
-.nav-item {
-}
-
-.nav-link {
-  padding: 30px;
-  font-size: 19px;
-  text-align: center;
+  padding: 20px;
 }
 
 /*찬준*/
@@ -150,19 +223,10 @@
   top: 0px;
 }
 
-.navbar-brand {
-  display: flex;
-  position: inherit;
-  left: 0px;
-  top: 0px;
-}
 .tab2 {
   display: flex;
   margin: 10px;
   padding: 10px;
-}
-.col-sm-4 {
-  align-items: baseline;
 }
 
 #wrap {

@@ -3,30 +3,23 @@ import { useSelector } from 'react-redux';
 import ToggleButton from 'react-bootstrap/ToggleButton';
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
 
-let busmarker = null;
-
 function KakaoMap() {
     const { kakao } = window;
-    let { gps } = useSelector((state) => { return state })
     const [kakaoMap, setKakaoMap] = useState(null);
     const [, setMarkers] = useState([]);
     const [, setPolyline] = useState([]);
+    let { gps } = useSelector((state) => { return state })
+
     const [markerPositions, setMarkerPositions] = useState([]);
     const [buspaths, setBuspaths] = useState([]);
-    let [cnt, setCnt] = useState(0);
 
 
     const marker = gps.filter((a) => a.sra !== 0).map((a) => {
         return [a.car_location_GPS_Y, a.car_location_GPS_X];
     }
     )
-
-    const marker2 = gps.map((a) => {
-        return [a.car_location_GPS_Y, a.car_location_GPS_X];
-    })
-
-
     //운행판별 sra값이 0이 아닌 구간에 대해 주의 마커 필터링
+    // console.log(marker1)
 
     const path = gps.filter((a) => a).map((a) => {
         return [a.car_location_GPS_Y, a.car_location_GPS_X];
@@ -105,12 +98,6 @@ function KakaoMap() {
             );
         });
 
-        // 마커 중복 삭제
-        console.log('busmarker', busmarker)
-        if (busmarker != null)
-            busmarker.setMap(null);
-
-
         var marker = new kakao.maps.Marker({
             position: new kakao.maps.LatLng(gps[10]?.car_location_GPS_Y, gps[10]?.car_location_GPS_X),
             image: new kakao.maps.MarkerImage(
@@ -119,25 +106,6 @@ function KakaoMap() {
 
             )
         });
-
-        busmarker = new kakao.maps.Marker({
-            position: new kakao.maps.LatLng(35.1988, 129.12395),
-            image: new kakao.maps.MarkerImage(
-                'https://cdn2.iconfinder.com/data/icons/3d-transport/512/Bus-Blue.png',
-                new kakao.maps.Size(130, 130),
-
-            )
-        });
-
-        console.log('marker', marker)
-        console.log('busmarker', busmarker)
-
-
-
-
-
-
-
 
         const markerImageUrl = 'https://cdn2.iconfinder.com/data/icons/alert-message/64/siren-light-exclamation-icon-512.png',
             markerImageSize = new kakao.maps.Size(35, 35), // 마커 이미지의 크기
@@ -163,7 +131,6 @@ function KakaoMap() {
             );
         });
 
-        busmarker.setMap(kakaoMap);
         marker.setMap(kakaoMap);
 
 

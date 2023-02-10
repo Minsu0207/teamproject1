@@ -92,6 +92,15 @@ function Gobus() {
 
     }, [cnt])
 
+    // useEffect(() => {
+    //     const goBus = setInterval(() => {
+    //         setCnt(cnt + 30)
+    //         if (cnt > 1300) {
+    //             clearInterval(goBus)
+    //         }
+    //     }, 2000);
+    // }, [])
+    // console.log(cnt)
 
     return (
         <>

@@ -2,7 +2,7 @@ import { ResponsiveLine } from '@nivo/line'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useSelector } from 'react-redux';
 
-function Mychart2() {
+function Allchart() {
     let { drive } = useSelector((state) => { return state })
 
     const data1 = [{
@@ -119,63 +119,65 @@ function Mychart2() {
             </h4>
             <div style={{
                 width: "100%",
-                height: "700px",
+                height: "650px",
 
             }}>
                 <ResponsiveLine
                     data={data}
-                    margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
+                    margin={{ top: 20, right: 100, bottom: 50, left: 60 }}
                     xScale={{ type: 'point' }}
-                    xFormat=" ^-"
                     yScale={{
                         type: 'linear',
-                        min: '98.1',
+                        min: '98',
                         max: '100',
                         // stacked: true,
                         reverse: false
                     }}
+                    yFormat=" >-.2f"
+                    curve="linear"
                     axisTop={null}
+                    axisRight={null}
                     axisBottom={{
                         orient: 'bottom',
                         tickSize: 5,
-                        tickPadding: 8,
+                        tickPadding: 5,
                         tickRotation: 0,
-                        legend: '일자별 운행기록',
-                        legendOffset: 35,
+                        legend: 'transportation',
+                        legendOffset: 36,
                         legendPosition: 'middle'
                     }}
                     axisLeft={{
                         orient: 'left',
-                        tickSize: 6,
-                        tickPadding: 7,
+                        tickSize: 5,
+                        tickPadding: 5,
                         tickRotation: 0,
-                        legend: '안전운행율%',
-                        legendOffset: -46,
+                        legend: 'count',
+                        legendOffset: -40,
                         legendPosition: 'middle'
                     }}
                     colors={{ scheme: 'category10' }}
-                    pointSize={10}
-                    pointColor={{ theme: 'background' }}
+                    pointColor={{ theme: 'labels.text.fill' }}
                     pointBorderWidth={2}
-                    pointBorderColor={{ from: 'serieColor', modifiers: [] }}
+                    pointBorderColor={{ from: 'serieColor' }}
                     pointLabelYOffset={-12}
-                    areaOpacity={0.25}
-                    enableSlices={false}
+                    areaBlendMode="multiply"
+                    areaOpacity={0}
                     useMesh={true}
                     legends={[
                         {
-                            anchor: 'right',
+                            anchor: 'bottom-right',
                             direction: 'column',
                             justify: false,
-                            translateX: 155,
+                            translateX: 100,
                             translateY: 0,
-                            itemWidth: 100,
-                            itemHeight: 20,
-                            itemsSpacing: 4,
-                            symbolSize: 20,
-                            symbolShape: 'circle',
+                            itemsSpacing: 0,
                             itemDirection: 'left-to-right',
-                            itemTextColor: '#777',
+                            itemWidth: 80,
+                            itemHeight: 20,
+                            itemOpacity: 0.75,
+                            symbolSize: 12,
+                            symbolShape: 'circle',
+                            symbolBorderColor: 'rgba(0, 0, 0, .5)',
                             effects: [
                                 {
                                     on: 'hover',
@@ -195,4 +197,4 @@ function Mychart2() {
 
 
 
-export default Mychart2;
+export default Allchart;
