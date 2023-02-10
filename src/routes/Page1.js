@@ -7,6 +7,7 @@ import styled from 'styled-components';
 
 function Page1() {
   let { vehicle } = useSelector((state) => { return state })
+  console.log(vehicle)
   // const navigate = useNavigate();
   // const handle = (k) => {
   //   navigate(k);

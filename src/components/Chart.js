@@ -1,7 +1,7 @@
 import { ResponsiveLine } from '@nivo/line'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function Mychart1({ listsafety, listoil }) {
+function Chart({ listsafety, listoil }) {
 
 
     const data = [{
@@ -18,23 +18,41 @@ function Mychart1({ listsafety, listoil }) {
         "data": listoil.map((a, i) => {
             return {
                 "x": a.date,
-                "y": a.oil_Money * a.daily_distance
+                "y": a.oil_money * a.daily_distance
             }
         })
     }
     ]
 
+    const handle = {
+        barClick: (data: any) => {
+            console.log(data);
+        },
+
+        legendClick: (data: any) => {
+            console.log(data);
+        },
+    };
+
 
     return (
         <>
             <div style={{
-                width: "100%",
+                width: "130%",
                 height: "100%",
 
             }}>
 
                 <ResponsiveLine
                     data={data}
+                    markers={
+                        [
+                            {
+                                legendOrientation: 'horizontal'
+                            }
+                        ]
+                    }
+                    key={data.id}
                     margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
                     xScale={{ type: 'point' }}
                     yScale={{
@@ -43,9 +61,47 @@ function Mychart1({ listsafety, listoil }) {
                         max: '100',
                         stacked: true,
                         reverse: false
-                    }
-
-                    }
+                    }}
+                    theme={{
+                        /**
+                         * label style (bar에 표현되는 글씨)
+                         */
+                        labels: {
+                            text: {
+                                fontSize: 20,
+                                fill: "#000000",
+                            },
+                        },
+                        /**
+                         * legend style (default로 우측 하단에 있는 색상별 key 표시)
+                         */
+                        legends: {
+                            text: {
+                                fontSize: 20,
+                                fill: "#000000",
+                            },
+                        },
+                        axis: {
+                            /**
+                             * axis legend style (bottom, left에 있는 글씨)
+                             */
+                            legend: {
+                                text: {
+                                    fontSize: 20,
+                                    fill: "#000000",
+                                },
+                            },
+                            /**
+                             * axis ticks style (bottom, left에 있는 값)
+                             */
+                            ticks: {
+                                text: {
+                                    fontSize: 20,
+                                    fill: "#000000",
+                                },
+                            },
+                        },
+                    }}
                     yFormat=" >-"
                     axisTop={null}
                     axisRight={{
@@ -60,7 +116,7 @@ function Mychart1({ listsafety, listoil }) {
                         orient: 'bottom',
                         tickSize: 10,
                         tickPadding: 5,
-                        tickRotation: 30,
+                        tickRotation: 20,
                         legend: '날자별 운행일지',
                         legendOffset: -15,
                         legendPosition: 'start'
@@ -70,27 +126,29 @@ function Mychart1({ listsafety, listoil }) {
                         tickSize: 5,
                         tickPadding: 5,
                         tickRotation: 0,
-                        legend: '안전운전율',
-                        legendOffset: -40,
-                        legendPosition: 'middle'
+                        legendOffset: 20,
+                        legendPosition: 'top'
                     }}
                     colors={{ scheme: 'category10' }}
-                    lineWidth={3}
+                    lineWidth={6}
                     pointSize={7}
                     pointColor={{ from: 'color', modifiers: [] }}
-                    pointBorderWidth={2}
+                    pointBorderWidth={3}
                     pointBorderColor={{ from: 'serieColor' }}
                     pointLabelYOffset={-12}
                     enableSlices="x"
                     useMesh={true}
+                    onClick={handle.barClick}
                     legends={[
                         {
+                            dataFrom: 'keys',
                             anchor: 'top-right',
                             direction: 'column',
                             justify: false,
-                            translateX: 118,
-                            translateY: -4,
+                            translateX: -70,
+                            translateY: -40,
                             itemsSpacing: 0,
+                            fontSize: 50,
                             itemDirection: 'left-to-right',
                             itemWidth: 75,
                             itemHeight: 20,
@@ -104,10 +162,10 @@ function Mychart1({ listsafety, listoil }) {
                                     style: {
                                         itemBackground: 'rgba(0, 0, 0, .03)',
                                         itemOpacity: 1
-                                    }
-                                }
-                            ]
-                        }
+                                    },
+                                },
+                            ], onClick: handle.legendClick,
+                        },
                     ]}
                 />
             </div>
@@ -117,4 +175,4 @@ function Mychart1({ listsafety, listoil }) {
 
 
 
-export default Mychart1;
+export default Chart; 

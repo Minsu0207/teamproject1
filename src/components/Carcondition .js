@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux"
 import { Table, Container, Row, Col, Card, Button } from "react-bootstrap";
 import Mynavbar from "./Mynavbar";
-import Mychart1 from "./Mychart1";
+import Chart from "./Chart";
 import { useParams } from "react-router-dom"
 import CardHeader from 'react-bootstrap/esm/CardHeader';
 import styled from 'styled-components';
@@ -54,17 +54,18 @@ function Carcondition(props) {
             a
         )
 
-    console.log(listoil)
+    console.log(listsafety)
+
     return (
         <>
             <Mynavbar />
-            <Container>
+            <Container className="tb1container">
                 <Row>
-                    <Col>
+                    <Col sm={5} className="tb1col">
                         <h2 style={{ margin: '15px' }}>
                             {id}번 차량 운행 정보</h2>
-                        <table>
-                            <tbody className="tb1">
+                        <Table>
+                            <thead className="tb1">
                                 <tr>
                                     <th>차량번호</th>
                                     <th>운행일자</th>
@@ -72,67 +73,50 @@ function Carcondition(props) {
                                     <th>급감속횟수</th>
                                     <th>안전운전율</th>
                                 </tr>
-                                <tr>
-                                    <td>
-                                        {listsafety.map((a, i) => {
-                                            return <tr>{a.car_num}</tr>
-                                        })}
-                                    </td>
-                                    <td>
-                                        {listsafety.map((a, i) => {
-                                            return <tr>{a.date}</tr>
-                                        })}
-                                    </td>
-                                    <td>
-                                        {listsafety.map((a, i) => {
-                                            return <tr>{a.rac}</tr>
-                                        })}
-                                    </td>
-                                    <td>
-                                        {listsafety.map((a, i) => {
-                                            return <tr>{a.sds}</tr>
-                                        })}
-                                    </td>
-                                    <td>
-                                        {listsafety.map((a, i) => {
-                                            return <tr>{a.dsr}</tr>
-                                        })}
-                                    </td>
-                                </tr>
+                            </thead>
+                            <tbody>
+                                {listsafety.map((a, i) => {
+                                    return [
+                                        <tr key={i}>
+                                            <td>{a.car_num}</td>
+                                            <td>{a.date}</td>
+                                            <td>{a.rac}</td>
+                                            <td>{a.sds}</td>
+                                            <td>{a.dsr}</td>
+                                        </tr>
+                                    ]
+                                })}
                             </tbody>
-                        </table>
+                        </Table>
                     </Col>
-                    <Col>
-                        <Mychart1 listsafety={listsafety} listoil={listoil} />
+                    <Col sm={7}>
+                        <Chart listsafety={listsafety} listoil={listoil} />
                     </Col>
                 </Row>
-            </Container>
-            <Box20 />
-            <Box20 />
-            <Box20 />
+                <Box20 />
+                <Box20 />
 
-            <Row>
-                {vehicle.map((a, i) => (
-                    <Col>
-                        <Card
-                            key={i}
-                            style={{ width: '12rem' }}
-                            border={a.judgment >= 2 ? 'danger' : 'success'}
-                            className="mb-3"
-                            bg={a.judgment >= 2 ? 'danger' : 'success'}
-                            text='white'
-                        >
-                            <CardHeader> 차량번호 {a.car_num}</CardHeader>
-                            <Card.Body>
-                                <Button href={`/drive/${a.car_num}`} variant="outline-light">
-                                    운행정보 조회
+                <Row>
+                    {vehicle.map((a, i) => (
+                        <Col>
+                            <Card
+                                key={i}
+                                style={{ width: '10rem' }}
+                                border={a.judgment >= 2 ? 'danger' : 'success'}
+                                className="mb-3"
+                            >
+                                <Button href={`/drive/${a.car_num}`} variant="black">
+                                    <CardHeader> 차량번호<br></br> {a.car_num}</CardHeader>
+                                    <Card.Body>
+                                        운행정보<br></br> 조회
+                                    </Card.Body>
                                 </Button>
-                            </Card.Body>
-                        </Card>
-                    </Col>
-                ))}
-            </Row>
+                            </Card>
+                        </Col>
+                    ))}
+                </Row>
 
+            </Container>
         </>
     )
 

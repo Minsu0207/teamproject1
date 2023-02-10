@@ -3,15 +3,18 @@ import { useSelector } from 'react-redux';
 import ToggleButton from 'react-bootstrap/ToggleButton';
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
 
+
+let busmarker = null;
+
 function KakaoMap() {
     const { kakao } = window;
+    let { gps } = useSelector((state) => { return state })
     const [kakaoMap, setKakaoMap] = useState(null);
     const [, setMarkers] = useState([]);
     const [, setPolyline] = useState([]);
-    let { gps } = useSelector((state) => { return state })
-
     const [markerPositions, setMarkerPositions] = useState([]);
     const [buspaths, setBuspaths] = useState([]);
+    let [cnt, setCnt] = useState(0);
 
 
     const marker = gps.filter((a) => a.sra !== 0).map((a) => {
@@ -19,14 +22,12 @@ function KakaoMap() {
     }
     )
     //운행판별 sra값이 0이 아닌 구간에 대해 주의 마커 필터링
-    // console.log(marker1)
 
     const path = gps.filter((a) => a).map((a) => {
         return [a.car_location_GPS_Y, a.car_location_GPS_X];
     }
     )
     //버스 운행경로 위도경도 값 배열에 저장
-    // information_date
 
 
 
@@ -34,6 +35,7 @@ function KakaoMap() {
         const center = new kakao.maps.LatLng(35.1988, 129.12395);
         // 지도의 중심좌표
         const mapContainer = document.getElementById('map');
+        // 지도를 그릴 경로
         const options = {
             center,
             level: 7
@@ -46,7 +48,7 @@ function KakaoMap() {
         setKakaoMap(map);
 
         // 교통정보 지도로 출력변경
-        // map.addOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC);
+        map.addOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC);
 
     }, [])
 
@@ -56,13 +58,13 @@ function KakaoMap() {
             return;
         }
         // save center position
-        const center = kakaoMap.getCenter();
+        // const center = kakaoMap.getCenter();
 
 
         // relayout and...
-        kakaoMap.relayout();
+        // kakaoMap.relayout();
         // restore
-        kakaoMap.setCenter(center);
+        // kakaoMap.setCenter(center);
 
     }, [kakaoMap]);
 
@@ -82,7 +84,6 @@ function KakaoMap() {
             )
         )]
 
-        // #DC143C   https://img.icons8.com/plasticine/512/bus.png
         setPolyline(polylines => {
             polylines.forEach(i => i.setMap(null));
             return paths.map(() => new kakao.maps.Polyline({
@@ -99,7 +100,7 @@ function KakaoMap() {
         });
 
         var marker = new kakao.maps.Marker({
-            position: new kakao.maps.LatLng(gps[10]?.car_location_GPS_Y, gps[10]?.car_location_GPS_X),
+            position: new kakao.maps.LatLng(gps[0]?.car_location_GPS_Y, gps[0]?.car_location_GPS_X),
             image: new kakao.maps.MarkerImage(
                 'https://cdn2.iconfinder.com/data/icons/3d-transport/512/Bus-Blue.png',
                 new kakao.maps.Size(130, 130),
@@ -116,6 +117,21 @@ function KakaoMap() {
         const markerImage = new kakao.maps.MarkerImage(markerImageUrl, markerImageSize, markerImageOptions);
 
 
+        var content =
+            '<button>버스종점!</button>';
+
+        // 커스텀 오버레이가 표시될 위치입니다 
+        var position = new kakao.maps.LatLng(35.245, 129.1592197087737);
+
+        // 커스텀 오버레이를 생성합니다
+        var customOverlay = new kakao.maps.CustomOverlay({
+            position: position,
+            content: content
+        });
+
+        // 커스텀 오버레이를 지도에 표시합니다
+        customOverlay.setMap(kakaoMap);
+        // 지도에 선을 표시한다
 
         setMarkers(markers => {
             // clear prev markers
@@ -131,11 +147,40 @@ function KakaoMap() {
             );
         });
 
+
         marker.setMap(kakaoMap);
 
 
+        for (let i = 0; i < gps.length; i++) {
+            const markerImageUrl2 = 'https://cdn2.iconfinder.com/data/icons/3d-transport/512/Bus-Blue.png',
+                markerImageSize2 = new kakao.maps.Size(50, 50), // 마커 이미지의 크기
+                markerImageOptions2 = {
+                    offset: new kakao.maps.Point(20, 42)// 마커 좌표에 일치시킬 이미지 안의 좌표
+                };
+            // 마커 이미지를 생성
+            const markerImage2 = new kakao.maps.MarkerImage(markerImageUrl2, markerImageSize2, markerImageOptions2);
 
-    }, [kakaoMap, markerPositions, buspaths]);
+            busmarker = new kakao.maps.Marker({
+                position: new kakao.maps.LatLng(
+                    gps[cnt]?.car_location_GPS_Y,
+                    gps[cnt]?.car_location_GPS_X),
+                image: markerImage2
+            });
+            // busmarkers.push(busmarker);
+            busmarker.setMap(kakaoMap);
+            console.log(cnt)
+
+        }
+
+        const timer = setInterval(() => {
+
+            setCnt(cnt + 2)
+
+        }, 2000);
+        console.log(cnt)
+        return () => clearInterval(timer);
+
+    }, [kakaoMap, markerPositions, buspaths, cnt]);
 
     return (
         <>

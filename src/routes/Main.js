@@ -1,23 +1,16 @@
 import "../components/Main.css";
 import Mynavbar from "../components/Mynavbar";
 import { Col, Nav, Row, Tab } from "react-bootstrap";
-import { useState } from "react";
 import Page1 from "./Page1"
 import Page2 from "./Page2"
 import Page3 from "./Page3"
 import Page4 from "./Page4"
-import styled from 'styled-components';
-import { useSelector } from "react-redux";
 
 function Main() {
-  let Box20 = styled.div`padding : 5px;`;
-  const { drive } = useSelector((state) => { return state })
-  let [tab, setTab] = useState(1)
   return (
     <>
-
       <Mynavbar />
-      <Tab.Container id="left-tabs-example" defaultActiveKey="p1">
+      <Tab.Container id="left-tabs-example" >
         <Row>
           <Col sm={2}>
             <Nav variant="pills" className="flex-column">

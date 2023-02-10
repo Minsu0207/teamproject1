@@ -25,9 +25,6 @@ function App() {
         })
         .catch(() => console.log("데이터가져오기 실패")))();
   }, []);
-
-
-
   useEffect(() => {
     (async () =>
       await axios
@@ -37,7 +34,6 @@ function App() {
         })
         .catch(() => console.log("데이터가져오기 실패")))();
   }, []);
-
   useEffect(() => {
     (async () =>
       await axios

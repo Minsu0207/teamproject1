@@ -8,8 +8,9 @@ const Mynavbar = () => {
           <Navbar.Brand href="/">
             <img
               alt=""
-              src={process.env.PUBLIC_URL + "/img/bus2.png"}
-              width="90" height="80" className="logo"
+              src={process.env.PUBLIC_URL + "/img/bus3.png"}
+              // src={process.env.PUBLIC_URL + "/img/logo3.png"}
+              width="130" height="110" className="logo"
             />{' '}
             사업용 버스 운행 분석 웹서비스
           </Navbar.Brand>
