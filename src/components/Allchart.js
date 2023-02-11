@@ -5,101 +5,101 @@ import { useSelector } from 'react-redux';
 function Allchart() {
     let { drive } = useSelector((state) => { return state })
 
-    const data1 = [{
+    const data = [{
         "id": 2612,
         "data": drive.filter((a) => a.car_num == 2612).map((a, i) => {
             return {
-                key: { i },
+                key: i,
                 "x": a.date,
                 "y": a.dsr
             }
         })
-    }]
-    const data2 = [{
+    },
+    {
         "id": 3897,
         "data": drive.filter((a) => a.car_num == 3897).map((a, i) => {
             return {
-                key: { i },
+                key: i,
                 "x": a.date,
                 "y": a.dsr
             }
         })
-    }]
-    const data3 = [{
+    },
+    {
         "id": 9582,
         "data": drive.filter((a) => a.car_num == 9582).map((a, i) => {
             return {
-                key: { i },
+                key: i,
                 "x": a.date,
                 "y": a.dsr
             }
         })
-    }]
-    const data4 = [{
+    },
+    {
         "id": 4699,
         "data": drive.filter((a) => a.car_num == 4699).map((a, i) => {
             return {
-                key: { i },
+                key: i,
                 "x": a.date,
                 "y": a.dsr
             }
         })
-    }]
-    const data5 = [{
+    },
+    {
         "id": 4985,
         "data": drive.filter((a) => a.car_num == 4985).map((a, i) => {
             return {
-                key: { i },
+                key: i,
                 "x": a.date,
                 "y": a.dsr
             }
         })
-    }]
-    const data6 = [{
+    },
+    {
         "id": 5221,
         "data": drive.filter((a) => a.car_num == 5221).map((a, i) => {
             return {
-                key: { i },
+                key: i,
                 "x": a.date,
                 "y": a.dsr
             }
         })
-    }]
-    const data7 = [{
+    },
+    {
         "id": 5634,
         "data": drive.filter((a) => a.car_num == 5634).map((a, i) => {
             return {
-                key: { i },
+                key: i,
                 "x": a.date,
                 "y": a.dsr
             }
         })
-    }]
-    const data8 = [{
+    },
+    {
         "id": 8993,
         "data": drive.filter((a) => a.car_num == 8993).map((a, i) => {
             return {
-                key: { i },
+                key: i,
                 "x": a.date,
                 "y": a.dsr
             }
         })
-    }]
-    const data9 = [{
+    },
+    {
         "id": 9007,
         "data": drive.filter((a) => a.car_num == 9007).map((a, i) => {
             return {
-                key: { i },
+                key: i,
                 "x": a.date,
                 "y": a.dsr
             }
         })
-    }]
-    const data10 = [{
+    },
+    {
         "id": 9357,
         "data": drive.filter((a) => a.car_num == 9357).map((a, i) => {
             return {
-                key: { i },
+                key: i,
                 "x": a.date,
                 "y": a.dsr
             }
@@ -107,7 +107,9 @@ function Allchart() {
     }]
 
 
-    const data = data1.concat(data2, data3, data4, data5, data6, data7, data8, data9, data10)
+
+
+
 
     return (
         <>
@@ -124,6 +126,7 @@ function Allchart() {
             }}>
                 <ResponsiveLine
                     data={data}
+                    key={'id'}
                     margin={{ top: 20, right: 100, bottom: 50, left: 60 }}
                     xScale={{ type: 'point' }}
                     yScale={{
@@ -132,6 +135,46 @@ function Allchart() {
                         max: '100',
                         // stacked: true,
                         reverse: false
+                    }}
+                    theme={{
+                        /**
+                         * label style (bar에 표현되는 글씨)
+                         */
+                        labels: {
+                            text: {
+                                fontSize: 18,
+                                fill: "#000000",
+                            },
+                        },
+                        /**
+                         * legend style (default로 우측 하단에 있는 색상별 key 표시)
+                         */
+                        legends: {
+                            text: {
+                                fontSize: 19,
+                                fill: "#000000",
+                            },
+                        },
+                        axis: {
+                            /**
+                             * axis legend style (bottom, left에 있는 글씨)
+                             */
+                            legend: {
+                                text: {
+                                    fontSize: 20,
+                                    fill: "#000000",
+                                },
+                            },
+                            /**
+                             * axis ticks style (bottom, left에 있는 값)
+                             */
+                            ticks: {
+                                text: {
+                                    fontSize: 20,
+                                    fill: "#000000",
+                                },
+                            },
+                        },
                     }}
                     yFormat=" >-.2f"
                     curve="linear"
@@ -142,22 +185,16 @@ function Allchart() {
                         tickSize: 5,
                         tickPadding: 5,
                         tickRotation: 0,
-                        legend: 'transportation',
-                        legendOffset: 36,
-                        legendPosition: 'middle'
                     }}
                     axisLeft={{
                         orient: 'left',
                         tickSize: 5,
                         tickPadding: 5,
                         tickRotation: 0,
-                        legend: 'count',
-                        legendOffset: -40,
-                        legendPosition: 'middle'
                     }}
                     colors={{ scheme: 'category10' }}
                     pointColor={{ theme: 'labels.text.fill' }}
-                    pointBorderWidth={2}
+                    pointBorderWidth={3}
                     pointBorderColor={{ from: 'serieColor' }}
                     pointLabelYOffset={-12}
                     areaBlendMode="multiply"
@@ -175,7 +212,7 @@ function Allchart() {
                             itemWidth: 80,
                             itemHeight: 20,
                             itemOpacity: 0.75,
-                            symbolSize: 12,
+                            symbolSize: 20,
                             symbolShape: 'circle',
                             symbolBorderColor: 'rgba(0, 0, 0, .5)',
                             effects: [
@@ -186,7 +223,7 @@ function Allchart() {
                                         itemOpacity: 1
                                     }
                                 }
-                            ]
+                            ],
                         }
                     ]}
                 />

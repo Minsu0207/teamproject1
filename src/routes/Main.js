@@ -10,8 +10,8 @@ function Main() {
     <>
       <Mynavbar />
       <Tab.Container id="left-tabs-example" defaultActiveKey={'p1'}>
-        <Row>
-          <Col sm={2}>
+        <Row className="navrow">
+          <Col sm={2} className="col2nav">
             <Nav variant="pills" className="flex-column">
               <Nav.Item>
                 <Nav.Link eventKey="p1">안전등급확인</Nav.Link>

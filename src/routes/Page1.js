@@ -1,17 +1,10 @@
-import { useNavigate } from "react-router-dom";
 import { useSelector } from 'react-redux';
-import { useEffect, useState } from "react";
 import { Col, Container, Row, Alert, Card, Button } from "react-bootstrap";
 import CardHeader from 'react-bootstrap/esm/CardHeader';
 import styled from 'styled-components';
 
 function Page1() {
   let { vehicle } = useSelector((state) => { return state })
-  console.log(vehicle)
-  // const navigate = useNavigate();
-  // const handle = (k) => {
-  //   navigate(k);
-  // };
   let Box20 = styled.div`padding : 20px;`;
 
   return (
@@ -19,6 +12,7 @@ function Page1() {
       <Container>
         <Row>
           <Col>
+            <Box20 />
             <Alert variant="light" className="alert1-1">
               <Alert.Heading className="alert0">  운전 습관 분석을 통한
                 안전 등급 확인</Alert.Heading>
@@ -33,18 +27,18 @@ function Page1() {
         <Box20 />
         <Row>
           {vehicle.map((a, i) => (
-            <Col>
+            <Col className="p1cardcol">
               <Card
                 key={i}
                 style={{ width: '15rem' }}
                 border={a.judgment >= 2 ? 'danger' : 'success'}
                 className="mb-2"
-
                 text='black'
               >
-                <Button key={i} className="bt1-1" href={`/drive/${a.car_num}`} variant="dark">
+                <Button key={i} className={`bt${a.judgment}`} href={`/drive/${a.car_num}`} variant="dark"
+                >
                   차량번호 : {a.car_num}
-                  {a.judgment > 1 ? '　🔴' : '　🟢'}
+                  {a.judgment > 1 ? ' 🚨' : ''}
 
                 </Button>
                 <CardHeader>
@@ -53,8 +47,6 @@ function Page1() {
                   <Card.Text>운행점수 {a.drs}</Card.Text>
                   <Card.Text>차량점수 {a.vrs}</Card.Text>
                   <Card.Text>종합점수 {a.ts}</Card.Text>
-                  <Card.Footer>
-                  </Card.Footer>
                 </Card.Body>
               </Card>
             </Col>

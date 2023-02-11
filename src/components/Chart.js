@@ -24,34 +24,15 @@ function Chart({ listsafety, listoil }) {
     }
     ]
 
-    const handle = {
-        barClick: (data: any) => {
-            console.log(data);
-        },
-
-        legendClick: (data: any) => {
-            console.log(data);
-        },
-    };
-
 
     return (
         <>
             <div style={{
-                width: "100%",
+                width: "90%",
                 height: "100%",
-
             }}>
-
                 <ResponsiveLine
                     data={data}
-                    markers={
-                        [
-                            {
-                                legendOrientation: 'horizontal'
-                            }
-                        ]
-                    }
                     key={data.id}
                     margin={{ top: 50, right: 50, bottom: 50, left: 60 }}
                     xScale={{ type: 'point' }}
@@ -117,7 +98,6 @@ function Chart({ listsafety, listoil }) {
                         tickSize: 10,
                         tickPadding: 5,
                         tickRotation: 20,
-                        legend: '날자별 운행일지',
                         legendOffset: -15,
                         legendPosition: 'start'
                     }}
@@ -138,14 +118,13 @@ function Chart({ listsafety, listoil }) {
                     pointLabelYOffset={-12}
                     enableSlices="x"
                     useMesh={true}
-                    onClick={handle.barClick}
                     legends={[
                         {
                             dataFrom: 'keys',
                             anchor: 'top-right',
                             direction: 'column',
                             justify: false,
-                            translateX: -70,
+                            translateX: -90,
                             translateY: -40,
                             itemsSpacing: 0,
                             fontSize: 50,
@@ -164,7 +143,7 @@ function Chart({ listsafety, listoil }) {
                                         itemOpacity: 1
                                     },
                                 },
-                            ], onClick: handle.legendClick,
+                            ],
                         },
                     ]}
                 />

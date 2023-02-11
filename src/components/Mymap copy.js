@@ -7,7 +7,7 @@ import ProgressBar from 'react-bootstrap/ProgressBar';
 const { kakao } = window;
 let busmarker = null;
 
-function KakaoMap() {
+function Mymap() {
     let { gps } = useSelector((state) => { return state })
     const [kakaoMap, setKakaoMap] = useState(null);
     const [, setBusmarker] = useState();
@@ -152,12 +152,13 @@ function KakaoMap() {
             // setBusmarker(null)
             setCnt(null)
         }
-        const timer = setInterval(() => {
-            setCnt(cnt + 5)
 
-            busmarker.setMap(null);
+
+        const timer = setInterval(() => {
+            // setCnt(cnt + 5)
+
         }, 1000);
-        console.log(cnt)
+        
         return () => clearInterval(timer);
 
 
@@ -167,7 +168,7 @@ function KakaoMap() {
         <>
             <ToggleButtonGroup type="checkbox" defaultValue={[1, 3]} className="mb-2">
                 <ToggleButton onClick={() => setBuspaths(path)} id="tbg-check-1" value={1}>
-                    버스 운행 경로 보기
+                    버스 운행 경로 확인
                 </ToggleButton>
                 <ToggleButton onClick={() => setBuspaths([])} id="tbg-check-2" value={2}>
                     운행경로 지우기
@@ -180,6 +181,10 @@ function KakaoMap() {
                 <ToggleButton onClick={() => setMarkerPositions([])} id="tbg-radio-2" value={2}>
                     마커 지우기
                 </ToggleButton>
+                <ToggleButton>
+                    모의주행시작
+                </ToggleButton>
+
             </ToggleButtonGroup>
 
             <div
@@ -193,4 +198,4 @@ function KakaoMap() {
     )
 }
 
-export default KakaoMap;
+export default Mymap;

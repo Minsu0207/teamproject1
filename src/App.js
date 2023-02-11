@@ -15,7 +15,6 @@ import Carcondition from "./components/Carcondition ";
 
 function App() {
   let dispatch = useDispatch();
-
   useEffect(() => {
     (async () =>
       await axios
@@ -53,8 +52,8 @@ function App() {
         .catch(() => console.log("데이터가져오기 실패")))();
   }, []);
 
-
   let { vehicle } = useSelector((state) => { return state })
+
 
   return (
     <>

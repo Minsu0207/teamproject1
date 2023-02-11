@@ -1,14 +1,13 @@
 import { useSelector } from "react-redux"
-import { Table, Container, Row, Col, Card, Button } from "react-bootstrap";
+import { Table, Row, Col, Card, Button } from "react-bootstrap";
 import Mynavbar from "./Mynavbar";
 import Chart from "./Chart";
 import { useParams } from "react-router-dom"
-import CardHeader from 'react-bootstrap/esm/CardHeader';
 import styled from 'styled-components';
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-function Carcondition(props) {
+function Carcondition() {
     let { oil } = useSelector((state) => { return state })
     let { vehicle } = useSelector((state) => { return state })
     let { id } = useParams();
@@ -42,19 +41,13 @@ function Carcondition(props) {
     // 아직 users가 받아와 지지 않았을 때는 아무것도 표시되지 않도록 해줍니다.
     if (!users) return null;
 
-
-
-    let Box20 = styled.div`padding : 20px;`;
     let listsafety = users.map((a, i) =>
         a
     )
-
     let listoil = oil.filter((a) => a.car_num == id)
         .map((a, i) =>
             a
         )
-
-    console.log(listsafety)
 
     return (
         <>
@@ -62,7 +55,7 @@ function Carcondition(props) {
                 <Mynavbar />
                 <Row className="carrow1">
                     <Col lg={4} className="tb1col">
-                        <h2 style={{ margin: '15px' }}>
+                        <h2 style={{ textAlign: 'center', margin: '15px' }}>
                             {id}번 차량 운행 정보</h2>
                         <Table>
                             <thead className="tb1">
@@ -88,33 +81,29 @@ function Carcondition(props) {
                                 })}
                             </tbody>
                         </Table>
+                        <div className="cardlist">
+                            {vehicle.map((a, i) => (
+                                <Card
+                                    key={i}
+                                    // style={{ width: '10rem' }}
+                                    border={a.judgment >= 2 ? 'danger' : 'success'}
+                                    className="mb-3"
+                                >
+                                    <Button href={`/drive/${a.car_num}`}
+                                        className={`bt2-${a.judgment}`} variant="dark">
+                                        차량번호<br></br> {a.car_num}
+                                    </Button>
+                                </Card>
+                            ))}
+                        </div>
                     </Col>
                     <Col className="chart"  >
                         <Chart listsafety={listsafety} listoil={listoil} />
                     </Col>
-                </Row>
-
-                <Box20 />
-                <Box20 />
-
-                <Row className="cardrows">
-                    {vehicle.map((a, i) => (
-                        <Col>
-                            <Card
-                                key={i}
-                                style={{ width: '10rem' }}
-                                border={a.judgment >= 2 ? 'danger' : 'success'}
-                                className="mb-3"
-                            >
-                                <Button href={`/drive/${a.car_num}`} variant="black">
-                                    <CardHeader> 차량번호<br></br> {a.car_num}</CardHeader>
-                                    <Card.Body>
-                                        운행정보<br></br> 조회
-                                    </Card.Body>
-                                </Button>
-                            </Card>
-                        </Col>
-                    ))}
+                    <h2 style={{
+                        textAlign: 'center', marginTop: '40px', paddingLeft: '900px'
+                    }}>
+                        날자별 안전운전율 그래프</h2>
                 </Row>
             </div>
         </>
