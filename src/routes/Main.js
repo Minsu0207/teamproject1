@@ -4,13 +4,12 @@ import { Col, Nav, Row, Tab } from "react-bootstrap";
 import Page1 from "./Page1"
 import Page2 from "./Page2"
 import Page3 from "./Page3"
-import Page4 from "./Page4"
 
 function Main() {
   return (
     <>
       <Mynavbar />
-      <Tab.Container id="left-tabs-example" >
+      <Tab.Container id="left-tabs-example" defaultActiveKey={'p1'}>
         <Row>
           <Col sm={2}>
             <Nav variant="pills" className="flex-column">
@@ -22,9 +21,6 @@ function Main() {
               </Nav.Item>
               <Nav.Item>
                 <Nav.Link eventKey="p3">운행 정보 분석</Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link eventKey="p4">서비스소개</Nav.Link>
               </Nav.Item>
             </Nav>
           </Col>
@@ -38,9 +34,6 @@ function Main() {
               </Tab.Pane>
               <Tab.Pane eventKey="p3" >
                 <Page3 />
-              </Tab.Pane>
-              <Tab.Pane eventKey="p4">
-                <Page4 />
               </Tab.Pane>
             </Tab.Content>
           </Col>

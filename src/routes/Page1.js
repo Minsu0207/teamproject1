@@ -37,7 +37,7 @@ function Page1() {
               <Card
                 key={i}
                 style={{ width: '15rem' }}
-                border={a.judgment > 1 ? 'danger' : 'success'}
+                border={a.judgment >= 2 ? 'danger' : 'success'}
                 className="mb-2"
 
                 text='black'

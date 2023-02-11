@@ -58,15 +58,15 @@ function Carcondition(props) {
 
     return (
         <>
-            <Mynavbar />
-            <Container className="tb1container">
-                <Row>
-                    <Col sm={5} className="tb1col">
+            <div className="carmain">
+                <Mynavbar />
+                <Row className="carrow1">
+                    <Col lg={4} className="tb1col">
                         <h2 style={{ margin: '15px' }}>
                             {id}번 차량 운행 정보</h2>
                         <Table>
                             <thead className="tb1">
-                                <tr>
+                                <tr className="tr1">
                                     <th>차량번호</th>
                                     <th>운행일자</th>
                                     <th>급가속횟수</th>
@@ -89,14 +89,15 @@ function Carcondition(props) {
                             </tbody>
                         </Table>
                     </Col>
-                    <Col sm={7}>
+                    <Col className="chart"  >
                         <Chart listsafety={listsafety} listoil={listoil} />
                     </Col>
                 </Row>
+
                 <Box20 />
                 <Box20 />
 
-                <Row>
+                <Row className="cardrows">
                     {vehicle.map((a, i) => (
                         <Col>
                             <Card
@@ -115,8 +116,7 @@ function Carcondition(props) {
                         </Col>
                     ))}
                 </Row>
-
-            </Container>
+            </div>
         </>
     )
 

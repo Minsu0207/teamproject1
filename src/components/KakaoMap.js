@@ -10,7 +10,7 @@ let busmarker = null;
 function KakaoMap() {
     let { gps } = useSelector((state) => { return state })
     const [kakaoMap, setKakaoMap] = useState(null);
-    const [, setBusmarker] = useState([]);
+    const [, setBusmarker] = useState();
     const [, setMarkers] = useState([]);
     const [, setPolyline] = useState([]);
     const [markerPositions, setMarkerPositions] = useState([]);
@@ -144,6 +144,7 @@ function KakaoMap() {
                 image: markerImage2
             });
 
+            busmarker.setMap(null);
             busmarker.setMap(kakaoMap);
             console.log(cnt)
         }
@@ -152,8 +153,9 @@ function KakaoMap() {
             setCnt(null)
         }
         const timer = setInterval(() => {
-            setCnt(cnt + 20)
+            setCnt(cnt + 5)
 
+            busmarker.setMap(null);
         }, 1000);
         console.log(cnt)
         return () => clearInterval(timer);

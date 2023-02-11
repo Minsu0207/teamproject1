@@ -38,7 +38,7 @@ function Chart({ listsafety, listoil }) {
     return (
         <>
             <div style={{
-                width: "130%",
+                width: "100%",
                 height: "100%",
 
             }}>
@@ -53,7 +53,7 @@ function Chart({ listsafety, listoil }) {
                         ]
                     }
                     key={data.id}
-                    margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
+                    margin={{ top: 50, right: 50, bottom: 50, left: 60 }}
                     xScale={{ type: 'point' }}
                     yScale={{
                         type: 'linear',
@@ -68,7 +68,7 @@ function Chart({ listsafety, listoil }) {
                          */
                         labels: {
                             text: {
-                                fontSize: 20,
+                                fontSize: 18,
                                 fill: "#000000",
                             },
                         },
@@ -77,7 +77,7 @@ function Chart({ listsafety, listoil }) {
                          */
                         legends: {
                             text: {
-                                fontSize: 20,
+                                fontSize: 19,
                                 fill: "#000000",
                             },
                         },
