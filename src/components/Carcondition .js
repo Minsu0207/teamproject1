@@ -1,9 +1,8 @@
 import { useSelector } from "react-redux"
-import { Table, Row, Col, Card, Button } from "react-bootstrap";
+import { Row, Col, Card, Button } from "react-bootstrap";
 import Mynavbar from "./Mynavbar";
 import Chart from "./Chart";
 import { useParams } from "react-router-dom"
-import styled from 'styled-components';
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -54,17 +53,17 @@ function Carcondition() {
             <div className="carmain">
                 <Mynavbar />
                 <Row className="carrow1">
-                    <Col lg={4} className="tb1col">
-                        <h2 style={{ textAlign: 'center', margin: '15px' }}>
-                            {id}번 차량 운행 정보</h2>
-                        <Table>
-                            <thead className="tb1">
-                                <tr className="tr1">
-                                    <th>차량번호</th>
-                                    <th>운행일자</th>
-                                    <th>급가속횟수</th>
-                                    <th>급감속횟수</th>
-                                    <th>안전운전율</th>
+                    <Col lg={4}>
+                        <h1 style={{ textAlign: 'center', margin: '10px' }}>
+                            {id}번 차량 운행 정보</h1>
+                        <table className="tbcar1">
+                            <thead>
+                                <tr>
+                                    <th className="th1-1">차량번호</th>
+                                    <th className="th1-1">운행일자</th>
+                                    <th className="th1-1">급가속횟수</th>
+                                    <th className="th1-1">급감속횟수</th>
+                                    <th className="th1-1">안전운전율</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -80,7 +79,7 @@ function Carcondition() {
                                     ]
                                 })}
                             </tbody>
-                        </Table>
+                        </table>
                         <div className="cardlist">
                             {vehicle.map((a, i) => (
                                 <Card

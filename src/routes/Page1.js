@@ -1,6 +1,5 @@
 import { useSelector } from 'react-redux';
 import { Col, Container, Row, Alert, Card, Button } from "react-bootstrap";
-import CardHeader from 'react-bootstrap/esm/CardHeader';
 import styled from 'styled-components';
 
 function Page1() {
@@ -27,7 +26,7 @@ function Page1() {
         <Box20 />
         <Row>
           {vehicle.map((a, i) => (
-            <Col className="p1cardcol">
+            <Col key={i} className="p1cardcol">
               <Card
                 key={i}
                 style={{ width: '15rem' }}
@@ -41,12 +40,11 @@ function Page1() {
                   {a.judgment >= 2 ? ' 🚨' : ''}
 
                 </Button>
-                <CardHeader>
-                </CardHeader>
+                <hr key={i} />
                 <Card.Body>
-                  <Card.Text>운행점수 {a.drs}</Card.Text>
-                  <Card.Text>차량점수 {a.vrs}</Card.Text>
-                  <Card.Text>종합점수 {a.ts}</Card.Text>
+                  <Card.Text key={i}>운행점수 {a.drs}</Card.Text>
+                  <Card.Text key={i + 1}>차량점수 {a.vrs}</Card.Text>
+                  <Card.Text key={i + 2}>종합점수 {a.ts}</Card.Text>
                 </Card.Body>
               </Card>
             </Col>

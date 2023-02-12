@@ -109,8 +109,6 @@ function Allchart() {
 
 
 
-
-
     return (
         <>
             <h2 style={{ textAlign: 'center' }}>

@@ -13,7 +13,7 @@ const Mynavbar = () => {
               // src={process.env.PUBLIC_URL + "/img/logo3.png"}
               width="130" height="110" className="logo"
             />{' '}
-            사업용 버스 운행 분석 웹서비스
+            <h1 className="one">사업용 버스 운행 분석 웹서비스</h1>
           </Navbar.Brand>
         </Container>
       </Navbar>

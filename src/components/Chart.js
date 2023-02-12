@@ -38,7 +38,7 @@ function Chart({ listsafety, listoil }) {
                     xScale={{ type: 'point' }}
                     yScale={{
                         type: 'linear',
-                        min: '98.2',
+                        min: '98.',
                         max: '100',
                         stacked: true,
                         reverse: false

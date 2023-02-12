@@ -32,7 +32,7 @@ function Mymap() {
 
     //지도 생성
     useEffect(() => {
-        const center = new kakao.maps.LatLng(35.189644391651754, 129.16241267005606);
+        const center = new kakao.maps.LatLng(35.1988, 129.12395);
         // 지도의 중심좌표
         const mapContainer = document.getElementById('map');
         // 지도를 그릴 경로
@@ -50,17 +50,17 @@ function Mymap() {
     }, [])
 
 
-    useEffect(() => {
-        if (kakaoMap === null) {
-            return;
-        }
-        const center = kakaoMap.getCenter();
-        // relayout and...
-        kakaoMap.relayout();
-        // restore
-        kakaoMap.setCenter(center);
+    // useEffect(() => {
+    //     if (kakaoMap === null) {
+    //         return;
+    //     }
+    //     const center = kakaoMap.getCenter();
+    //     // relayout and...
+    //     kakaoMap.relayout();
+    //     // restore
+    //     kakaoMap.setCenter(center);
 
-    }, [kakaoMap]);
+    // }, [kakaoMap]);
 
     useEffect(() => {
         if (kakaoMap === null) {
@@ -128,66 +128,13 @@ function Mymap() {
             position: position,
             content: content
         });
-
-        // var content1 =
-        // '123'
-        // '<div>' +
-        // '<table>' +
-        // '<thead>' +
-        // '<tr>' +
-        // '<th>115 - 1번</th>' +
-        // '<th>버스운행정보</th>' +
-        // '</tr >' +
-        // '</thead>' +
-        // '<tbody>' +
-        // '<tr>' +
-        // '<td>출발지</td>' +
-        // '<td>고촌역</td>' +
-        // '</tr>' +
-        // '<tr>' +
-        // '<td>주요 정유장</td>' +
-        // '<td>영산대 - 벡스코 - 해운대역 - 해운대구청</td>' +
-        // '</tr>' +
-        // '<tr>' +
-        // '<td>' +
-        // '<div class="mapimg1"></div>' +
-        // '</td>' +
-        // '<td>버스운행경로</td>' +
-        // '</tr>' +
-        // '<tr>' +
-        // '<td>' +
-        // '<div class="mapimg2">' +
-        // '</div>' +
-        // '</td>' +
-        // '<td>운행주의지점</td>' +
-        // '</tr>' +
-        // '<tr>' +
-        // '<td>' +
-        // '<div className="mapimg3"></div>' +
-        // '</td>' +
-        // '<td>시간별 버스 위치</td>' +
-        // '</tr>' +
-        // '</tbody>' +
-        // '</table>' +
-        // '</div>';
-
-
-        // 커스텀 오버레이가 표시될 위치입니다 
-        // var position1 = new kakao.maps.LatLng(35.19589384701767, 129.23898393888751);
-
-        // // 커스텀 오버레이를 생성합니다
-        // let businfo = new kakao.maps.CustomOverlay({
-        //     position: position1,
-        //     content: content1,
-        //     xAnchor: 0.3,
-        //     yAnchor: 0.91
-        // });
-
-
-
         // 커스텀 오버레이를 지도에 표시합니다
         customOverlay.setMap(kakaoMap);
-        // businfo.setMap(kakaoMap);
+
+
+
+
+
 
 
         //이동경로 마커 중복제거
@@ -220,7 +167,6 @@ function Mymap() {
     useInterval(() => {
         setCnt(cnt + 2);
     }, isRunning ? delay : null);
-
 
     function handleDelayChange(e) {
         setDelay(Number(e.target.value));
@@ -258,7 +204,7 @@ function Mymap() {
                 id="map"
                 style={{
                     width: '84vw',
-                    height: '80vh'
+                    height: '70vh'
                 }}></div>
 
         </>

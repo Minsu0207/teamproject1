@@ -122,7 +122,7 @@ body {
   --bs-card-border-width: 4px;
   --bs-card-border-radius: 0.63rem;
   --bs-card-cap-padding-y: var(--bs-card-border-width);
-  --bs-card-spacer-y: 1.9rem;
+  --bs-card-spacer-y: 1rem;
   font-size: large;
 }
 
@@ -143,6 +143,9 @@ body {
   justify-content: space-around !important;
 }
 
+.tbcar1 {
+  width: 90%;
+}
 .tb1col {
   margin-left: 20px;
   margin-top: 20px;
@@ -276,10 +279,9 @@ body {
   top: 0px;
 }
 
-.tab2 {
-  display: flex;
-  margin: 10px;
+.tab2-2 {
   padding: 10px;
+  text-align: center;
 }
 
 #wrap {
@@ -336,22 +338,28 @@ section {
   justify-content: center;
 }
 /*테이블*/
-
 table {
-  border-spacing: 0;
-  margin-left: auto;
+  font: 20px/33px "Open Sans", "HelveticaNeue-Light", "Helvetica Neue Light",
+    "Helvetica Neue", Helvetica, Arial, "Lucida Grande", Sans-Serif;
+  border-collapse: separate;
   text-align: center;
+  border-spacing: 0;
+  width: 60%;
+  color: #666;
+  margin-left: auto;
   margin-right: auto;
-  border: 3px solid black;
 }
 
-tr:last-child td {
-  border-bottom: 0;
+.mytable2 {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
-
 th,
 td {
-  text-align: center;
+  padding: 6px 15px;
+  border-bottom: 1px solid #d1cccc;
+  border-right: 1px solid #d1cccc;
   margin-left: auto;
   margin-right: auto;
   margin: 0;
@@ -359,8 +367,44 @@ td {
   border-bottom: 1px solid #d1cccc;
   border-right: 1px solid #d1cccc;
 }
+th {
+  background: #42444e;
+  color: #fff;
+}
+
+tr:first-child th:first-child {
+  border-top-left-radius: 6px;
+}
+tr:first-child th:last-child {
+  border-top-right-radius: 6px;
+}
+td {
+  border-right: 1px solid #c6c9cc;
+  border-bottom: 1px solid #c6c9cc;
+}
+td:first-child {
+  border-left: 1px solid #c6c9cc;
+}
+tr:nth-child(even) td {
+  background: #eaeaed;
+}
+tr:last-child td:first-child {
+  border-bottom-left-radius: 6px;
+}
+tr:last-child td:last-child {
+  border-bottom-right-radius: 20px;
+}
+
+tr:last-child td {
+  border-bottom: 0;
+}
 .th1 {
   font-size: medium;
+}
+
+.th1-1 {
+  font-size: medium;
+  width: auto;
 }
 
 th:last-child,
@@ -386,6 +430,167 @@ th.asc {
   border-top: 5px solid orange;
 }
 
-.tr1 {
-  font-size: 20px;
+.h22 {
+  position: relative;
+  display: inline;
+  padding: 1em 0;
+}
+
+.h22:before,
+.h22:after {
+  content: "`";
+  position: absolute;
+  left: -1.2ex;
+  top: 0.2em;
+  width: 1em;
+  height: 1em;
+  font-size: 300%;
+  -ms-transform: rotate(-40deg); /* IE 9 */
+  -webkit-transform: rotate(-40deg); /* Chrome, Safari, Opera */
+  transform: rotate(-40deg);
+}
+
+.h22:after {
+  left: auto;
+  right: -1.2ex;
+  top: -0.1em;
+  -ms-transform: rotate(140deg); /* IE 9 */
+  -webkit-transform: rotate(140deg); /* Chrome, Safari, Opera */
+  transform: rotate(140deg);
+}
+
+.mapimg1 {
+  width: 100%;
+  height: 10px;
+  background-image: url("/public/img/polyline.png");
+}
+.mapimg2 {
+  width: 50px;
+  height: 50px;
+  background-image: url("https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/box_movie.png");
+}
+.mapimg3 {
+  width: 30px;
+  height: 30px;
+  background-image: url("https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/box_movie.png");
+}
+
+hr {
+  border: 0px;
+  height: 2px;
+  background: linear-gradient(
+    to left,
+    transparent,
+    hwb(0 0% 100% / 0.788),
+    transparent
+  );
+}
+
+.overlaybox {
+  position: relative;
+  width: 360px;
+  height: 350px;
+  background: url("https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/box_movie.png")
+    no-repeat;
+  padding: 15px 10px;
+}
+.overlaybox div,
+ul {
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+.overlaybox li {
+  list-style: none;
+}
+.overlaybox .boxtitle {
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  background: url("https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png")
+    no-repeat right 120px center;
+  margin-bottom: 8px;
+}
+.overlaybox .first {
+  position: relative;
+  width: 247px;
+  height: 136px;
+  background: url("https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/thumb.png")
+    no-repeat;
+  margin-bottom: 8px;
+}
+.first .text {
+  color: #fff;
+  font-weight: bold;
+}
+.first .triangle {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  top: 0;
+  left: 0;
+  background: url("https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/triangle.png")
+    no-repeat;
+  padding: 6px;
+  font-size: 18px;
+}
+.first .movietitle {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 7px 15px;
+  font-size: 14px;
+}
+.overlaybox ul {
+  width: 247px;
+}
+.overlaybox li {
+  position: relative;
+  margin-bottom: 2px;
+  background: #2b2d36;
+  padding: 5px 10px;
+  color: #aaabaf;
+  line-height: 1;
+}
+.overlaybox li span {
+  display: inline-block;
+}
+.overlaybox li .number {
+  font-size: 16px;
+  font-weight: bold;
+}
+.overlaybox li .title {
+  font-size: 13px;
+}
+.overlaybox ul .arrow {
+  position: absolute;
+  margin-top: 8px;
+  right: 25px;
+  width: 5px;
+  height: 3px;
+  background: url("https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/updown.png")
+    no-repeat;
+}
+.overlaybox li .up {
+  background-position: 0 -40px;
+}
+.overlaybox li .down {
+  background-position: 0 -60px;
+}
+.overlaybox li .count {
+  position: absolute;
+  margin-top: 5px;
+  right: 15px;
+  font-size: 10px;
+}
+.overlaybox li:hover {
+  color: #fff;
+  background: #d24545;
+}
+.overlaybox li:hover .up {
+  background-position: 0 0px;
+}
+.overlaybox li:hover .down {
+  background-position: 0 -20px;
 }

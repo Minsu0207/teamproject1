@@ -1,16 +1,8 @@
 import { useTable, useSortBy } from "react-table";
 import { useMemo } from "react";
 import { useSelector } from "react-redux";
-import { useEffect, useState } from "react";
 
 function Mytable() {
-    let [fade, setFade] = useState('')
-
-    useEffect(() => {
-        setTimeout(() => { setFade('end1') }, 100)
-        return () => { setFade('') }
-    }, [])
-
     let { drive } = useSelector((state) => { return state })
 
     const columns = useColumns();
@@ -73,11 +65,11 @@ function Mytable() {
     } = table;
 
     return (
-        <div className="dbtabel">
-            <h2 style={{ textAlign: 'center' }}> 운행 데이터</h2>
+        <div className="mytable2">
+            <h2 className="h22" style={{ textAlign: 'center' }}> 운행 데이터</h2>
             <h4 style={{ textAlign: 'end' }}>기간 : 2022년12월01 - 2022년 12월14일</h4>
             {/* Apply the table props */}
-            <table className="dbtable1" table {...getTableProps()}>
+            <table table {...getTableProps()} className='mytable'>
                 <thead>
                     {headerGroups.map((headerGroup) => (
                         <tr {...headerGroup.getHeaderGroupProps()}>
