@@ -161,7 +161,6 @@ function Mymap() {
 
     useInterval(() => {
         setCnt(cnt + 3);
-
     }, isRunning ? delay : null);
 
     function handleDelayChange(e) {
@@ -184,24 +183,22 @@ function Mymap() {
                 <Button onClick={() => setBuspaths([])} variant="secondary">경로 지우기</Button>
                 <Button onClick={() => setMarkerPositions(marker)} variant="secondary">운행 주의 지점 보기</Button>
                 <Button onClick={() => setMarkerPositions([])} variant="secondary">지점 지우기</Button>
-
                 <label class="btn btn-secondary" for="btn-check">모의주행</label>
                 <button class="btn btn-secondary" onClick={handleReset}>초기화</button>
                 <input class="btn btn-secondary" value={delay} onChange={handleDelayChange} />
-
             </ButtonGroup>
-
             <input type="checkbox" class="btn-check" id="btn-check" checked={isRunning} onChange={handleIsRunningChange} />
+
             {
-                cnt != 0 ? <h4>모의주행 {(cnt / gps.length * 100).toFixed(1)}% 진행중</h4> : null
+                cnt != 0 ? <h4 style={{ textAlign: 'center' }}>모의주행 {(cnt / gps.length * 100).toFixed(1)}% 진행중</h4> : null
             }
             {
-                cnt != 0 ? <ProgressBar variant="success" now={(cnt / gps.length) * 100} /> : null
+                cnt != 0 ? <ProgressBar className="progress" variant="success" now={(cnt / gps.length) * 100} /> : null
             }
             <div
                 id="map"
                 style={{
-                    width: '80vw',
+                    width: '84vw',
                     height: '70vh'
                 }}></div>
 

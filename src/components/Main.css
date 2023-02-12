@@ -212,6 +212,9 @@ body {
 .tbg-1 {
 }
 
+.progress {
+  width: 84vw;
+}
 .servicemain1 {
   text-align: center;
 }
