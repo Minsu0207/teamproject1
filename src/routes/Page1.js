@@ -38,7 +38,7 @@ function Page1() {
                 <Button key={i} className={`bt${a.judgment}`} href={`/drive/${a.car_num}`} variant="dark"
                 >
                   차량번호 : {a.car_num}
-                  {a.judgment > 1 ? ' 🚨' : ''}
+                  {a.judgment >= 2 ? ' 🚨' : ''}
 
                 </Button>
                 <CardHeader>

@@ -6,6 +6,7 @@ import ProgressBar from 'react-bootstrap/ProgressBar';
 
 
 const { kakao } = window;
+let busmarkers = [];
 let busmarker = null;
 
 function Mymap() {
@@ -147,9 +148,12 @@ function Mymap() {
                 image: markerImage2
             });
 
-            busmarker.setMap(null);
+            busmarkers.push(busmarker);
             busmarker.setMap(kakaoMap);
+
+            busmarkers[i].setMap(null);
         }
+
 
     }, [kakaoMap, markerPositions, buspaths, cnt]);
 
@@ -159,7 +163,6 @@ function Mymap() {
     }, isRunning ? delay : null);
 
     function handleDelayChange(e) {
-        setKakaoMap(e.target.checked);
         setDelay(Number(e.target.value));
     }
 
@@ -169,8 +172,6 @@ function Mymap() {
 
 
     const handleReset = () => {
-        busmarker.setMap(null);
-        setKakaoMap();
         setCnt(0);
     }
 
@@ -197,7 +198,6 @@ function Mymap() {
                     <input value={delay} onChange={handleDelayChange} />
                     <br></br>{(cnt / 180 * 100).toFixed()}% 주행
                 </>
-
             </ToggleButtonGroup>
 
             <div

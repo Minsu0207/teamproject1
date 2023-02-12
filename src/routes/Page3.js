@@ -1,14 +1,23 @@
 import { useState } from "react";
-import { Container, Row, Col, Alert } from "react-bootstrap";
+import { Nav, Container, Row, Col, Alert } from "react-bootstrap";
 import Mymap from "../components/Mymap";
 
 function Page3() {
-  let [tab, setTab] = useState(1)
+  let [tab, setTab] = useState(0)
 
   return (
     <>
-      <div className="nav-link2"
-        onClick={() => { setTab(0) }} eventKey="link0">운전운전을 위한 운행주의 지점 확인</div>
+      <Nav variant="pills" className="nav2">
+        <Nav.Item>
+          <Nav.Link className="nav-link2" onClick={() => { setTab(0) }}
+            eventKey="link0">서비스소개</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link className="nav-link2" onClick={() => { setTab(1) }}
+            eventKey="link1">운행주의 지점 확인</Nav.Link>
+        </Nav.Item>
+      </Nav>
+
       <TabContent tab={tab} />
     </>
   );
@@ -17,7 +26,6 @@ function Page3() {
     return (
       <>
         {[
-          <div className="tab3-1"><Mymap /></div>,
           <>
             <Container>
               <Row>
@@ -38,7 +46,9 @@ function Page3() {
                 />
               </Row>
             </Container>
-          </>,]
+          </>,
+          <div className="tab3-1"><Mymap /></div>
+        ]
         [tab]}
 
       </>
