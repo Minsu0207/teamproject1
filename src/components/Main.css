@@ -154,11 +154,6 @@ body {
   margin-right: 50px;
 }
 
-.btn {
-  --bs-btn-padding-y: 0.8rem;
-  --bs-btn-border-color: hwb(0 100% 0%);
-}
-
 /* 색상
 #dcd7c9 베이지
 #a27b5c  황
@@ -166,6 +161,10 @@ body {
 #3f4e4f 
 */
 
+.btn {
+  --bs-btn-padding-y: 0.8rem;
+  --bs-btn-border-color: hwb(0 100% 0%);
+}
 .btn-dark {
   --bs-btn-bg: #3f4e4f;
   --bs-btn-hover-bg: #a27b5c;
@@ -192,6 +191,25 @@ body {
   --bs-btn-bg: hwb(0 24% 11%);
   --bs-btn-border-color: hwb(0 100% 0%);
   width: 20%;
+}
+
+.btn-check:checked + .btn,
+.btn.active,
+.btn.show,
+.btn:first-child:active,
+:not(.btn-check) + .btn:active {
+  color: white !important;
+  background-color: #5e6a7d;
+  border-color: #ffffff;
+}
+
+.tbg {
+  color: var(--bs-btn-active-color);
+  background-color: #5e6a7d;
+  border-color: #ffffff;
+}
+
+.tbg-1 {
 }
 
 .servicemain1 {

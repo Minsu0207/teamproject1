@@ -9,6 +9,7 @@ const Mynavbar = () => {
             <img
               alt=""
               src={process.env.PUBLIC_URL + "/img/bus3.png"}
+              // src={process.env.PUBLIC_URL + "/img/bus115-1.png"}
               // src={process.env.PUBLIC_URL + "/img/logo3.png"}
               width="130" height="110" className="logo"
             />{' '}

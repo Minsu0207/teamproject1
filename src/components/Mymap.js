@@ -1,8 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useSelector } from 'react-redux';
-import ToggleButton from 'react-bootstrap/ToggleButton';
-import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
-import ProgressBar from 'react-bootstrap/ProgressBar';
+import { Button, ButtonGroup, ProgressBar } from "react-bootstrap";
 
 
 const { kakao } = window;
@@ -17,7 +15,7 @@ function Mymap() {
     const [markerPositions, setMarkerPositions] = useState([]);
     const [buspaths, setBuspaths] = useState([]);
     let [cnt, setCnt] = useState(0);
-    const [delay, setDelay] = useState(1000);
+    const [delay, setDelay] = useState(300);
     const [isRunning, setIsRunning] = useState(false);
 
 
@@ -87,8 +85,8 @@ function Mymap() {
                 map: kakaoMap,
                 path: path, //선의 구성하는 좌표 배열 입니다.
                 strokeColor: 'indigo', //선의 색상입니다.
-                strokeWeight: 3, // 선의 두께 입니다
-                strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+                strokeWeight: 6, // 선의 두께 입니다
+                strokeOpacity: 0.03, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
                 strokeStyle: 'line', // 선의 스타일입니다
                 endArrow: true,
             })
@@ -111,6 +109,8 @@ function Mymap() {
         });
 
 
+
+
         const markerImageUrl = 'https://cdn2.iconfinder.com/data/icons/alert-message/64/siren-light-exclamation-icon-512.png',
             markerImageSize = new kakao.maps.Size(35, 35), // 마커 이미지의 크기
             markerImageOptions = {
@@ -130,7 +130,12 @@ function Mymap() {
         // 커스텀 오버레이를 지도에 표시합니다
         customOverlay.setMap(kakaoMap);
         // 지도에 선을 표시한다
+        for (let i = 0; i < busmarkers.length; i++) {
+            busmarkers[i].setMap(null);
+        }
+        busmarkers.length = 0;
 
+        //마커 중복제거 
 
         for (let i = 0; i < gps.length; i++) {
             const busurl = 'https://cdn.pixabay.com/photo/2014/04/03/10/31/bus-310764_960_720.png',
@@ -150,12 +155,9 @@ function Mymap() {
 
             busmarkers.push(busmarker);
             busmarker.setMap(kakaoMap);
-
-            busmarkers[i].setMap(null);
         }
 
-
-    }, [kakaoMap, markerPositions, buspaths, cnt]);
+    }, [kakaoMap, markerPositions, buspaths, cnt, busmarkers]);
 
     useInterval(() => {
         setCnt(cnt + 3);
@@ -177,36 +179,32 @@ function Mymap() {
 
     return (
         <>
-            <ToggleButtonGroup type="checkbox" defaultValue={[1, 3]} className="mb-2">
-                <ToggleButton onClick={() => setBuspaths(path)} id="tbg-check-1" value={1}>
-                    버스 운행 경로 확인
-                </ToggleButton>
-                <ToggleButton onClick={() => setBuspaths([])} id="tbg-check-2" value={2}>
-                    운행경로 지우기
-                </ToggleButton>
-            </ToggleButtonGroup>
-            <ToggleButtonGroup type="radio" name="options" defaultValue={1} className="mb-2">
-                <ToggleButton onClick={() => setMarkerPositions(marker)} id="tbg-radio-1" value={1}>
-                    운행 주의 구간 보기
-                </ToggleButton>
-                <ToggleButton onClick={() => setMarkerPositions([])} id="tbg-radio-2" value={2}>
-                    마커 지우기
-                </ToggleButton>
-                <button onClick={handleReset}>Reset</button>
-                <>
-                    <input type="checkbox" checked={isRunning} onChange={handleIsRunningChange} />
-                    <input value={delay} onChange={handleDelayChange} />
-                    <br></br>{(cnt / 180 * 100).toFixed()}% 주행
-                </>
-            </ToggleButtonGroup>
+            <ButtonGroup aria-label="Basic example" className="mb-2">
+                <Button onClick={() => setBuspaths(path)} variant="secondary">운행 경로 확인</Button>
+                <Button onClick={() => setBuspaths([])} variant="secondary">경로 지우기</Button>
+                <Button onClick={() => setMarkerPositions(marker)} variant="secondary">운행 주의 지점 보기</Button>
+                <Button onClick={() => setMarkerPositions([])} variant="secondary">지점 지우기</Button>
 
+                <label class="btn btn-secondary" for="btn-check">모의주행</label>
+                <button class="btn btn-secondary" onClick={handleReset}>초기화</button>
+                <input class="btn btn-secondary" value={delay} onChange={handleDelayChange} />
+
+            </ButtonGroup>
+
+            <input type="checkbox" class="btn-check" id="btn-check" checked={isRunning} onChange={handleIsRunningChange} />
+            {
+                cnt != 0 ? <h4>모의주행 {(cnt / gps.length * 100).toFixed(1)}% 진행중</h4> : null
+            }
+            {
+                cnt != 0 ? <ProgressBar variant="success" now={(cnt / gps.length) * 100} /> : null
+            }
             <div
                 id="map"
                 style={{
                     width: '80vw',
                     height: '70vh'
                 }}></div>
-            <ProgressBar variant="success" now={(cnt / gps.length) * 100} />
+
         </>
     );
 }
