@@ -54,7 +54,7 @@ function Carcondition() {
                 <Mynavbar />
                 <Row className="carrow1">
                     <Col lg={4}>
-                        <h2 style={{ textAlign: 'center', marginTop: '35px' }}>
+                        <h2 style={{ textAlign: 'center', marginTop: '25px' }}>
                             {id}번 차량 운행 정보</h2>
                         <Table className="table1">
                             <thead className="thead2">

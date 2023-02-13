@@ -2,7 +2,6 @@ import React, { useEffect, useState, useRef } from "react";
 import { useSelector } from 'react-redux';
 import { Button, ButtonGroup, ProgressBar } from "react-bootstrap";
 
-
 const { kakao } = window;
 let busmarkers = [];
 let busmarker = null;
@@ -84,9 +83,9 @@ function Mymap() {
             return paths.map(() => new kakao.maps.Polyline({
                 map: kakaoMap,
                 path: path, //선의 구성하는 좌표 배열 입니다.
-                strokeColor: 'indigo', //선의 색상입니다.
-                strokeWeight: 6, // 선의 두께 입니다
-                strokeOpacity: 0.03, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+                strokeColor: '#3f4e4f', //선의 색상입니다.
+                strokeWeight: 12, // 선의 두께 입니다
+                strokeOpacity: 0.005, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
                 strokeStyle: 'line', // 선의 스타일입니다
                 endArrow: true,
             })
@@ -120,9 +119,9 @@ function Mymap() {
         // 마커 이미지를 생성
         const markerImage = new kakao.maps.MarkerImage(markerImageUrl, markerImageSize, markerImageOptions);
 
-        var content = '<button>버스종점!</button>';
+        var content = '<button><h2>버스종점!</h2></button>';
         // 커스텀 오버레이가 표시될 위치입니다 
-        var position = new kakao.maps.LatLng(35.245, 129.1592197087737);
+        var position = new kakao.maps.LatLng(35.244, 129.1592);
         // 커스텀 오버레이를 생성합니다
         var customOverlay = new kakao.maps.CustomOverlay({
             position: position,
@@ -134,7 +133,7 @@ function Mymap() {
             '<table>' +
             '<thead>' +
             '<tr>' +
-            '<th>115 - 1번</th>' +
+            '<th>115-1번</th>' +
             '<th>버스운행정보</th>' +
             '</tr >' +
             '</thead>' +
@@ -163,7 +162,7 @@ function Mymap() {
             '<td>' +
             '<div class="mapimg3"></div>' +
             '</td>' +
-            '<td>시간별 버스 위치</td>' +
+            '<td>실시간 버스 위치</td>' +
             '</tr>' +
             '</tbody>' +
             '</table>' +
@@ -195,8 +194,9 @@ function Mymap() {
         busmarkers.length = 0;
         //이동경로 마커 이동 구현
         for (let i = 0; i < gps.length; i++) {
-            const busurl = 'https://cdn.pixabay.com/photo/2014/04/03/10/31/bus-310764_960_720.png',
-                imgsize = new kakao.maps.Size(40, 30), // 마커 이미지의 크기
+            // const busurl = 'https://cdn.pixabay.com/photo/2014/04/03/10/31/bus-310764_960_720.png',
+            const busurl = 'https://cdn-icons-png.flaticon.com/512/744/744466.png',
+                imgsize = new kakao.maps.Size(120, 120), // 마커 이미지의 크기
                 imgopt = {
                     offset: new kakao.maps.Point(20, 42)// 마커 좌표에 일치시킬 이미지 안의 좌표
                 };
@@ -218,8 +218,6 @@ function Mymap() {
     useInterval(() => {
         if (cnt <= gps.length) {
             setCnt(cnt + 2);
-        } else {
-            cnt = gps.length;
         }
     }, isRunning ? delay : null);
 
@@ -245,9 +243,13 @@ function Mymap() {
                 <Button onClick={() => setBuspaths([])} variant="secondary">경로 지우기</Button>
                 <Button onClick={() => setMarkerPositions(marker)} variant="secondary">운행 주의 지점 보기</Button>
                 <Button onClick={() => setMarkerPositions([])} variant="secondary">지점 지우기</Button>
+            </ButtonGroup>
+            <ButtonGroup style={{ marginLeft: '10px' }} aria-label="Basic example" className="mb-2">
                 <label className="btn btn-secondary" for="btn-check">모의주행</label>
                 <Button classclassName="btn btn-secondary" variant="secondary" onClick={handleReset}>초기화</Button>
-                <input className="btn btn-secondary" value={delay} onChange={handleDelayChange} />
+                <label className="btn btn-secondary" for="btn btn-secondary">딜레이값 ▶
+                </label>
+                <input id="btn btn-secondary" className="btn btn-secondary" size={15} value={delay} onChange={handleDelayChange} />
             </ButtonGroup>
             <input type="checkbox" className="btn-check" id="btn-check" checked={isRunning} onChange={handleIsRunningChange} />
 

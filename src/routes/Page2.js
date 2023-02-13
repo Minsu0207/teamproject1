@@ -9,11 +9,11 @@ function Page2() {
   return (
     <>
       <Nav variant="pills" defaultActiveKey="/link0" className="nav2">
-        <Nav.Item>
+        <Nav.Item className="nav-item1">
           <Nav.Link className="nav-link1" onClick={() => { setTab(0) }}
             eventKey="link0">테이블</Nav.Link>
         </Nav.Item>
-        <Nav.Item>
+        <Nav.Item className="nav-item1">
           <Nav.Link className="nav-link1" onClick={() => { setTab(1) }}
             eventKey="link1">그래프</Nav.Link>
         </Nav.Item>
