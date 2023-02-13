@@ -118,7 +118,7 @@ function Allchart() {
                 기간 : 2022년12월01 - 2022년 12월14일
             </h4>
             <div style={{
-                width: "100%",
+                width: "115%",
                 height: "650px",
 
             }}>

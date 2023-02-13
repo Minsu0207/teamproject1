@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux"
-import { Row, Col, Card, Button } from "react-bootstrap";
+import { Table, Row, Col, Card, Button } from "react-bootstrap";
 import Mynavbar from "./Mynavbar";
 import Chart from "./Chart";
 import { useParams } from "react-router-dom"
@@ -54,16 +54,16 @@ function Carcondition() {
                 <Mynavbar />
                 <Row className="carrow1">
                     <Col lg={4}>
-                        <h1 style={{ textAlign: 'center', margin: '10px' }}>
-                            {id}번 차량 운행 정보</h1>
-                        <table className="tbcar1">
+                        <h2 style={{ textAlign: 'center', marginTop: '35px' }}>
+                            {id}번 차량 운행 정보</h2>
+                        <Table className="table1">
                             <thead>
                                 <tr>
-                                    <th className="th1-1">차량번호</th>
-                                    <th className="th1-1">운행일자</th>
-                                    <th className="th1-1">급가속횟수</th>
-                                    <th className="th1-1">급감속횟수</th>
-                                    <th className="th1-1">안전운전율</th>
+                                    <td style={{ color: 'black' }} className="th1-1">차량번호</td>
+                                    <td style={{ color: 'black' }} className="th1-1">운행일자</td>
+                                    <td style={{ color: 'black' }} className="th1-1">급가속횟수</td>
+                                    <td style={{ color: 'black' }} className="th1-1">급감속횟수</td>
+                                    <td style={{ color: 'black' }} className="th1-1">안전운전율</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -79,12 +79,11 @@ function Carcondition() {
                                     ]
                                 })}
                             </tbody>
-                        </table>
+                        </Table>
                         <div className="cardlist">
                             {vehicle.map((a, i) => (
                                 <Card
                                     key={i}
-                                    // style={{ width: '10rem' }}
                                     border={a.judgment >= 2 ? 'danger' : 'success'}
                                     className="mb-3"
                                 >
@@ -100,7 +99,7 @@ function Carcondition() {
                         <Chart listsafety={listsafety} listoil={listoil} />
                     </Col>
                     <h2 style={{
-                        textAlign: 'center', marginTop: '40px', paddingLeft: '900px'
+                        textAlign: 'center', paddingLeft: '550px'
                     }}>
                         날자별 안전운전율 그래프</h2>
                 </Row>

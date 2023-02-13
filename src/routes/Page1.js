@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 function Page1() {
   let { vehicle } = useSelector((state) => { return state })
-  let Box20 = styled.div`padding : 20px;`;
+  let Box20 = styled.div`padding-top : 10px;`;
 
   return (
     <>
