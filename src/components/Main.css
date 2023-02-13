@@ -53,8 +53,8 @@ body {
   background-color: #2c3639;
   padding: 0;
   color: #dcd7c9;
-  height: 86.5vh;
-  width: 13%;
+  width: 270px;
+  height: 100--vh;
 }
 
 .flex-column {
@@ -106,7 +106,7 @@ body {
 /*3P*/
 
 .alert3-1 {
-  background: url(/public/img/bg2.jpg);
+  background: url(/public/img/bg.jpg);
   background-size: cover;
   color: white;
   font-size: x-large;
@@ -137,6 +137,7 @@ body {
 }
 
 .cardlist {
+  margin-left: 20px;
   width: 100%;
   text-align: justify;
 }
@@ -354,6 +355,17 @@ table {
   margin-right: auto;
 }
 
+.thead1 {
+  height: 50px;
+}
+
+.thead2 {
+  height: 50px;
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .mytable2 {
   margin-left: auto;
   margin-right: auto;
@@ -378,15 +390,9 @@ th {
   border-bottom: 1px solid #d1cccc;
   border-right: 1px solid #d1cccc;
   margin-bottom: 50px;
+  margin-left: 20px;
   margin-top: 50px;
   border-bottom-right-radius: 0px;
-}
-.th1-1 {
-  padding: 20px 15px;
-  margin-left: auto;
-  margin-right: auto;
-  margin: 0;
-  padding: 0.5rem;
 }
 th {
   background: #42444e;
@@ -424,8 +430,7 @@ tr:last-child td {
 }
 
 .th1-1 {
-  font-size: medium;
-  width: auto;
+  border-bottom: 10px solid hsl(0, 2%, 33%);
 }
 
 th:last-child,
@@ -510,4 +515,8 @@ hr {
     hwb(0 0% 100% / 0.788),
     transparent
   );
+}
+
+.navrow {
+  margin-right: auto;
 }

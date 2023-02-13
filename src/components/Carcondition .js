@@ -57,13 +57,13 @@ function Carcondition() {
                         <h2 style={{ textAlign: 'center', marginTop: '35px' }}>
                             {id}번 차량 운행 정보</h2>
                         <Table className="table1">
-                            <thead>
+                            <thead className="thead2">
                                 <tr>
-                                    <td style={{ color: 'black' }} className="th1-1">차량번호</td>
-                                    <td style={{ color: 'black' }} className="th1-1">운행일자</td>
-                                    <td style={{ color: 'black' }} className="th1-1">급가속횟수</td>
-                                    <td style={{ color: 'black' }} className="th1-1">급감속횟수</td>
-                                    <td style={{ color: 'black' }} className="th1-1">안전운전율</td>
+                                    <th style={{ color: 'black' }} className="th1-1">차량번호</th>
+                                    <th style={{ color: 'black' }} className="th1-1">운행일자</th>
+                                    <th style={{ color: 'black' }} className="th1-1">급가속횟수</th>
+                                    <th style={{ color: 'black' }} className="th1-1">급감속횟수</th>
+                                    <th style={{ color: 'black' }} className="th1-1">안전운전율</th>
                                 </tr>
                             </thead>
                             <tbody>

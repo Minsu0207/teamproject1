@@ -3,7 +3,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Chart({ listsafety, listoil }) {
 
-
     const data = [{
         "id": listsafety[0]?.car_num + '안전운행율',
         "data": listsafety.map((a, i) => {

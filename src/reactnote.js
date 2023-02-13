@@ -1,3 +1,6 @@
+"proxy": "http://localhost:8081",
+"proxy": "http://3.37.27.133:8081",
+
 { 터미널 }
 npx create - react - app 프로젝트명    리액트 웹 앱 생성
 npm install react - router - dom    3페이지 구성을 위해 설치
@@ -87,11 +90,7 @@ for (let [k, v] of Object.entries(mv)) {
 백
 
 프론트
-npm install http - proxy - middleware--save
-npm install @reduxjs/toolkit react-redux
-npm install @nivo/core
-npm install @nivo/bar
-npm install @nivo/pie
+
 
 import axios 
 
@@ -107,6 +106,7 @@ setProxy.js 파일을 생성
 오브젝트 타입 읽기
 JSON.stringify("파일명")
 
+  
 
 
   * 오답 노트

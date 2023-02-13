@@ -106,9 +106,6 @@ function Allchart() {
         })
     }]
 
-
-
-
     return (
         <>
             <h2 style={{ textAlign: 'center' }}>
@@ -118,14 +115,14 @@ function Allchart() {
                 기간 : 2022년12월01 - 2022년 12월14일
             </h4>
             <div style={{
-                width: "115%",
-                height: "650px",
+                width: "113%",
+                height: "687px",
 
             }}>
                 <ResponsiveLine
                     data={data}
                     key={'id'}
-                    margin={{ top: 20, right: 100, bottom: 50, left: 60 }}
+                    margin={{ top: 20, right: 120, bottom: 80, left: 100 }}
                     xScale={{ type: 'point' }}
                     yScale={{
                         type: 'linear',
@@ -225,6 +222,7 @@ function Allchart() {
                         }
                     ]}
                 />
+
             </div>
         </>
     );

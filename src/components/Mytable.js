@@ -70,7 +70,7 @@ function Mytable() {
             <h4 style={{ textAlign: 'end' }}>기간 : 2022년12월01 - 2022년 12월14일</h4>
             {/* Apply the table props */}
             <table table {...getTableProps()} className='mytable'>
-                <thead>
+                <thead className="thead1">
                     {headerGroups.map((headerGroup) => (
                         <tr {...headerGroup.getHeaderGroupProps()}>
                             {headerGroup.headers.map((column) => (

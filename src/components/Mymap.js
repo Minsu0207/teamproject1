@@ -15,7 +15,7 @@ function Mymap() {
     const [markerPositions, setMarkerPositions] = useState([]);
     const [buspaths, setBuspaths] = useState([]);
     let [cnt, setCnt] = useState(0);
-    const [delay, setDelay] = useState(300);
+    const [delay, setDelay] = useState(200);
     const [isRunning, setIsRunning] = useState(false);
 
     // 경고등운행 판별 sra필드값이 0이 아닌 구간에 대해 경고등 마커 표시하기 위해 필터링
@@ -216,7 +216,11 @@ function Mymap() {
     }, [kakaoMap, markerPositions, buspaths, cnt, busmarkers]);
 
     useInterval(() => {
-        setCnt(cnt + 2);
+        if (cnt <= gps.length) {
+            setCnt(cnt + 2);
+        } else {
+            cnt = gps.length;
+        }
     }, isRunning ? delay : null);
 
 
@@ -241,17 +245,17 @@ function Mymap() {
                 <Button onClick={() => setBuspaths([])} variant="secondary">경로 지우기</Button>
                 <Button onClick={() => setMarkerPositions(marker)} variant="secondary">운행 주의 지점 보기</Button>
                 <Button onClick={() => setMarkerPositions([])} variant="secondary">지점 지우기</Button>
-                <label class="btn btn-secondary" for="btn-check">모의주행</label>
-                <button class="btn btn-secondary" onClick={handleReset}>초기화</button>
-                <input class="btn btn-secondary" value={delay} onChange={handleDelayChange} />
+                <label className="btn btn-secondary" for="btn-check">모의주행</label>
+                <Button classclassName="btn btn-secondary" variant="secondary" onClick={handleReset}>초기화</Button>
+                <input className="btn btn-secondary" value={delay} onChange={handleDelayChange} />
             </ButtonGroup>
-            <input type="checkbox" class="btn-check" id="btn-check" checked={isRunning} onChange={handleIsRunningChange} />
+            <input type="checkbox" className="btn-check" id="btn-check" checked={isRunning} onChange={handleIsRunningChange} />
 
             {
-                cnt != 0 ? <h4 style={{ textAlign: 'center' }}>모의주행 {(cnt / gps.length * 100).toFixed(1)}% 진행중</h4> : null
+                cnt != 0 && cnt <= gps.length ? <h4 style={{ textAlign: 'center' }}>모의주행 {(cnt / gps.length * 100).toFixed(1)}% 진행중</h4> : null
             }
             {
-                cnt != 0 ? <ProgressBar className="progress" variant="success" now={(cnt / gps.length) * 100} /> : null
+                cnt != 0 && cnt <= gps.length ? <ProgressBar className="progress" variant="success" now={(cnt / gps.length) * 100} /> : null
             }
             <div
                 id="map"

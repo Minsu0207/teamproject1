@@ -1,16 +1,19 @@
 import { useState } from "react";
 import { Nav, Container, Row, Col, Alert } from "react-bootstrap";
 import Mymap from "../components/Mymap";
+import styled from 'styled-components';
 
 function Page3() {
   let [tab, setTab] = useState(0)
 
+  let Box20 = styled.div`padding-bottom : 20px;`;
+  let Box8 = styled.div`padding-bottom : 8px;`;
   return (
     <>
       <Nav variant="pills" className="nav2">
         <Nav.Item>
-          <Nav.Link className="nav-link2" onClick={() => { setTab(0) }}
-            eventKey="link0">서비스소개</Nav.Link>
+          {/* <Nav.Link className="nav-link2" onClick={() => { setTab(0) }}
+            eventKey="link0"></Nav.Link> */}
         </Nav.Item>
         <Nav.Item>
           <Nav.Link className="nav-link2" onClick={() => { setTab(1) }}
@@ -45,6 +48,12 @@ function Page3() {
                   src={process.env.PUBLIC_URL + "/img/1-3.png"}
                 />
               </Row>
+              <Box20 />
+              <Box20 />
+              <Box20 />
+              <Box20 />
+              <Box8 />
+              <Box8 />
             </Container>
           </>,
           <div className="tab3-1"><Mymap /></div>

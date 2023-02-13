@@ -2,7 +2,6 @@ import { useState } from "react";
 import Mytable from "../components/Mytable";
 import { Nav, } from "react-bootstrap";
 import Allchart from "../components/Allchart";
-import { useSelector } from "react-redux";
 
 function Page2() {
   let [tab, setTab] = useState(0)
