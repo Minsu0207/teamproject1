@@ -11,7 +11,7 @@
 차량의 운전자 및 관리자를 위한 정보제공 시스템으로, 차량에 부착된 단말기로 운행정보를 읽어들여 차량 관리 및 안전 등급 등을 분석해서 알려준다.
 
 ## Fack-End Team: :runner:
-+ [김민수](https://github.com/Misnu0207)
++ [김민수](https://github.com/Minsu0207)
 
 
 ## :pushpin:Requirements
